@@ -50,7 +50,7 @@ namespace TankU.PowerUpSpawner
                 if (RngPowerUp == 0 || RngPowerUp == 2)
                 {
                     HealthPowerUp.SetActive(true);
-                    HealthPowerUp.transform.SetPositionAndRotation(new Vector3(Random.Range(-8, 8), 0.3f, Random.Range(-2.7f, 7.7f)), Quaternion.identity);
+                    HealthPowerUp.transform.SetPositionAndRotation(new Vector3(Random.Range(-17.5f, 17.6f), 0.3f, Random.Range(-4, 13)), Quaternion.identity);
                     SpawnTime = 10;
                     PowerUpTime = 10;
                     isSpawn = true;
@@ -58,7 +58,7 @@ namespace TankU.PowerUpSpawner
                 else if (RngPowerUp == 1 || RngPowerUp == 3)
                 {
                     BouncePowerUp.SetActive(true);
-                    BouncePowerUp.transform.SetPositionAndRotation(new Vector3(Random.Range(-8, 8), 0.3f, Random.Range(-2.7f, 7.7f)), Quaternion.identity);
+                    BouncePowerUp.transform.SetPositionAndRotation(new Vector3(Random.Range(-17.5f, 17.6f), 0.3f, Random.Range(-4, 13)), Quaternion.identity);
                     SpawnTime = 10;
                     PowerUpTime = 10;
                     isSpawn = true;

@@ -22,7 +22,7 @@ public class PowerUp : MonoBehaviour
         if (collision.gameObject.CompareTag("Wall"))
         {
             Debug.Log("Walled!");
-            this.gameObject.transform.SetPositionAndRotation(new Vector3(Random.Range(-8, 8), 0.3f, Random.Range(-2.7f, 7.7f)), Quaternion.identity);
+            this.gameObject.transform.SetPositionAndRotation(new Vector3(Random.Range(-17.5f, 17.6f), 0.3f, Random.Range(-4, 13)), Quaternion.identity);
         }
         else if (collision.gameObject.CompareTag("Player"))
         {
