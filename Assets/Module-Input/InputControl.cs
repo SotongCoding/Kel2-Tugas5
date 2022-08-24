@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace TankU.InputControl
+namespace TankU.InputModule
 {
     [CreateAssetMenu(menuName = "Unit Control", fileName = "Control Key")]
     public class InputControl : ScriptableObject

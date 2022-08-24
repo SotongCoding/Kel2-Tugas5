@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Control Key
   m_EditorClassIdentifier: 
   player1_Key:
-    moveUp: 0
-    moveDown: 0
-    moveLeft: 0
-    moveRight: 0
+    moveUp: 119
+    moveDown: 115
+    moveLeft: 97
+    moveRight: 100
     rotateLeft: 0
     rotateRight: 0
     shootBullet: 0
