@@ -11,6 +11,7 @@ namespace TankU.Unit
         //Testing
         [SerializeField]
         InputModule.KeyBoard.KeyBoardControl keyBoardControl;
+        //======================================
         [Header("Identity")]
         [SerializeField] int unitId;
 
@@ -26,18 +27,26 @@ namespace TankU.Unit
             unitStatusControl.Initial(this, unitId);
             unitActionControl.Initial(this, unitStatusControl);
         }
-        private void InitialMessege()
+        private void SubscribeMessege()
         {
             //PublishSubscribe.Instance.Subscribe<MessegeTieBreaker>(unitStatusControl.InitialTieBreaker);
+        }
+        private void UnsubscribeMessege()
+        {
+            // PublishSubscribe.Instance.Unsubscribe<MessegeTieBreaker>(unitStatusControl.InitialTieBreaker);
         }
 
         private void Start()
         {
             Intial();
-            InitialMessege();
+            SubscribeMessege();
 
             //Testing
             SetController(keyBoardControl);
+        }
+        private void OnDestroy()
+        {
+            UnsubscribeMessege();
         }
 
         private void Update()
