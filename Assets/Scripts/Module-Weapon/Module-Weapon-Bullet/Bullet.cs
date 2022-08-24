@@ -8,12 +8,9 @@ namespace TankU.Weapon.Bullet
     public class Bullet : Weapon
     {
         [SerializeField] private int _moveSpeed;
-        private GameObject _spawner;
         private Rigidbody _rigidbody;
         private Collider _collider;
         private bool _isBouncing;
-        
-        private Vector3 defaultPosition;
 
         private void OnEnable()
         {
@@ -27,11 +24,6 @@ namespace TankU.Weapon.Bullet
             //PublishSubscribe.Instance.Unsubscribe<MakeNotBouncingMessage>(MakeNotBouncing);
         }
 
-        private void Awake()
-        {
-            _spawner = GameObject.Find("UnitWeaponSpawner");
-        }
-
         void Start()
         {
             _isBouncing = false;
@@ -40,18 +32,10 @@ namespace TankU.Weapon.Bullet
             MoveBullet();
         }
 
-        private void Update()
-        {
-            //defaultPosition = _spawner.transform.position;
-        }
-
         private void MoveBullet()
         {
-            transform.position = _spawner.transform.position;
-            transform.rotation = _spawner.transform.rotation;
-            //transform.Rotate(90, 0, 0);
             _rigidbody = GetComponent<Rigidbody>();
-            _rigidbody.velocity = new Vector3(0, 0, _moveSpeed * 1);
+            _rigidbody.velocity = transform.forward * _moveSpeed;
         }
 
         //private void MakeBouncing(MakeBouncingMessage message)

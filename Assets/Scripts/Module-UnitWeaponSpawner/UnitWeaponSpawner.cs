@@ -37,8 +37,8 @@ namespace TankU.UnitWeaponSpawner
             _pooledBomb = new List<GameObject>();
             _bullet = Resources.Load<GameObject>(@"Prefabs/Bullet");
             _bomb = Resources.Load<GameObject>(@"Prefabs/Bomb");
-            _bulletAmountToPool = 10;
-            _bombAmountToPool = 10;
+            _bulletAmountToPool = 7;
+            _bombAmountToPool = 5;
             _spawnBulletCooldown_Duration = 2f;
             _spawnBombCooldown_Duration = 2f;
             _spawnBulletCooldown_Running = _spawnBulletCooldown_Duration;
@@ -50,7 +50,6 @@ namespace TankU.UnitWeaponSpawner
                 _bulletScript = obj.AddComponent<Bullet>();
                 obj.SetActive(false);
                 _pooledBullet.Add(obj);
-                //obj.transform.parent = gameObject.transform;
             }
 
             for (int i = 0; i < _bombAmountToPool; i++)
@@ -58,7 +57,6 @@ namespace TankU.UnitWeaponSpawner
                 GameObject obj = Instantiate(_bomb, transform.parent.position, Quaternion.identity);
                 obj.SetActive(false);
                 _pooledBomb.Add(obj);
-                //obj.transform.parent = gameObject.transform;
             }
         }
 
@@ -103,6 +101,7 @@ namespace TankU.UnitWeaponSpawner
             if (_spawnBulletCooldown_Running >= _spawnBulletCooldown_Duration)
             {
                 GameObject _bulletToSpawn = GetPooledBullet();
+                _bulletToSpawn.transform.SetPositionAndRotation(gameObject.transform.position, gameObject.transform.rotation);
                 _bulletToSpawn.SetActive(true);
                 _spawnBulletCooldown_Running = 0;
             }
