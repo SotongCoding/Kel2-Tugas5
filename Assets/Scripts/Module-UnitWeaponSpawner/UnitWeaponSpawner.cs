@@ -50,7 +50,7 @@ namespace TankU.UnitWeaponSpawner
                 _bulletScript = obj.AddComponent<Bullet>();
                 obj.SetActive(false);
                 _pooledBullet.Add(obj);
-                obj.transform.parent = gameObject.transform;
+                //obj.transform.parent = gameObject.transform;
             }
 
             for (int i = 0; i < _bombAmountToPool; i++)
@@ -58,7 +58,7 @@ namespace TankU.UnitWeaponSpawner
                 GameObject obj = Instantiate(_bomb, transform.parent.position, Quaternion.identity);
                 obj.SetActive(false);
                 _pooledBomb.Add(obj);
-                obj.transform.parent = gameObject.transform;
+                //obj.transform.parent = gameObject.transform;
             }
         }
 

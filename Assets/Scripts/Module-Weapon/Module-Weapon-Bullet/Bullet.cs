@@ -8,20 +8,29 @@ namespace TankU.Weapon.Bullet
     public class Bullet : Weapon
     {
         [SerializeField] private int _moveSpeed;
+        private GameObject _spawner;
         private Rigidbody _rigidbody;
         private Collider _collider;
         private bool _isBouncing;
+        
+        private Vector3 defaultPosition;
 
-        //private void OnEnable()
-        //{
-        //    PublishSubscribe.Instance.Subscribe<MakeBouncingMessage>(MakeBouncing);
-        //    PublishSubscribe.Instance.Subscribe<MakeNotBouncingMessage>(MakeNotBouncing);
-        //}
-        //private void OnDisable()
-        //{
-        //    PublishSubscribe.Instance.Unsubscribe<MakeBouncingMessage>(MakeBouncing);
-        //    PublishSubscribe.Instance.Unsubscribe<MakeNotBouncingMessage>(MakeNotBouncing);
-        //}
+        private void OnEnable()
+        {
+            MoveBullet();
+            //PublishSubscribe.Instance.Subscribe<MakeBouncingMessage>(MakeBouncing);
+            //PublishSubscribe.Instance.Subscribe<MakeNotBouncingMessage>(MakeNotBouncing);
+        }
+        private void OnDisable()
+        {
+            //PublishSubscribe.Instance.Unsubscribe<MakeBouncingMessage>(MakeBouncing);
+            //PublishSubscribe.Instance.Unsubscribe<MakeNotBouncingMessage>(MakeNotBouncing);
+        }
+
+        private void Awake()
+        {
+            _spawner = GameObject.Find("UnitWeaponSpawner");
+        }
 
         void Start()
         {
@@ -31,8 +40,16 @@ namespace TankU.Weapon.Bullet
             MoveBullet();
         }
 
+        private void Update()
+        {
+            //defaultPosition = _spawner.transform.position;
+        }
+
         private void MoveBullet()
         {
+            transform.position = _spawner.transform.position;
+            transform.rotation = _spawner.transform.rotation;
+            //transform.Rotate(90, 0, 0);
             _rigidbody = GetComponent<Rigidbody>();
             _rigidbody.velocity = new Vector3(0, 0, _moveSpeed * 1);
         }
