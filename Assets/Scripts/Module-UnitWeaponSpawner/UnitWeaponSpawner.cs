@@ -1,6 +1,7 @@
 using Agate.MVC.Core;
 using System.Collections;
 using System.Collections.Generic;
+using TankU.Weapon.Bullet;
 using UnityEngine;
 
 namespace TankU.UnitWeaponSpawner
@@ -13,10 +14,11 @@ namespace TankU.UnitWeaponSpawner
         [SerializeField] private GameObject _bomb;
         [SerializeField] private int _bulletAmountToPool;
         [SerializeField] private int _bombAmountToPool;
-        private float _spawnBulletCooldownRunning;
-        private float _spawnBombCooldownRunning;
-        [SerializeField] private float _spawnBulletCooldownDuration;
-        [SerializeField] private float _spawnBombCooldownDuration;
+        private float _spawnBulletCooldown_Running;
+        private float _spawnBombCooldown_Running;
+        [SerializeField] private float _spawnBulletCooldown_Duration;
+        [SerializeField] private float _spawnBombCooldown_Duration;
+        private Bullet _bulletScript;
 
         private void Awake()
         {
@@ -37,14 +39,15 @@ namespace TankU.UnitWeaponSpawner
             _bomb = Resources.Load<GameObject>(@"Prefabs/Bomb");
             _bulletAmountToPool = 10;
             _bombAmountToPool = 10;
-            _spawnBulletCooldownDuration = 2f;
-            _spawnBombCooldownDuration = 2f;
-            _spawnBulletCooldownRunning = _spawnBulletCooldownDuration;
-            _spawnBombCooldownRunning = _spawnBombCooldownDuration;
+            _spawnBulletCooldown_Duration = 2f;
+            _spawnBombCooldown_Duration = 2f;
+            _spawnBulletCooldown_Running = _spawnBulletCooldown_Duration;
+            _spawnBombCooldown_Running = _spawnBombCooldown_Duration;
 
             for (int i = 0; i < _bulletAmountToPool; i++)
             {
-                GameObject obj = Instantiate(_bullet, transform.position, Quaternion.identity);
+                GameObject obj = Instantiate(_bullet, transform.position, _bullet.transform.rotation);
+                _bulletScript = obj.AddComponent<Bullet>();
                 obj.SetActive(false);
                 _pooledBullet.Add(obj);
                 obj.transform.parent = gameObject.transform;
@@ -52,7 +55,7 @@ namespace TankU.UnitWeaponSpawner
 
             for (int i = 0; i < _bombAmountToPool; i++)
             {
-                GameObject obj = Instantiate(_bomb, transform.position, Quaternion.identity);
+                GameObject obj = Instantiate(_bomb, transform.parent.position, Quaternion.identity);
                 obj.SetActive(false);
                 _pooledBomb.Add(obj);
                 obj.transform.parent = gameObject.transform;
@@ -61,13 +64,13 @@ namespace TankU.UnitWeaponSpawner
 
         private void Update()
         {
-            if (_spawnBulletCooldownRunning < _spawnBulletCooldownDuration)
+            if (_spawnBulletCooldown_Running < _spawnBulletCooldown_Duration)
             {
-                _spawnBulletCooldownRunning += Time.deltaTime;
+                _spawnBulletCooldown_Running += Time.deltaTime;
             }
-            if (_spawnBombCooldownRunning < _spawnBombCooldownDuration)
+            if (_spawnBombCooldown_Running < _spawnBombCooldown_Duration)
             {
-                _spawnBombCooldownRunning += Time.deltaTime;
+                _spawnBombCooldown_Running += Time.deltaTime;
             }
         }
 
@@ -97,21 +100,21 @@ namespace TankU.UnitWeaponSpawner
 
         private void SpawnBullet(SpawnBulletMessage message)
         {
-            if (_spawnBulletCooldownRunning >= _spawnBulletCooldownDuration)
+            if (_spawnBulletCooldown_Running >= _spawnBulletCooldown_Duration)
             {
                 GameObject _bulletToSpawn = GetPooledBullet();
                 _bulletToSpawn.SetActive(true);
-                _spawnBulletCooldownRunning = 0;
+                _spawnBulletCooldown_Running = 0;
             }
         }
 
         private void SpawnBomb(SpawnBombMessage message)
         {
-            if (_spawnBombCooldownRunning >= _spawnBombCooldownDuration)
+            if (_spawnBombCooldown_Running >= _spawnBombCooldown_Duration)
             {
                 GameObject _bombToSpawn = GetPooledBomb();
                 _bombToSpawn.SetActive(true);
-                _spawnBombCooldownRunning = 0;
+                _spawnBombCooldown_Running = 0;
             }
         }
     }
