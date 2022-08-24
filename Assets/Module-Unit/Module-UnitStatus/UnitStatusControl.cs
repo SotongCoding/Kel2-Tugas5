@@ -11,49 +11,49 @@ namespace TankU.Unit.UnitStatus
     {
         Unit thisUnit;
 
-        int id;
-        public float rotateSpeed { private set; get; }
+        private int id;
+        public float _rotateSpeed { private set; get; }
 
-        public int unitHealth { private set; get; }
-        public float unitSpeed { private set; get; }
+        public int _unitHealth { private set; get; }
+        public float _unitSpeed { private set; get; }
 
-        public int bulletUse { private set; get; }
-        public int bombUse { private set; get; }
+        public int _bulletUse { private set; get; }
+        public int _bombUse { private set; get; }
 
         public void Initial(Unit unit, int id)
         {
             thisUnit = unit;
             this.id = id;
 
-            unitHealth = 10;
-            unitSpeed = 3;
-            bulletUse = 0;
-            bombUse = 0;
-            rotateSpeed = 75f;
+            _unitHealth = 10;
+            _unitSpeed = 3;
+            _bulletUse = 0;
+            _bombUse = 0;
+            _rotateSpeed = 75f;
         }
         private void InitialOnTieBreak()
         {
-            unitHealth = 1;
-            unitSpeed = 4.5f;
-            bulletUse = 1;
-            rotateSpeed = 100;
+            _unitHealth = 1;
+            _unitSpeed = 4.5f;
+            _bulletUse = 1;
+            _rotateSpeed = 100;
         }
-        
+
         public void ReduceHealth()
         {
-            unitHealth -= 1;
-            if (unitHealth <= 0) PublishSubscribe.Instance.Publish<MessegeUnitDie>(
+            _unitHealth -= 1;
+            if (_unitHealth <= 0) PublishSubscribe.Instance.Publish<MessegeUnitDie>(
                 new MessegeUnitDie(id)
             );
         }
         public void AddHealth(int amount)
         {
-            unitHealth += amount;
+            _unitHealth += amount;
         }
 
         public void ChangeBullet(int bulletId)
         {
-            bulletUse = bulletId;
+            _bulletUse = bulletId;
         }
 
         // public void InitialTieBreaker(MessegeTieBreaker messege)

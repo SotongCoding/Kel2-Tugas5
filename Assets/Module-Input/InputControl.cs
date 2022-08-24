@@ -6,20 +6,20 @@ namespace TankU.InputModule
 {
     public class InputControl : ScriptableObject, IUnitKeyAction
     {
-        public virtual bool MoveUp => false;
+        public virtual bool _moveUp => false;
 
-        public virtual bool MoveDown => false;
+        public virtual bool _moveDown => false;
 
-        public virtual bool MoveLeft => false;
+        public virtual bool _moveLeft => false;
 
-        public virtual bool MoveRight => false;
+        public virtual bool _moveRight => false;
 
-        public virtual bool RotateLeft => false;
+        public virtual bool _rotateLeft => false;
 
-        public virtual bool RotateRight => false;
+        public virtual bool _rotateRight => false;
 
-        public virtual bool ShootBullet => false;
+        public virtual bool _shootBullet => false;
 
-        public virtual bool PlaceBomb => false;
+        public virtual bool _placeBomb => false;
     }
 }

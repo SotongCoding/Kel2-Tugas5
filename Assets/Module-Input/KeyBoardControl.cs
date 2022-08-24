@@ -11,18 +11,18 @@ namespace TankU.InputModule.KeyBoard
         KeyControl keyControl;
 
         //Move
-        public override bool MoveUp => Input.GetKey(keyControl.moveUp);
-        public override bool MoveDown => Input.GetKey(keyControl.moveDown);
-        public override bool MoveLeft => Input.GetKey(keyControl.moveLeft);
-        public override bool MoveRight => Input.GetKey(keyControl.moveRight);
+        public override bool _moveUp => Input.GetKey(keyControl.moveUp);
+        public override bool _moveDown => Input.GetKey(keyControl.moveDown);
+        public override bool _moveLeft => Input.GetKey(keyControl.moveLeft);
+        public override bool _moveRight => Input.GetKey(keyControl.moveRight);
 
         //Rotate
-        public override bool RotateLeft => Input.GetKey(keyControl.rotateLeft);
-        public override bool RotateRight => Input.GetKey(keyControl.rotateRight);
+        public override bool _rotateLeft => Input.GetKey(keyControl.rotateLeft);
+        public override bool _rotateRight => Input.GetKey(keyControl.rotateRight);
 
         //Shoot and Plant Bomb
-        public override bool ShootBullet => Input.GetKeyDown(keyControl.shootBullet);
-        public override bool PlaceBomb => Input.GetKeyDown(keyControl.placeBomb);
+        public override bool _shootBullet => Input.GetKeyDown(keyControl.shootBullet);
+        public override bool _placeBomb => Input.GetKeyDown(keyControl.placeBomb);
 
 
         [System.Serializable]

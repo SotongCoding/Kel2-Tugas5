@@ -4,14 +4,14 @@ using UnityEngine;
 
 public interface IUnitKeyAction
 {
-    bool MoveUp { get; }
-    bool MoveDown { get; }
-    bool MoveLeft { get; }
-    bool MoveRight { get; }
+    bool _moveUp { get; }
+    bool _moveDown { get; }
+    bool _moveLeft { get; }
+    bool _moveRight { get; }
 
-    bool RotateLeft { get; }
-    bool RotateRight { get; }
+    bool _rotateLeft { get; }
+    bool _rotateRight { get; }
 
-    bool ShootBullet { get; }
-    bool PlaceBomb { get; }
+    bool _shootBullet { get; }
+    bool _placeBomb { get; }
 }

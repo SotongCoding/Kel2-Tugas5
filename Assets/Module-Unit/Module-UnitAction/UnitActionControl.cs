@@ -8,9 +8,9 @@ namespace TankU.Unit.UnitAction
 {
     public class UnitActionControl
     {
-        IUnitKeyAction KeyAction;
-        Unit thisUnit;
-        UnitStatus.UnitStatusControl unitStatus;
+        private IUnitKeyAction KeyAction;
+        private Unit thisUnit;
+        private UnitStatus.UnitStatusControl unitStatus;
 
         public void Initial(Unit unit, UnitStatus.UnitStatusControl statusControl)
         {
@@ -27,11 +27,11 @@ namespace TankU.Unit.UnitAction
             Move();
             Rotate();
 
-            if (KeyAction.ShootBullet)
+            if (KeyAction._shootBullet)
             {
                 ShootBullet();
             }
-            if (KeyAction.PlaceBomb)
+            if (KeyAction._placeBomb)
             {
                 PlaceBomb();
             }
@@ -39,17 +39,17 @@ namespace TankU.Unit.UnitAction
 
         public void Move()
         {
-            if (KeyAction.MoveUp) thisUnit.transform.Translate(Vector3.forward * Time.deltaTime);
-            else if (KeyAction.MoveDown) thisUnit.transform.Translate(Vector3.back * Time.deltaTime);
+            if (KeyAction._moveUp) thisUnit.transform.Translate(Vector3.forward * Time.deltaTime);
+            else if (KeyAction._moveDown) thisUnit.transform.Translate(Vector3.back * Time.deltaTime);
 
-            else if (KeyAction.MoveLeft) thisUnit.transform.Translate(Vector3.left * Time.deltaTime);
-            else if (KeyAction.MoveRight) thisUnit.transform.Translate(Vector3.right * Time.deltaTime);
+            else if (KeyAction._moveLeft) thisUnit.transform.Translate(Vector3.left * Time.deltaTime);
+            else if (KeyAction._moveRight) thisUnit.transform.Translate(Vector3.right * Time.deltaTime);
 
         }
         public void Rotate()
         {
-            if (KeyAction.RotateLeft) thisUnit.head.Rotate(Vector3.up, -unitStatus.rotateSpeed * Time.deltaTime);
-            else if (KeyAction.RotateRight) thisUnit.head.Rotate(Vector3.up, unitStatus.rotateSpeed * Time.deltaTime);
+            if (KeyAction._rotateLeft) thisUnit.head.Rotate(Vector3.up, -unitStatus._rotateSpeed * Time.deltaTime);
+            else if (KeyAction._rotateRight) thisUnit.head.Rotate(Vector3.up, unitStatus._rotateSpeed * Time.deltaTime);
         }
 
         public void ShootBullet()

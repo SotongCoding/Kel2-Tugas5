@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: KeyboardControl2
   m_EditorClassIdentifier: 
   keyControl:
-    moveUp: 119
-    moveDown: 115
-    moveLeft: 97
-    moveRight: 100
-    rotateLeft: 113
-    rotateRight: 101
-    shootBullet: 32
-    shootPlaceBomb: 9
+    moveUp: 105
+    moveDown: 107
+    moveLeft: 106
+    moveRight: 108
+    rotateLeft: 117
+    rotateRight: 111
+    shootBullet: 34
+    placeBomb: 59
