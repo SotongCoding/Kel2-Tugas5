@@ -21,11 +21,13 @@ namespace TankU.Unit
 
         UnitAction.UnitActionControl unitActionControl = new UnitAction.UnitActionControl();
         UnitStatus.UnitStatusControl unitStatusControl = new UnitStatus.UnitStatusControl();
+        public UnitVisual.UnitVisualControl visualControl;
+
 
         private void Intial()
         {
             unitStatusControl.Initial(this, unitId);
-            unitActionControl.Initial(this, unitStatusControl);
+            unitActionControl.Initial(this, unitStatusControl, visualControl);
         }
         private void SubscribeMessege()
         {

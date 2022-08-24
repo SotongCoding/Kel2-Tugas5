@@ -11,11 +11,13 @@ namespace TankU.Unit.UnitAction
         private IUnitKeyAction KeyAction;
         private Unit thisUnit;
         private UnitStatus.UnitStatusControl unitStatus;
+        private UnitVisual.UnitVisualControl unitVisual;
 
-        public void Initial(Unit unit, UnitStatus.UnitStatusControl statusControl)
+        public void Initial(Unit unit, UnitStatus.UnitStatusControl statusControl, UnitVisual.UnitVisualControl unitVisual)
         {
             thisUnit = unit;
             unitStatus = statusControl;
+            this.unitVisual = unitVisual;
         }
         public void InitialControl(IUnitKeyAction keyAction)
         {
@@ -39,11 +41,20 @@ namespace TankU.Unit.UnitAction
 
         public void Move()
         {
-            if (KeyAction._moveUp) thisUnit.transform.Translate(Vector3.forward * Time.deltaTime);
-            else if (KeyAction._moveDown) thisUnit.transform.Translate(Vector3.back * Time.deltaTime);
+            Vector3 dir = thisUnit.transform.position;
 
-            else if (KeyAction._moveLeft) thisUnit.transform.Translate(Vector3.left * Time.deltaTime);
-            else if (KeyAction._moveRight) thisUnit.transform.Translate(Vector3.right * Time.deltaTime);
+            if (KeyAction._moveUp) { thisUnit.transform.Translate(Vector3.forward * Time.deltaTime); dir = thisUnit.transform.forward; }
+            else if (KeyAction._moveDown) { thisUnit.transform.Translate(Vector3.back * Time.deltaTime); dir = -thisUnit.transform.forward; }
+
+            else if (KeyAction._moveLeft) { thisUnit.transform.Translate(Vector3.left * Time.deltaTime); dir = -thisUnit.transform.right; }
+            else if (KeyAction._moveRight) { thisUnit.transform.Translate(Vector3.right * Time.deltaTime); dir = thisUnit.transform.right; }
+
+            if (KeyAction._moveUp || KeyAction._moveDown || KeyAction._moveLeft || KeyAction._moveRight)
+            {
+                unitVisual.PlayVisual_Move(dir);
+            }
+            else
+                unitVisual.PlayVisual_Idle();
 
         }
         public void Rotate()

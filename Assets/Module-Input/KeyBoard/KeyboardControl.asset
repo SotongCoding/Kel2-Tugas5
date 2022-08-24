@@ -20,4 +20,4 @@ MonoBehaviour:
     rotateLeft: 113
     rotateRight: 101
     shootBullet: 32
-    shootPlaceBomb: 9
+    placeBomb: 9
