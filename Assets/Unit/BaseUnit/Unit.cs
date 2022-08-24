@@ -8,7 +8,7 @@ namespace TankU.Unit
     {
         //Testing
         [SerializeField]
-        InputModule.InputControl control;
+        InputModule.KeyBoard.KeyBoardControl keyBoardControl;
 
         UnitAction.UnitActionControl unitActionControl = new UnitAction.UnitActionControl();
 
@@ -17,10 +17,11 @@ namespace TankU.Unit
             Intial();
 
             //Testing
-            SetController(control.Player1_Key);
+            SetController(keyBoardControl);
         }
 
-        private void Update() {
+        private void Update()
+        {
             unitActionControl.RunAction();
         }
 
@@ -29,7 +30,7 @@ namespace TankU.Unit
             unitActionControl.InitialUnit(this);
         }
 
-        public void SetController(InputModule.InputControl.UnitKeyControl keyControl)
+        public void SetController(IUnitKeyAction keyControl)
         {
             unitActionControl.InitialControl(keyControl);
         }

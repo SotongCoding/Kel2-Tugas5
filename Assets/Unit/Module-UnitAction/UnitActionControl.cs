@@ -8,16 +8,16 @@ namespace TankU.Unit.UnitAction
 {
     public class UnitActionControl
     {
-        InputControl.UnitKeyControl keyControl;
+        IUnitKeyAction KeyAction;
         Unit thisUnit;
 
         public void InitialUnit(Unit unit)
         {
             thisUnit = unit;
         }
-        public void InitialControl(InputControl.UnitKeyControl keyControl)
+        public void InitialControl(IUnitKeyAction keyAction)
         {
-            this.keyControl = keyControl;
+            this.KeyAction = keyAction;
         }
 
         public void RunAction()
@@ -25,11 +25,11 @@ namespace TankU.Unit.UnitAction
             Move();
             Rotate();
 
-            if (Input.GetKeyDown(keyControl.shootBullet))
+            if (KeyAction.ShootBullet)
             {
                 ShootBullet();
             }
-            if (Input.GetKeyDown(keyControl.shootPlaceBomb))
+            if (KeyAction.PlaceBomb)
             {
                 PlaceBomb();
             }
@@ -37,17 +37,17 @@ namespace TankU.Unit.UnitAction
 
         public void Move()
         {
-            if (Input.GetKey(keyControl.moveUp)) thisUnit.transform.Translate(Vector3.forward * Time.deltaTime);
-            else if (Input.GetKey(keyControl.moveDown)) thisUnit.transform.Translate(Vector3.back * Time.deltaTime);
+            if (KeyAction.MoveUp) thisUnit.transform.Translate(Vector3.forward * Time.deltaTime);
+            else if (KeyAction.MoveDown) thisUnit.transform.Translate(Vector3.back * Time.deltaTime);
 
-            else if (Input.GetKey(keyControl.moveLeft)) thisUnit.transform.Translate(Vector3.left * Time.deltaTime);
-            else if (Input.GetKey(keyControl.moveRight)) thisUnit.transform.Translate(Vector3.right * Time.deltaTime);
+            else if (KeyAction.MoveLeft) thisUnit.transform.Translate(Vector3.left * Time.deltaTime);
+            else if (KeyAction.MoveRight) thisUnit.transform.Translate(Vector3.right * Time.deltaTime);
 
         }
         public void Rotate()
         {
-            if (Input.GetKey(keyControl.rotateLeft)) thisUnit.transform.Translate(Vector3.left * Time.deltaTime);
-            else if (Input.GetKey(keyControl.rotateRight)) thisUnit.transform.Translate(Vector3.right * Time.deltaTime);
+            if (KeyAction.RotateLeft) thisUnit.transform.Translate(Vector3.left * Time.deltaTime);
+            else if (KeyAction.MoveRight) thisUnit.transform.Translate(Vector3.right * Time.deltaTime);
         }
 
         public void ShootBullet()

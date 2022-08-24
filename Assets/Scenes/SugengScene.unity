@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05773033122680648ae98c83b9ae66ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  control: {fileID: 11400000, guid: 127dbad87e110914d95211bdd05eef86, type: 2}
+  keyBoardControl: {fileID: 11400000, guid: 313279ace5dffb64caad3d0b480d0b45, type: 2}
 --- !u!4 &1398812704
 Transform:
   m_ObjectHideFlags: 0

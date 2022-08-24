@@ -4,44 +4,22 @@ using UnityEngine;
 
 namespace TankU.InputModule
 {
-    [CreateAssetMenu(menuName = "Unit Control", fileName = "Control Key")]
-    public class InputControl : ScriptableObject
+    public class InputControl : ScriptableObject, IUnitKeyAction
     {
+        public virtual bool MoveUp => false;
 
-        [SerializeField]
-        UnitKeyControl player1_Key,
-        player2_Key;
+        public virtual bool MoveDown => false;
 
-        public UnitKeyControl Player1_Key
-        {
-            get
-            {
-                return player1_Key;
-            }
-        }
-        public UnitKeyControl Player2_Key
-        {
-            get
-            {
-                return player1_Key;
-            }
-        }
+        public virtual bool MoveLeft => false;
 
+        public virtual bool MoveRight => false;
 
-        [System.Serializable]
-        public struct UnitKeyControl
-        {
-            public KeyCode moveUp;
-            public KeyCode moveDown;
-            public KeyCode moveLeft;
-            public KeyCode moveRight;
+        public virtual bool RotateLeft => false;
 
-            public KeyCode rotateLeft;
-            public KeyCode rotateRight;
+        public virtual bool RotateRight => false;
 
-            public KeyCode shootBullet;
-            public KeyCode shootPlaceBomb;
+        public virtual bool ShootBullet => false;
 
-        }
+        public virtual bool PlaceBomb => false;
     }
 }
