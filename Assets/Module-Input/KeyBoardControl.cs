@@ -10,13 +10,20 @@ namespace TankU.InputModule.KeyBoard
         [SerializeField]
         KeyControl keyControl;
 
+        //Move
         public override bool MoveUp => Input.GetKey(keyControl.moveUp);
-
         public override bool MoveDown => Input.GetKey(keyControl.moveDown);
-
         public override bool MoveLeft => Input.GetKey(keyControl.moveLeft);
-
         public override bool MoveRight => Input.GetKey(keyControl.moveRight);
+
+        //Rotate
+        public override bool RotateLeft => Input.GetKey(keyControl.rotateLeft);
+        public override bool RotateRight => Input.GetKey(keyControl.rotateRight);
+
+        //Shoot and Plant Bomb
+        public override bool ShootBullet => Input.GetKeyDown(keyControl.shootBullet);
+        public override bool PlaceBomb => Input.GetKeyDown(keyControl.placeBomb);
+
 
         [System.Serializable]
         public struct KeyControl
@@ -30,7 +37,7 @@ namespace TankU.InputModule.KeyBoard
             public KeyCode rotateRight;
 
             public KeyCode shootBullet;
-            public KeyCode shootPlaceBomb;
+            public KeyCode placeBomb;
 
         }
     }

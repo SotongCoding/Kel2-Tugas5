@@ -10,10 +10,12 @@ namespace TankU.Unit.UnitAction
     {
         IUnitKeyAction KeyAction;
         Unit thisUnit;
+        UnitStatus.UnitStatusControl unitStatus;
 
-        public void InitialUnit(Unit unit)
+        public void Initial(Unit unit, UnitStatus.UnitStatusControl statusControl)
         {
             thisUnit = unit;
+            unitStatus = statusControl;
         }
         public void InitialControl(IUnitKeyAction keyAction)
         {
@@ -46,17 +48,17 @@ namespace TankU.Unit.UnitAction
         }
         public void Rotate()
         {
-            if (KeyAction.RotateLeft) thisUnit.transform.Translate(Vector3.left * Time.deltaTime);
-            else if (KeyAction.MoveRight) thisUnit.transform.Translate(Vector3.right * Time.deltaTime);
+            if (KeyAction.RotateLeft) thisUnit.head.Rotate(Vector3.up, -unitStatus.rotateSpeed * Time.deltaTime);
+            else if (KeyAction.RotateRight) thisUnit.head.Rotate(Vector3.up, unitStatus.rotateSpeed * Time.deltaTime);
         }
 
         public void ShootBullet()
         {
-
+            //Spawner.CreateBullet(thisUnit.bulletOutPos, unitStatus.bulletUse);
         }
         public void PlaceBomb()
         {
-
+            //Spawner.CreateBullet(thisUnit.bulletOutPos, unitStatus.bulletUse);
         }
     }
 }

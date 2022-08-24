@@ -10,47 +10,65 @@ namespace TankU.Unit.UnitStatus
     public class UnitStatusControl
     {
         Unit thisUnit;
+
+        int id;
+        public float rotateSpeed { private set; get; }
+
         public int unitHealth { private set; get; }
         public float unitSpeed { private set; get; }
 
         public int bulletUse { private set; get; }
         public int bombUse { private set; get; }
 
-        public void IntialStatus(Unit unit)
+        public void Initial(Unit unit, int id)
         {
             thisUnit = unit;
+            this.id = id;
 
             unitHealth = 10;
             unitSpeed = 3;
             bulletUse = 0;
             bombUse = 0;
+            rotateSpeed = 75f;
         }
-        void InitialTieBreak()
+        private void InitialOnTieBreak()
         {
             unitHealth = 1;
             unitSpeed = 4.5f;
             bulletUse = 1;
+            rotateSpeed = 100;
         }
+        
         public void ReduceHealth()
         {
             unitHealth -= 1;
-            if (unitHealth <= 0) PublishSubscribe.Instance.Publish<MessegeUnitDie>(new MessegeUnitDie(thisUnit));
-
+            if (unitHealth <= 0) PublishSubscribe.Instance.Publish<MessegeUnitDie>(
+                new MessegeUnitDie(id)
+            );
+        }
+        public void AddHealth(int amount)
+        {
+            unitHealth += amount;
         }
 
-        // internal void InitialTieBreaker(MessegeTieBreaker messege)
+        public void ChangeBullet(int bulletId)
+        {
+            bulletUse = bulletId;
+        }
+
+        // public void InitialTieBreaker(MessegeTieBreaker messege)
         // {
-        //    InitialTieBreak();
+        //    InitialOnTieBreak();
         // }
     }
 }
 
 public struct MessegeUnitDie
 {
-    public TankU.Unit.Unit unitDie;
+    public int unitId;
 
-    public MessegeUnitDie(TankU.Unit.Unit unitDie)
+    public MessegeUnitDie(int unitId)
     {
-        this.unitDie = unitDie;
+        this.unitId = unitId;
     }
 }

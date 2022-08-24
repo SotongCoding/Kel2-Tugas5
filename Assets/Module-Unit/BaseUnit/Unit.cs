@@ -11,11 +11,22 @@ namespace TankU.Unit
         //Testing
         [SerializeField]
         InputModule.KeyBoard.KeyBoardControl keyBoardControl;
+        [Header("Identity")]
+        [SerializeField] int unitId;
+
+        [Header("Shooting Setting")]
+        public Transform bulletOutPos;
+        public Transform head;
 
         UnitAction.UnitActionControl unitActionControl = new UnitAction.UnitActionControl();
         UnitStatus.UnitStatusControl unitStatusControl = new UnitStatus.UnitStatusControl();
 
-        void InitialMessege()
+        private void Intial()
+        {
+            unitStatusControl.Initial(this, unitId);
+            unitActionControl.Initial(this, unitStatusControl);
+        }
+        private void InitialMessege()
         {
             //PublishSubscribe.Instance.Subscribe<MessegeTieBreaker>(unitStatusControl.InitialTieBreaker);
         }
@@ -35,16 +46,32 @@ namespace TankU.Unit
 
         }
 
-        void Intial()
-        {
-            unitActionControl.InitialUnit(this);
-            unitStatusControl.IntialStatus(this);
-        }
-
-
         public void SetController(IUnitKeyAction keyControl)
         {
             unitActionControl.InitialControl(keyControl);
+        }
+
+        // public void RecivePowerUp(PowerUpData powerUp)
+        // {
+        //     switch (powerUp.id)
+        //     {
+        //         case 0:
+        //             unitStatusControl.ChangeBullet(1);
+
+        //             StartCoroutine(PowerUpEffectDuration(5,
+        //             () => { unitStatusControl.ChangeBullet(0); }  ));
+
+        //             break;
+        //         case 1:
+        //             unitStatusControl.AddHealth(10);
+        //             break;
+        //     }
+        // }
+
+        IEnumerator PowerUpEffectDuration(float duration, System.Action onDurationEnd)
+        {
+            yield return new WaitForSeconds(duration);
+            onDurationEnd?.Invoke();
         }
     }
 }
