@@ -22,13 +22,13 @@ namespace TankU.UnitWeaponSpawner
 
         private void Awake()
         {
-            PublishSubscribe.Instance.Subscribe<SpawnBulletMessage>(SpawnBullet);
-            PublishSubscribe.Instance.Subscribe<SpawnBombMessage>(SpawnBomb);
+            PublishSubscribe.Instance.Subscribe<MessageSpawnBullet>(ReciveMessegeSpawnBullet);
+            PublishSubscribe.Instance.Subscribe<MessageSpawnBomb>(ReciveMessegeSpawnBomb);
         }
         private void OnDestroy()
         {
-            PublishSubscribe.Instance.Unsubscribe<SpawnBulletMessage>(SpawnBullet);
-            PublishSubscribe.Instance.Unsubscribe<SpawnBombMessage>(SpawnBomb);
+            PublishSubscribe.Instance.Unsubscribe<MessageSpawnBullet>(ReciveMessegeSpawnBullet);
+            PublishSubscribe.Instance.Unsubscribe<MessageSpawnBomb>(ReciveMessegeSpawnBomb);
         }
 
         private void Start()
@@ -54,7 +54,7 @@ namespace TankU.UnitWeaponSpawner
 
             for (int i = 0; i < _bombAmountToPool; i++)
             {
-                GameObject obj = Instantiate(_bomb, transform.parent.position, Quaternion.identity);
+                GameObject obj = Instantiate(_bomb, transform.position, Quaternion.identity);
                 obj.SetActive(false);
                 _pooledBomb.Add(obj);
             }
@@ -96,22 +96,23 @@ namespace TankU.UnitWeaponSpawner
             return null;
         }
 
-        private void SpawnBullet(SpawnBulletMessage message)
+        private void ReciveMessegeSpawnBullet(MessageSpawnBullet message)
         {
             if (_spawnBulletCooldown_Running >= _spawnBulletCooldown_Duration)
             {
                 GameObject _bulletToSpawn = GetPooledBullet();
-                _bulletToSpawn.transform.SetPositionAndRotation(gameObject.transform.position, gameObject.transform.rotation);
+                _bulletToSpawn.transform.SetPositionAndRotation(message.outPos, message.unit.rotation);
                 _bulletToSpawn.SetActive(true);
                 _spawnBulletCooldown_Running = 0;
             }
         }
 
-        private void SpawnBomb(SpawnBombMessage message)
+        private void ReciveMessegeSpawnBomb(MessageSpawnBomb message)
         {
             if (_spawnBombCooldown_Running >= _spawnBombCooldown_Duration)
             {
                 GameObject _bombToSpawn = GetPooledBomb();
+                _bombToSpawn.transform.SetPositionAndRotation(message.unit.position + Vector3.down, Quaternion.identity);
                 _bombToSpawn.SetActive(true);
                 _spawnBombCooldown_Running = 0;
             }

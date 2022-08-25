@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using TankU.InputModule;
+using Agate.MVC.Core;
 
 namespace TankU.Unit.UnitAction
 {
@@ -65,11 +65,13 @@ namespace TankU.Unit.UnitAction
 
         public void ShootBullet()
         {
-            //Spawner.CreateBullet(thisUnit.bulletOutPos, unitStatus.bulletUse);
+            PublishSubscribe.Instance.Publish<MessageSpawnBullet>(
+                new MessageSpawnBullet(thisUnit.transform, thisUnit.bulletOutPos.position));
         }
         public void PlaceBomb()
         {
-            //Spawner.CreateBullet(thisUnit.bulletOutPos, unitStatus.bulletUse);
+            PublishSubscribe.Instance.Publish<MessageSpawnBomb>(
+                new MessageSpawnBomb(thisUnit.transform));
         }
     }
 }
