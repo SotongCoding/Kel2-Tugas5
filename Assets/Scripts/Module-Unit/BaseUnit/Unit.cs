@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TankU.PowerUp;
 using Agate.MVC.Core;
+using TankU.PubSub;
 
 namespace TankU.Unit
 {
@@ -31,11 +32,11 @@ namespace TankU.Unit
         }
         private void SubscribeMessege()
         {
-            //PublishSubscribe.Instance.Subscribe<MessegeTieBreaker>(unitStatusControl.InitialTieBreaker);
+            //PublishSubscribe.Instance.Subscribe<MessageTieBreaker>(unitStatusControl.InitialTieBreaker);
         }
         private void UnsubscribeMessege()
         {
-            // PublishSubscribe.Instance.Unsubscribe<MessegeTieBreaker>(unitStatusControl.InitialTieBreaker);
+            //PublishSubscribe.Instance.Unsubscribe<MessageTieBreaker>(unitStatusControl.InitialTieBreaker);
         }
 
         private void Start()

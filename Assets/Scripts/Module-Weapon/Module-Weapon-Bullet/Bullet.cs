@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using TankU.PubSub;
+
 namespace TankU.Weapon.Bullet
 {
     public class Bullet : Weapon

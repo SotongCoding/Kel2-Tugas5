@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TankU.Weapon.Bullet;
 using UnityEngine;
-
+using TankU.PubSub;
 namespace TankU.UnitWeaponSpawner
 {
     public class UnitWeaponSpawner : MonoBehaviour
@@ -24,13 +24,13 @@ namespace TankU.UnitWeaponSpawner
 
         private void Awake()
         {
-            PublishSubscribe.Instance.Subscribe<MessageSpawnBullet>(MessegeReciveSpawnBullet);
-            PublishSubscribe.Instance.Subscribe<MessageSpawnBomb>(MessegeReciveSpawnBomb);
+            PublishSubscribe.Instance.Subscribe<MessageSpawnBullet>(MessageReciveSpawnBullet);
+            PublishSubscribe.Instance.Subscribe<MessageSpawnBomb>(MessageReciveSpawnBomb);
         }
         private void OnDestroy()
         {
-            PublishSubscribe.Instance.Unsubscribe<MessageSpawnBullet>(MessegeReciveSpawnBullet);
-            PublishSubscribe.Instance.Unsubscribe<MessageSpawnBomb>(MessegeReciveSpawnBomb);
+            PublishSubscribe.Instance.Unsubscribe<MessageSpawnBullet>(MessageReciveSpawnBullet);
+            PublishSubscribe.Instance.Unsubscribe<MessageSpawnBomb>(MessageReciveSpawnBomb);
         }
 
         private void Start()
@@ -107,7 +107,7 @@ namespace TankU.UnitWeaponSpawner
             return null;
         }
 
-        private void MessegeReciveSpawnBullet(MessageSpawnBullet message)
+        private void MessageReciveSpawnBullet(MessageSpawnBullet message)
         {
             GameObject _bulletToSpawn = message.useBouncing ? GetPooledBullet() : GetPooledBouncingBullet();
             // if (message.shooter == "Player1")
@@ -123,7 +123,7 @@ namespace TankU.UnitWeaponSpawner
             _bulletToSpawn.SetActive(true);
         }
 
-        private void MessegeReciveSpawnBomb(MessageSpawnBomb message)
+        private void MessageReciveSpawnBomb(MessageSpawnBomb message)
         {
             GameObject _bombToSpawn = GetPooledBomb();
             _bombToSpawn.transform.SetPositionAndRotation(message.shooter.position, Quaternion.identity);

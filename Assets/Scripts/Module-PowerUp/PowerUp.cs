@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Agate.MVC.Core;
 using TankU.Unit;
+using TankU.PubSub;
 
 namespace TankU.PowerUp
 {
@@ -44,14 +45,6 @@ namespace TankU.PowerUp
                 this.gameObject.SetActive(false);
             }
         }
-    }
-    public struct Bounce
-    {
-
-    }
-    public struct Heal
-    {
-
     }
 }
 
