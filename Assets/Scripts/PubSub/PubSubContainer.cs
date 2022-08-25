@@ -25,10 +25,10 @@ namespace TankU.PubSub
 
     public struct MessageUnitDie
     {
-        public int id;
-        public MessageUnitDie(int id)
+        public Unit.Unit unit;
+        public MessageUnitDie(Unit.Unit unit)
         {
-            this.id = id;
+            this.unit = unit;
         }
     }
     public struct MessageGameoverUI

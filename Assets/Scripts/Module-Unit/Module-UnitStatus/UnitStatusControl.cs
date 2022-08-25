@@ -25,7 +25,7 @@ namespace TankU.Unit.UnitStatus
             thisUnit = unit;
             this.id = id;
 
-            _unitHealth = 3;
+            _unitHealth = 10;
             _unitSpeed = 3;
             _bulletUse = 0;
             _bombUse = 0;
@@ -37,25 +37,18 @@ namespace TankU.Unit.UnitStatus
             _unitSpeed = 4.5f;
             _bulletUse = 1;
             _rotateSpeed = 100;
-
-            Debug.Log("Status Tie Break");
         }
 
-        public void ReduceHealth(int damage)
+        public void ReduceHealth()
         {
-            _unitHealth -= damage;
-            if (_unitHealth <= 0)
-            {
-                PublishSubscribe.Instance.Publish<MessageUnitDie>(
-                    new MessageUnitDie(id)
-                );
-
-                thisUnit.gameObject.SetActive(false);
-            }
+            _unitHealth -= 1;
+            if (_unitHealth <= 0) PublishSubscribe.Instance.Publish<MessageUnitDie>(
+                new MessageUnitDie(thisUnit)
+            );
         }
         public void AddHealth(int amount)
         {
-            _unitHealth = Math.Clamp(_unitHealth + amount, 0, 5);
+            _unitHealth += amount;
         }
 
         public void ChangeBullet(int bulletId)
@@ -63,10 +56,10 @@ namespace TankU.Unit.UnitStatus
             _bulletUse = bulletId;
         }
 
-        public void InitialTieBreaker(MessageTieBreaker messege)
-        {
-            InitialOnTieBreak();
-        }
+        // public void InitialTieBreaker(MessegeTieBreaker messege)
+        // {
+        //    InitialOnTieBreak();
+        // }
     }
 }
 
