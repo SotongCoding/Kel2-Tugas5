@@ -10,8 +10,10 @@ namespace TankU.Unit.UnitAction
     {
         private IUnitKeyAction KeyAction;
         private Unit thisUnit;
+
         private UnitStatus.UnitStatusControl unitStatus;
         private UnitVisual.UnitVisualControl unitVisual;
+
 
         public void Initial(Unit unit, UnitStatus.UnitStatusControl statusControl, UnitVisual.UnitVisualControl unitVisual)
         {
@@ -29,11 +31,11 @@ namespace TankU.Unit.UnitAction
             Move();
             Rotate();
 
-            if (KeyAction._shootBullet)
+            if (KeyAction._shootBullet && unitStatus._canShoot)
             {
                 ShootBullet();
             }
-            if (KeyAction._placeBomb)
+            if (KeyAction._placeBomb && unitStatus._canPlant)
             {
                 PlaceBomb();
             }
@@ -67,11 +69,15 @@ namespace TankU.Unit.UnitAction
         {
             PublishSubscribe.Instance.Publish<MessageSpawnBullet>(
                 new MessageSpawnBullet(thisUnit.head.transform, thisUnit.bulletOutPos, unitStatus._bulletUse == 1));
+            thisUnit.CountDownShootBullet();
+            unitStatus.SetShootStatus(false);
         }
         public void PlaceBomb()
         {
             PublishSubscribe.Instance.Publish<MessageSpawnBomb>(
                 new MessageSpawnBomb(thisUnit.transform));
+            thisUnit.CountDownPlantBomb();
+            unitStatus.SetPlantStatus(false);
         }
     }
 }

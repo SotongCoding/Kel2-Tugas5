@@ -4,6 +4,7 @@ using UnityEngine;
 using TankU.PowerUp;
 using Agate.MVC.Core;
 using TankU.PubSub;
+using System;
 
 namespace TankU.Unit
 {
@@ -88,5 +89,25 @@ namespace TankU.Unit
                 unitStatusControl.ChangeBullet(0);
             }));
         }
+
+        internal void CountDownShootBullet()
+        {
+            StartCoroutine(CountDown());
+            IEnumerator CountDown()
+            {
+                yield return new WaitForSeconds(unitStatusControl._shootBullet_delay);
+                unitStatusControl.SetShootStatus(true);
+            }
+        }
+        internal void CountDownPlantBomb()
+        {
+            StartCoroutine(CountDown());
+            IEnumerator CountDown()
+            {
+                yield return new WaitForSeconds(unitStatusControl._plantBomb_delay);
+                unitStatusControl.SetPlantStatus(true);
+            }
+        }
+
     }
 }
