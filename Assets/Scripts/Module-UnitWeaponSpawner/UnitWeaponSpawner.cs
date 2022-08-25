@@ -17,22 +17,20 @@ namespace TankU.UnitWeaponSpawner
         [SerializeField] private int _bulletAmountToPool;
         [SerializeField] private int _bouncingBulletAmountToPool;
         [SerializeField] private int _bombAmountToPool;
-        private Bullet _bulletScript;
-        private BouncingBullet _bouncingBulletScript;
-        [SerializeField] private GameObject _spawnerPointPlayer1;
-        [SerializeField] private GameObject _spawnerPointPlayer2;
+        // private Bullet _bulletScript;
+        // // private BouncingBullet _bouncingBulletScript;
+        // [SerializeField] private GameObject _spawnerPointPlayer1;
+        // [SerializeField] private GameObject _spawnerPointPlayer2;
 
         private void Awake()
         {
-            PublishSubscribe.Instance.Subscribe<SpawnBulletMessage>(SpawnBullet);
-            PublishSubscribe.Instance.Subscribe<MessageSpawnBouncingBullet>(SpawnBouncingBullet);
-            PublishSubscribe.Instance.Subscribe<SpawnBombMessage>(SpawnBomb);
+            PublishSubscribe.Instance.Subscribe<MessageSpawnBullet>(MessegeReciveSpawnBullet);
+            PublishSubscribe.Instance.Subscribe<MessageSpawnBomb>(MessegeReciveSpawnBomb);
         }
         private void OnDestroy()
         {
-            PublishSubscribe.Instance.Unsubscribe<SpawnBulletMessage>(SpawnBullet);
-            PublishSubscribe.Instance.Unsubscribe<MessageSpawnBouncingBullet>(SpawnBouncingBullet);
-            PublishSubscribe.Instance.Unsubscribe<SpawnBombMessage>(SpawnBomb);
+            PublishSubscribe.Instance.Unsubscribe<MessageSpawnBullet>(MessegeReciveSpawnBullet);
+            PublishSubscribe.Instance.Unsubscribe<MessageSpawnBomb>(MessegeReciveSpawnBomb);
         }
 
         private void Start()
@@ -46,13 +44,13 @@ namespace TankU.UnitWeaponSpawner
             _bulletAmountToPool = 10;
             _bouncingBulletAmountToPool = 10;
             _bombAmountToPool = 10;
-            _spawnerPointPlayer1 = GameObject.FindGameObjectWithTag("SpawnPoint1");
-            _spawnerPointPlayer2 = GameObject.FindGameObjectWithTag("SpawnPoint2");
+            // _spawnerPointPlayer1 = GameObject.FindGameObjectWithTag("SpawnPoint1");
+            // _spawnerPointPlayer2 = GameObject.FindGameObjectWithTag("SpawnPoint2");
 
             for (int i = 0; i < _bulletAmountToPool; i++)
             {
                 GameObject obj = Instantiate(_bullet, transform.position, _bullet.transform.rotation);
-                _bulletScript = obj.AddComponent<Bullet>();
+                obj.AddComponent<Bullet>();
                 obj.SetActive(false);
                 _pooledBullet.Add(obj);
             }
@@ -60,7 +58,7 @@ namespace TankU.UnitWeaponSpawner
             for (int i = 0; i < _bouncingBulletAmountToPool; i++)
             {
                 GameObject obj = Instantiate(_bouncingBullet, transform.position, transform.rotation);
-                _bouncingBulletScript = obj.AddComponent<BouncingBullet>();
+                obj.AddComponent<BouncingBullet>();
                 obj.SetActive(false);
                 _pooledBouncingBullet.Add(obj);
             }
@@ -109,38 +107,27 @@ namespace TankU.UnitWeaponSpawner
             return null;
         }
 
-        private void SpawnBullet(SpawnBulletMessage message)
+        private void MessegeReciveSpawnBullet(MessageSpawnBullet message)
         {
-            GameObject _bulletToSpawn = GetPooledBullet();
-            if (message.shooter == "Player1")
-            {
-                _bulletToSpawn.transform.SetPositionAndRotation(_spawnerPointPlayer1.transform.position, _spawnerPointPlayer1.transform.rotation);
-            }
-            else if (message.shooter == "Player2")
-            {
-                _bulletToSpawn.transform.SetPositionAndRotation(_spawnerPointPlayer2.transform.position, _spawnerPointPlayer2.transform.rotation);
-            }
+            GameObject _bulletToSpawn = message.useBouncing ? GetPooledBullet() : GetPooledBouncingBullet();
+            // if (message.shooter == "Player1")
+            // {
+            //     _bulletToSpawn.transform.SetPositionAndRotation(_spawnerPointPlayer1.transform.position, _spawnerPointPlayer1.transform.rotation);
+            // }
+            // else if (message.shooter == "Player2")
+            // {
+            //     _bulletToSpawn.transform.SetPositionAndRotation(_spawnerPointPlayer2.transform.position, _spawnerPointPlayer2.transform.rotation);
+            // }
+            _bulletToSpawn.transform.SetPositionAndRotation(
+                message.bulletOutPos.position, message.shooter.rotation);
             _bulletToSpawn.SetActive(true);
         }
 
-        private void SpawnBouncingBullet(MessageSpawnBouncingBullet message)
+        private void MessegeReciveSpawnBomb(MessageSpawnBomb message)
         {
-            GameObject _bouncingBulletToSpawn = GetPooledBouncingBullet();
-            if (message.shooter == "Player1")
-            {
-                _bouncingBulletToSpawn.transform.SetPositionAndRotation(_spawnerPointPlayer1.transform.position, _spawnerPointPlayer1.transform.rotation);
-            }
-            else if (message.shooter == "Player2")
-            {
-                _bouncingBulletToSpawn.transform.SetPositionAndRotation(_spawnerPointPlayer2.transform.position, _spawnerPointPlayer2.transform.rotation);
-            }
-            _bouncingBulletToSpawn.SetActive(true);
-        }
-
-        private void SpawnBomb(SpawnBombMessage message)
-        {
-                GameObject _bombToSpawn = GetPooledBomb();
-                _bombToSpawn.SetActive(true);
+            GameObject _bombToSpawn = GetPooledBomb();
+            _bombToSpawn.transform.SetPositionAndRotation(message.shooter.position, Quaternion.identity);
+            _bombToSpawn.SetActive(true);
         }
     }
 }
