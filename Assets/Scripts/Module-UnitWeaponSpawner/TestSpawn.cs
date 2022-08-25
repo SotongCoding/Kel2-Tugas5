@@ -11,7 +11,11 @@ public class TestSpawn : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            PublishSubscribe.Instance.Publish<SpawnBulletMessage>(new SpawnBulletMessage());
+            PublishSubscribe.Instance.Publish<SpawnBulletMessage>(new SpawnBulletMessage("Player1"));
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            PublishSubscribe.Instance.Publish<SpawnBulletMessage>(new SpawnBulletMessage("Player2"));
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
@@ -20,6 +24,14 @@ public class TestSpawn : MonoBehaviour
     }
 }
 
-public struct SpawnBulletMessage { }
+public struct SpawnBulletMessage
+{
+    public string shooter;
+
+    public SpawnBulletMessage(string shooter)
+    {
+        this.shooter = shooter;
+    }
+}
 
 public struct SpawnBombMessage { }
