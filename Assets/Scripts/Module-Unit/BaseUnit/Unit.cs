@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TankU.PowerUp;
 using Agate.MVC.Core;
 
 namespace TankU.Unit
@@ -62,27 +62,27 @@ namespace TankU.Unit
             unitActionControl.InitialControl(keyControl);
         }
 
-        // public void RecivePowerUp(PowerUpData powerUp)
-        // {
-        //     switch (powerUp.id)
-        //     {
-        //         case 0:
-        //             unitStatusControl.ChangeBullet(1);
-
-        //             StartCoroutine(PowerUpEffectDuration(5,
-        //             () => { unitStatusControl.ChangeBullet(0); }  ));
-
-        //             break;
-        //         case 1:
-        //             unitStatusControl.AddHealth(10);
-        //             break;
-        //     }
-        // }
-
         IEnumerator PowerUpEffectDuration(float duration, System.Action onDurationEnd)
         {
             yield return new WaitForSeconds(duration);
             onDurationEnd?.Invoke();
         }
+
+        public void addHealth()
+        {
+            unitStatusControl.AddHealth(1);
+            Debug.Log("Heal");
+        }
+
+        public void BouncingBullet(float PUduration)
+        {
+            unitStatusControl.ChangeBullet(1);
+            Debug.Log("Bounce");
+            StartCoroutine(PowerUpEffectDuration(PUduration,
+            () =>
+            {
+                unitStatusControl.ChangeBullet(0);
+            }));
+            }
     }
 }
