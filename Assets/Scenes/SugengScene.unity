@@ -402,8 +402,6 @@ MonoBehaviour:
   _bomb: {fileID: 0}
   _bulletAmountToPool: 0
   _bombAmountToPool: 0
-  _spawnBulletCooldown_Duration: 0
-  _spawnBombCooldown_Duration: 0
 --- !u!1 &370215556
 GameObject:
   m_ObjectHideFlags: 0

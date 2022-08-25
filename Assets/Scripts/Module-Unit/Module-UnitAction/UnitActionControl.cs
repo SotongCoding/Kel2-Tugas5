@@ -66,7 +66,7 @@ namespace TankU.Unit.UnitAction
         public void ShootBullet()
         {
             PublishSubscribe.Instance.Publish<MessageSpawnBullet>(
-                new MessageSpawnBullet(thisUnit.transform, thisUnit.bulletOutPos.position));
+                new MessageSpawnBullet(thisUnit.head.transform, thisUnit.bulletOutPos));
         }
         public void PlaceBomb()
         {

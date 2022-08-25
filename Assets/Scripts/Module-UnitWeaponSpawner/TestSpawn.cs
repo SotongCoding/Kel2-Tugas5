@@ -7,31 +7,41 @@ using UnityEngine;
 
 public class TestSpawn : MonoBehaviour
 {
-    private void Update()
+    // private void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.A))
+    //     {
+    //         PublishSubscribe.Instance.Publish<SpawnBulletMessage>(new SpawnBulletMessage("Player1"));
+    //     }
+    //     if (Input.GetKeyDown(KeyCode.S))
+    //     {
+    //         PublishSubscribe.Instance.Publish<SpawnBulletMessage>(new SpawnBulletMessage("Player2"));
+    //     }
+    //     else if (Input.GetKeyDown(KeyCode.D))
+    //     {
+    //         PublishSubscribe.Instance.Publish<SpawnBombMessage>(new SpawnBombMessage());
+    //     }
+    // }
+}
+
+public struct MessageSpawnBullet
+{
+    public Transform shooter;
+    public Transform bulletOutPos;
+
+    public MessageSpawnBullet(Transform shooter, Transform bulletOutPos)
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            PublishSubscribe.Instance.Publish<SpawnBulletMessage>(new SpawnBulletMessage("Player1"));
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            PublishSubscribe.Instance.Publish<SpawnBulletMessage>(new SpawnBulletMessage("Player2"));
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            PublishSubscribe.Instance.Publish<SpawnBombMessage>(new SpawnBombMessage());
-        }
+        this.shooter = shooter;
+        this.bulletOutPos = bulletOutPos;
     }
 }
 
-public struct SpawnBulletMessage
+public struct MessageSpawnBomb
 {
-    public string shooter;
+    public Transform shooter;
 
-    public SpawnBulletMessage(string shooter)
+    public MessageSpawnBomb(Transform shooter)
     {
         this.shooter = shooter;
     }
 }
-
-public struct SpawnBombMessage { }
