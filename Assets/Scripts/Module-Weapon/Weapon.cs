@@ -2,6 +2,7 @@ using Agate.MVC.Core;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TankU.PubSub;
 
 namespace TankU.Weapon
 {
@@ -27,13 +28,4 @@ namespace TankU.Weapon
         }
     }
 
-    public struct Hit
-    {
-        int _hitDamage;
-
-        public Hit(int damagePoint)
-        {
-            this._hitDamage = damagePoint;
-        }
-    }
 }

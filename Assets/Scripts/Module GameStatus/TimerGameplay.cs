@@ -13,28 +13,28 @@ namespace TankU.GameStatus
     public class TimerGameplay : MonoBehaviour
     {
         [SerializeField]
-        private Text textBox;
+        private float timerGameplay = 100f;
+        [SerializeField]
+        private Text timerText;
 
         private bool timeActive;
-
-        private float timerGameplay; // set timer in GameStatus.cs
 
         private void Awake()
         {
             Subscriber();
-            textBox.text = timerGameplay.ToString();
+            timerText.text = timerGameplay.ToString();
         }
         private void OnDestroy()
         {
             UnSubscriber();
         }
 
-        private void Update()
+        public void Update()
         {
             if (timeActive)
             {
                 timerGameplay -= Time.deltaTime;
-                textBox.text = Mathf.Round(timerGameplay).ToString();
+                timerText.text = Mathf.Round(timerGameplay).ToString();
                 if(timerGameplay <= 0)
                 {
                     TimesUp();
@@ -46,13 +46,11 @@ namespace TankU.GameStatus
 
         private void Subscriber()
         {
-            PublishSubscribe.Instance.Subscribe<MessageTimer>(ReceiveMessageTimer);
             PublishSubscribe.Instance.Subscribe<MessageStartGameplay>(ReceiveMessageStartGameplay);
             PublishSubscribe.Instance.Subscribe<MessageEndGameplay>(ReceiveMessageEndGameplay);
         }
         private void UnSubscriber()
         {
-            PublishSubscribe.Instance.Unsubscribe<MessageTimer>(ReceiveMessageTimer);
             PublishSubscribe.Instance.Unsubscribe<MessageStartGameplay>(ReceiveMessageStartGameplay);
             PublishSubscribe.Instance.Unsubscribe<MessageEndGameplay>(ReceiveMessageEndGameplay);
         }
@@ -63,7 +61,6 @@ namespace TankU.GameStatus
         #endregion
 
         #region Message Received
-        private void ReceiveMessageTimer(MessageTimer message) {timerGameplay = message.timer;}
         private void ReceiveMessageStartGameplay(MessageStartGameplay message) { timeActive = true; }
         private void ReceiveMessageEndGameplay(MessageEndGameplay message) { timeActive = false; }
         #endregion

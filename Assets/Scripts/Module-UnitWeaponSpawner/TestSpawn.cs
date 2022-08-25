@@ -2,6 +2,7 @@ using Agate.MVC.Core;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TankU.PubSub;
 
 // Tes ngespawn dengan PubSub. Akan digantikan dengan Unit Action
 
@@ -22,26 +23,4 @@ public class TestSpawn : MonoBehaviour
     //         PublishSubscribe.Instance.Publish<SpawnBombMessage>(new SpawnBombMessage());
     //     }
     // }
-}
-
-public struct MessageSpawnBullet
-{
-    public Transform shooter;
-    public Transform bulletOutPos;
-
-    public MessageSpawnBullet(Transform shooter, Transform bulletOutPos)
-    {
-        this.shooter = shooter;
-        this.bulletOutPos = bulletOutPos;
-    }
-}
-
-public struct MessageSpawnBomb
-{
-    public Transform shooter;
-
-    public MessageSpawnBomb(Transform shooter)
-    {
-        this.shooter = shooter;
-    }
 }

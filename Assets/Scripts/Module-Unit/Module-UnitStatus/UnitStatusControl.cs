@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TankU.PubSub;
 using Agate.MVC.Core;
 using System;
 
@@ -42,8 +42,8 @@ namespace TankU.Unit.UnitStatus
         public void ReduceHealth()
         {
             _unitHealth -= 1;
-            if (_unitHealth <= 0) PublishSubscribe.Instance.Publish<MessegeUnitDie>(
-                new MessegeUnitDie(id)
+            if (_unitHealth <= 0) PublishSubscribe.Instance.Publish<MessageUnitDie>(
+                new MessageUnitDie(id)
             );
         }
         public void AddHealth(int amount)
@@ -63,12 +63,4 @@ namespace TankU.Unit.UnitStatus
     }
 }
 
-public struct MessegeUnitDie
-{
-    public int unitId;
 
-    public MessegeUnitDie(int unitId)
-    {
-        this.unitId = unitId;
-    }
-}

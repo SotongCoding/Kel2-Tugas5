@@ -580,7 +580,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a804cbc7448c6564da26c19b1e1a167b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerGameplay: 5
 --- !u!4 &2022757070
 Transform:
   m_ObjectHideFlags: 0
@@ -608,4 +607,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49a72ef13bec47244be567b7971f2663, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timerGameplay: 120
   textBox: {fileID: 1428936007}

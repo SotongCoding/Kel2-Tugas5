@@ -11,8 +11,7 @@ namespace TankU.GameStatus
 {
     public class GameStatus : MonoBehaviour
     {
-        [SerializeField]
-        private float timerGameplay = 120f;
+        
         //[SerializeField]
         //private GameObject gameOverPanel;
 
@@ -30,7 +29,6 @@ namespace TankU.GameStatus
 
         private void Start()
         {
-            SetTimerGameplay();
             StartGameplay();
         }
 
@@ -46,7 +44,6 @@ namespace TankU.GameStatus
 
         }
         #region Send Message
-        private void SetTimerGameplay() { PublishSubscribe.Instance.Publish<MessageTimer>(new MessageTimer(timerGameplay)); }
         private void StartGameplay() { PublishSubscribe.Instance.Publish<MessageStartGameplay>(new MessageStartGameplay()); }
         private void EndGameplay() { PublishSubscribe.Instance.Publish<MessageEndGameplay>(new MessageEndGameplay()); }
         private void TieBreaker() { PublishSubscribe.Instance.Publish<MessageTieBreaker>(new MessageTieBreaker()); }

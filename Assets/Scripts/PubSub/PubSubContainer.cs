@@ -11,16 +11,6 @@ namespace TankU.PubSub
     #region Message Module GameStatus
 
     #region GameStatus as Publisher
-    public struct MessageTimer
-    {
-        public float timer;
-
-        public MessageTimer(float timer)
-        {
-            this.timer = timer;
-        }
-    }
-
     public struct MessageStartGameplay { }
     public struct MessageEndGameplay { }
     public struct MessageTieBreaker { }
@@ -41,7 +31,6 @@ namespace TankU.PubSub
             this.id = id;
         }
     }
-
     public struct MessageGameoverUI
     {
         public string message;
@@ -50,6 +39,41 @@ namespace TankU.PubSub
             this.message = message;
         }
     }
+    public struct MessageSpawnBullet
+    {
+        public Transform shooter;
+        public Transform bulletOutPos;
+
+        public MessageSpawnBullet(Transform shooter, Transform bulletOutPos)
+        {
+            this.shooter = shooter;
+            this.bulletOutPos = bulletOutPos;
+        }
+    }
+    public struct MessageSpawnBomb
+    {
+        public Transform shooter;
+
+        public MessageSpawnBomb(Transform shooter)
+        {
+            this.shooter = shooter;
+        }
+    }
+    public struct Hit
+    {
+        int _hitDamage;
+
+        public Hit(int damagePoint)
+        {
+            this._hitDamage = damagePoint;
+        }
+    }
+
+    #region Message Module PowerUpSpawner
+
+    public struct Bounce { }
+    public struct Heal { }
+    #endregion
 }
 
 
