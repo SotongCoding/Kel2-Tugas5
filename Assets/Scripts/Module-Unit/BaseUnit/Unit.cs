@@ -71,12 +71,13 @@ namespace TankU.Unit
         public void addHealth()
         {
             unitStatusControl.AddHealth(1);
+            Debug.Log("Heal");
         }
 
         public void BouncingBullet(float PUduration)
         {
             unitStatusControl.ChangeBullet(1);
-
+            Debug.Log("Bounce");
             StartCoroutine(PowerUpEffectDuration(PUduration,
             () =>
             {

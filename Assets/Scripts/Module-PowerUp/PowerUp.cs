@@ -22,17 +22,6 @@ namespace TankU.PowerUp
 
         }
 
-        public void Bouncing()
-        {
-            PublishSubscribe.Instance.Publish<Bounce>(new Bounce());
-            Debug.Log("Bounce");
-        }
-        public void Healing()
-        {
-            PublishSubscribe.Instance.Publish<Heal>(new Heal());
-            Debug.Log("Heal");
-        }
-
         private void OnCollisionStay(Collision collision)
         {
             if (collision.gameObject.CompareTag("Wall"))
@@ -45,6 +34,7 @@ namespace TankU.PowerUp
                 if (PowerUps == this.gameObject.CompareTag("BouncePowerUp"))
                 {
                     collision.gameObject.GetComponent<Unit.Unit>().BouncingBullet(10);
+                    Debug.Log("Bounce");
                 }
                 else if (PowerUps == this.gameObject.CompareTag("HealthPowerUp"))
                 {
