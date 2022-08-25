@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Agate.MVC.Core;
 
 public class PowerUp : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject PowerUps;
     // Start is called before the first frame update
     void Start()
     {
-        
+        PowerUps = this.gameObject;
     }
 
     // Update is called once per frame
@@ -15,10 +18,20 @@ public class PowerUp : MonoBehaviour
     {
         
     }
+
+    public void Bouncing()
+    {
+        PublishSubscribe.Instance.Publish<Bounce>(new Bounce());
+        Debug.Log("Bounce");
+    }
+    public void Healing()
+    {
+        PublishSubscribe.Instance.Publish<Heal>(new Heal());
+        Debug.Log("Heal");
+    }
     
     private void OnCollisionStay(Collision collision)
     {
-        Debug.Log("Coli!");
         if (collision.gameObject.CompareTag("Wall"))
         {
             Debug.Log("Walled!");
@@ -26,7 +39,24 @@ public class PowerUp : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Player"))
         {
+            if (PowerUps == this.gameObject.CompareTag("BouncePowerUp"))
+            {
+                Bouncing();
+            }
+            else if (PowerUps == this.gameObject.CompareTag("HealthPowerUp"))
+            {
+                Healing();
+            }
             this.gameObject.SetActive(false);
         }
     }
+}
+
+public struct Bounce
+{
+
+}
+public struct Heal
+{
+
 }
