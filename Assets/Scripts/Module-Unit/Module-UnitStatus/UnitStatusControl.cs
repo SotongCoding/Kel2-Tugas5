@@ -43,7 +43,7 @@ namespace TankU.Unit.UnitStatus
         {
             _unitHealth -= 1;
             if (_unitHealth <= 0) PublishSubscribe.Instance.Publish<MessageUnitDie>(
-                new MessageUnitDie(id)
+                new MessageUnitDie(thisUnit)
             );
         }
         public void AddHealth(int amount)
