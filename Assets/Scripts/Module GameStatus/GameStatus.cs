@@ -11,7 +11,7 @@ namespace TankU.GameStatus
 {
     public class GameStatus : MonoBehaviour
     {
-        
+
         //[SerializeField]
         //private GameObject gameOverPanel;
 
@@ -62,6 +62,7 @@ namespace TankU.GameStatus
             else if (message.id == 2)
                 playerWon = "Player 1 Win";
 
+            Debug.Log(playerWon);
             GameoverUI(playerWon);
             EndGameplay();
             //gameOverPanel.SetActive(true);

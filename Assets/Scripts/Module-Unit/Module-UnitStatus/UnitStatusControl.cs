@@ -39,16 +39,16 @@ namespace TankU.Unit.UnitStatus
             _rotateSpeed = 100;
         }
 
-        public void ReduceHealth()
+        public void ReduceHealth(int damage)
         {
-            _unitHealth -= 1;
+            _unitHealth -= damage;
             if (_unitHealth <= 0) PublishSubscribe.Instance.Publish<MessageUnitDie>(
                 new MessageUnitDie(id)
             );
         }
         public void AddHealth(int amount)
         {
-            _unitHealth += amount;
+            _unitHealth = Math.Clamp(_unitHealth + amount, 0, 5);
         }
 
         public void ChangeBullet(int bulletId)

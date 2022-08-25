@@ -69,12 +69,15 @@ namespace TankU.Unit
             onDurationEnd?.Invoke();
         }
 
-        public void addHealth()
+        public void AddHealth()
         {
             unitStatusControl.AddHealth(1);
             Debug.Log("Heal");
         }
-
+        public void ReciveBulletDamage()
+        {
+            unitStatusControl.ReduceHealth(1);
+        }
         public void BouncingBullet(float PUduration)
         {
             unitStatusControl.ChangeBullet(1);
@@ -84,6 +87,6 @@ namespace TankU.Unit
             {
                 unitStatusControl.ChangeBullet(0);
             }));
-            }
+        }
     }
 }
