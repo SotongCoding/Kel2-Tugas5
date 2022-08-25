@@ -9,35 +9,29 @@ public class TestSpawn : MonoBehaviour
 {
     private void Update()
     {
-        // if (Input.GetKeyDown(KeyCode.A))
-        // {
-        //     PublishSubscribe.Instance.Publish<SpawnBulletMessage>(new SpawnBulletMessage());
-        // }
-        // else if (Input.GetKeyDown(KeyCode.D))
-        // {
-        //     PublishSubscribe.Instance.Publish<SpawnBombMessage>(new SpawnBombMessage());
-        // }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            PublishSubscribe.Instance.Publish<SpawnBulletMessage>(new SpawnBulletMessage("Player1"));
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            PublishSubscribe.Instance.Publish<SpawnBulletMessage>(new SpawnBulletMessage("Player2"));
+        }
+        else if (Input.GetKeyDown(KeyCode.D))
+        {
+            PublishSubscribe.Instance.Publish<SpawnBombMessage>(new SpawnBombMessage());
+        }
     }
 }
 
-public struct MessageSpawnBullet
+public struct SpawnBulletMessage
 {
-    public Transform unit;
-    public Vector3 outPos;
+    public string shooter;
 
-    public MessageSpawnBullet(Transform unit, Vector3 outPos)
+    public SpawnBulletMessage(string shooter)
     {
-        this.unit = unit;
-        this.outPos = outPos;
+        this.shooter = shooter;
     }
 }
 
-public struct MessageSpawnBomb
-{
-    public Transform unit;
-
-    public MessageSpawnBomb(Transform unit)
-    {
-        this.unit = unit;
-    }
-}
+public struct SpawnBombMessage { }

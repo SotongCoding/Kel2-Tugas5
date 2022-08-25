@@ -14,21 +14,19 @@ namespace TankU.UnitWeaponSpawner
         [SerializeField] private GameObject _bomb;
         [SerializeField] private int _bulletAmountToPool;
         [SerializeField] private int _bombAmountToPool;
-        private float _spawnBulletCooldown_Running;
-        private float _spawnBombCooldown_Running;
-        [SerializeField] private float _spawnBulletCooldown_Duration;
-        [SerializeField] private float _spawnBombCooldown_Duration;
         private Bullet _bulletScript;
+        [SerializeField] private GameObject _spawnerPointPlayer1;
+        [SerializeField] private GameObject _spawnerPointPlayer2;
 
         private void Awake()
         {
-            PublishSubscribe.Instance.Subscribe<MessageSpawnBullet>(ReciveMessegeSpawnBullet);
-            PublishSubscribe.Instance.Subscribe<MessageSpawnBomb>(ReciveMessegeSpawnBomb);
+            PublishSubscribe.Instance.Subscribe<SpawnBulletMessage>(SpawnBullet);
+            PublishSubscribe.Instance.Subscribe<SpawnBombMessage>(SpawnBomb);
         }
         private void OnDestroy()
         {
-            PublishSubscribe.Instance.Unsubscribe<MessageSpawnBullet>(ReciveMessegeSpawnBullet);
-            PublishSubscribe.Instance.Unsubscribe<MessageSpawnBomb>(ReciveMessegeSpawnBomb);
+            PublishSubscribe.Instance.Unsubscribe<SpawnBulletMessage>(SpawnBullet);
+            PublishSubscribe.Instance.Unsubscribe<SpawnBombMessage>(SpawnBomb);
         }
 
         private void Start()
@@ -37,12 +35,10 @@ namespace TankU.UnitWeaponSpawner
             _pooledBomb = new List<GameObject>();
             _bullet = Resources.Load<GameObject>(@"Prefabs/Bullet");
             _bomb = Resources.Load<GameObject>(@"Prefabs/Bomb");
-            _bulletAmountToPool = 7;
-            _bombAmountToPool = 5;
-            _spawnBulletCooldown_Duration = 2f;
-            _spawnBombCooldown_Duration = 2f;
-            _spawnBulletCooldown_Running = _spawnBulletCooldown_Duration;
-            _spawnBombCooldown_Running = _spawnBombCooldown_Duration;
+            _bulletAmountToPool = 10;
+            _bombAmountToPool = 10;
+            _spawnerPointPlayer1 = GameObject.FindGameObjectWithTag("SpawnPoint1");
+            _spawnerPointPlayer2 = GameObject.FindGameObjectWithTag("SpawnPoint2");
 
             for (int i = 0; i < _bulletAmountToPool; i++)
             {
@@ -57,18 +53,6 @@ namespace TankU.UnitWeaponSpawner
                 GameObject obj = Instantiate(_bomb, transform.position, Quaternion.identity);
                 obj.SetActive(false);
                 _pooledBomb.Add(obj);
-            }
-        }
-
-        private void Update()
-        {
-            if (_spawnBulletCooldown_Running < _spawnBulletCooldown_Duration)
-            {
-                _spawnBulletCooldown_Running += Time.deltaTime;
-            }
-            if (_spawnBombCooldown_Running < _spawnBombCooldown_Duration)
-            {
-                _spawnBombCooldown_Running += Time.deltaTime;
             }
         }
 
@@ -96,26 +80,24 @@ namespace TankU.UnitWeaponSpawner
             return null;
         }
 
-        private void ReciveMessegeSpawnBullet(MessageSpawnBullet message)
+        private void SpawnBullet(SpawnBulletMessage message)
         {
-            if (_spawnBulletCooldown_Running >= _spawnBulletCooldown_Duration)
+            GameObject _bulletToSpawn = GetPooledBullet();
+            if (message.shooter == "Player1")
             {
-                GameObject _bulletToSpawn = GetPooledBullet();
-                _bulletToSpawn.transform.SetPositionAndRotation(message.outPos, message.unit.rotation);
-                _bulletToSpawn.SetActive(true);
-                _spawnBulletCooldown_Running = 0;
+                _bulletToSpawn.transform.SetPositionAndRotation(_spawnerPointPlayer1.transform.position, _spawnerPointPlayer1.transform.rotation);
             }
+            else if (message.shooter == "Player2")
+            {
+                _bulletToSpawn.transform.SetPositionAndRotation(_spawnerPointPlayer2.transform.position, _spawnerPointPlayer2.transform.rotation);
+            }
+            _bulletToSpawn.SetActive(true);
         }
 
-        private void ReciveMessegeSpawnBomb(MessageSpawnBomb message)
+        private void SpawnBomb(SpawnBombMessage message)
         {
-            if (_spawnBombCooldown_Running >= _spawnBombCooldown_Duration)
-            {
                 GameObject _bombToSpawn = GetPooledBomb();
-                _bombToSpawn.transform.SetPositionAndRotation(message.unit.position + Vector3.down, Quaternion.identity);
                 _bombToSpawn.SetActive(true);
-                _spawnBombCooldown_Running = 0;
-            }
         }
     }
 }
