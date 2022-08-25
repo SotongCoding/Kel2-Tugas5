@@ -14,7 +14,7 @@ namespace TankU.Unit
         InputModule.KeyBoard.KeyBoardControl keyBoardControl;
         //======================================
         [Header("Identity")]
-        [SerializeField] int unitId;
+        [SerializeField] public int unitId;
 
         [Header("Shooting Setting")]
         public Transform bulletOutPos;
@@ -32,11 +32,11 @@ namespace TankU.Unit
         }
         private void SubscribeMessege()
         {
-            //PublishSubscribe.Instance.Subscribe<MessageTieBreaker>(unitStatusControl.InitialTieBreaker);
+            PublishSubscribe.Instance.Subscribe<MessageTieBreaker>(unitStatusControl.InitialTieBreaker);
         }
         private void UnsubscribeMessege()
         {
-            //PublishSubscribe.Instance.Unsubscribe<MessageTieBreaker>(unitStatusControl.InitialTieBreaker);
+            PublishSubscribe.Instance.Unsubscribe<MessageTieBreaker>(unitStatusControl.InitialTieBreaker);
         }
 
         private void Start()
@@ -47,7 +47,7 @@ namespace TankU.Unit
             //Testing
             SetController(keyBoardControl);
         }
-        private void OnDestroy()
+        private void OnDisable()
         {
             UnsubscribeMessege();
         }

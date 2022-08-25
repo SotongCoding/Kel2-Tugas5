@@ -3783,7 +3783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49a72ef13bec47244be567b7971f2663, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerGameplay: 5
+  timerGameplay: 120
   timerText: {fileID: 186492279}
 --- !u!114 &1975465593
 MonoBehaviour:
