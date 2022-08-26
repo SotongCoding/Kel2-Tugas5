@@ -11,7 +11,7 @@ namespace TankU.Unit.UnitStatus
     {
         Unit thisUnit;
 
-        public int id;
+        public int _id { private set; get; }
         public float _rotateSpeed { private set; get; }
 
         public int _unitHealth { private set; get; }
@@ -19,6 +19,8 @@ namespace TankU.Unit.UnitStatus
 
         public int _bulletUse { private set; get; }
         public int _bombUse { private set; get; }
+
+        public int _bombAmount { private set; get; }
 
         public float _shootBullet_delay { private set; get; }
         public float _plantBomb_delay { private set; get; }
@@ -31,16 +33,19 @@ namespace TankU.Unit.UnitStatus
         public void Initial(Unit unit, int id)
         {
             thisUnit = unit;
-            this.id = id;
+            _id = id;
 
-            _unitHealth = 3;
+            _unitHealth = 5;
             _unitSpeed = 3;
+            _rotateSpeed = 75f;
+
             _bulletUse = 0;
             _bombUse = 0;
-            _rotateSpeed = 75f;
 
             _shootBullet_delay = 1.5f;
             _plantBomb_delay = 5;
+
+            _bombAmount = 5;
         }
         private void InitialOnTieBreak()
         {
@@ -66,6 +71,10 @@ namespace TankU.Unit.UnitStatus
 
                 thisUnit.gameObject.SetActive(false);
             }
+        }
+        public void ReduceBomb()
+        {
+            _bombAmount--;
         }
         public void AddHealth(int amount)
         {

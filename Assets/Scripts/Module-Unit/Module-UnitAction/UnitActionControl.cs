@@ -74,10 +74,15 @@ namespace TankU.Unit.UnitAction
         }
         public void PlaceBomb()
         {
+            if(unitStatus._bombAmount <=0) return;
+
+            
             PublishSubscribe.Instance.Publish<MessageSpawnBomb>(
-                new MessageSpawnBomb(thisUnit.transform));
+                new MessageSpawnBomb(thisUnit.transform, unitStatus._id));
+
             thisUnit.CountDownPlantBomb();
             unitStatus.SetPlantStatus(false);
+            unitStatus.ReduceBomb();
         }
     }
 }

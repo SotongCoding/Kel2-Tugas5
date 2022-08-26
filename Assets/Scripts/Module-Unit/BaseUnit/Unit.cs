@@ -21,6 +21,9 @@ namespace TankU.Unit
         public Transform bulletOutPos;
         public Transform head;
 
+        //Global player Status Need
+        public float _healthPrecentage => unitStatusControl._unitHealth / 5;
+
         UnitAction.UnitActionControl unitActionControl = new UnitAction.UnitActionControl();
         UnitStatus.UnitStatusControl unitStatusControl = new UnitStatus.UnitStatusControl();
         public UnitVisual.UnitVisualControl visualControl;
@@ -78,6 +81,11 @@ namespace TankU.Unit
         public void ReciveBulletDamage()
         {
             unitStatusControl.ReduceHealth(1);
+        }
+        public void ReciveBombDamage()
+        {
+            unitStatusControl.ReduceHealth(2);
+            Debug.Log("Recive Bomb Damage" + name);
         }
         public void BouncingBullet(float PUduration)
         {

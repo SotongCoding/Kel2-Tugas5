@@ -39,7 +39,7 @@ namespace TankU.Weapon.Bomb
 
                 if (hit.transform.gameObject.CompareTag("Player"))
                 {
-                    PublishSubscribe.Instance.Publish<Hit>(new Hit(damagePoint));
+                    hit.transform.GetComponent<Unit.Unit>().ReciveBombDamage();
                 }
             }
             gameObject.SetActive(false);

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3341099630062966544}
   - component: {fileID: 7394212443586400493}
   - component: {fileID: 5540183471236849176}
-  - component: {fileID: 6449376759471935896}
+  - component: {fileID: 196325865020893782}
   m_Layer: 0
   m_Name: Bomb
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6449376759471935896
+--- !u!114 &196325865020893782
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
