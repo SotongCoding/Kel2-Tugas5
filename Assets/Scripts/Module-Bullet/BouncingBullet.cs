@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace TankU.Weapon.Bullet
+namespace TankU.Bullet
 {
-    public class BouncingBullet : Bullet
+    public class BouncingBullet : BaseBullet
     {
         protected override void SetPhysicsMaterial()
         {
