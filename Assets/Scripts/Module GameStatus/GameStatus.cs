@@ -14,10 +14,15 @@ namespace TankU.GameStatus
 
         //[SerializeField]
         //private GameObject gameOverPanel;
-
+        List<Unit.Unit> unitOnCombat = new List<Unit.Unit>();
 
         private string playerWon;
 
+        void FindUnitReference()
+        {
+            unitOnCombat = new List<Unit.Unit>(FindObjectsOfType<Unit.Unit>());
+
+        }
         private void Awake()
         {
             Subscriber();
@@ -29,6 +34,7 @@ namespace TankU.GameStatus
 
         private void Start()
         {
+            FindUnitReference();
             StartGameplay();
         }
 
@@ -57,12 +63,11 @@ namespace TankU.GameStatus
         private void ReceiveMessageTimesUp(MessageTimesUp message) { TieBreaker(); }
         private void ReceiveMessageUnitDie(MessageUnitDie message)
         {
-            if (message.id == 1)
-                playerWon = "Player 2 Win";
-            else if (message.id == 2)
-                playerWon = "Player 1 Win";
-
-            Debug.Log(playerWon);
+            unitOnCombat.Remove(message.unit);
+            if (unitOnCombat.Count == 1)
+            {
+                playerWon = unitOnCombat[0].name + "Won";
+            }
             GameoverUI(playerWon);
             EndGameplay();
             //gameOverPanel.SetActive(true);
