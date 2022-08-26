@@ -15,7 +15,8 @@ namespace TankU.Weapon
             OnHitWall(collision);
             if (collision.gameObject.CompareTag("Player"))
             {
-                PublishSubscribe.Instance.Publish<Hit>(new Hit(damagePoint));
+                collision.gameObject.GetComponent<Unit.Unit>().ReciveBulletDamage();
+                gameObject.SetActive(false);
             }
         }
 

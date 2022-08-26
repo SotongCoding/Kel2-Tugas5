@@ -39,7 +39,7 @@ namespace TankU.PowerUp
                 }
                 else if (PowerUps == this.gameObject.CompareTag("HealthPowerUp"))
                 {
-                    collision.gameObject.GetComponent<Unit.Unit>().addHealth();
+                    collision.gameObject.GetComponent<Unit.Unit>().AddHealth();
                     
                 }
                 this.gameObject.SetActive(false);

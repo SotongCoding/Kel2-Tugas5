@@ -4,6 +4,7 @@ using UnityEngine;
 using TankU.PowerUp;
 using Agate.MVC.Core;
 using TankU.PubSub;
+using System;
 
 namespace TankU.Unit
 {
@@ -14,11 +15,14 @@ namespace TankU.Unit
         InputModule.KeyBoard.KeyBoardControl keyBoardControl;
         //======================================
         [Header("Identity")]
-        [SerializeField] int unitId;
+        [SerializeField] public int unitId;
 
         [Header("Shooting Setting")]
         public Transform bulletOutPos;
         public Transform head;
+
+        //Global player Status Need
+        public float _healthPrecentage => unitStatusControl._unitHealth / 5;
 
         UnitAction.UnitActionControl unitActionControl = new UnitAction.UnitActionControl();
         UnitStatus.UnitStatusControl unitStatusControl = new UnitStatus.UnitStatusControl();
@@ -32,11 +36,11 @@ namespace TankU.Unit
         }
         private void SubscribeMessege()
         {
-            //PublishSubscribe.Instance.Subscribe<MessageTieBreaker>(unitStatusControl.InitialTieBreaker);
+            PublishSubscribe.Instance.Subscribe<MessageTieBreaker>(unitStatusControl.InitialTieBreaker);
         }
         private void UnsubscribeMessege()
         {
-            //PublishSubscribe.Instance.Unsubscribe<MessageTieBreaker>(unitStatusControl.InitialTieBreaker);
+            PublishSubscribe.Instance.Unsubscribe<MessageTieBreaker>(unitStatusControl.InitialTieBreaker);
         }
 
         private void Start()
@@ -47,7 +51,7 @@ namespace TankU.Unit
             //Testing
             SetController(keyBoardControl);
         }
-        private void OnDestroy()
+        private void OnDisable()
         {
             UnsubscribeMessege();
         }
@@ -69,12 +73,20 @@ namespace TankU.Unit
             onDurationEnd?.Invoke();
         }
 
-        public void addHealth()
+        public void AddHealth()
         {
             unitStatusControl.AddHealth(1);
             Debug.Log("Heal");
         }
-
+        public void ReciveBulletDamage()
+        {
+            unitStatusControl.ReduceHealth(1);
+        }
+        public void ReciveBombDamage()
+        {
+            unitStatusControl.ReduceHealth(2);
+            Debug.Log("Recive Bomb Damage" + name);
+        }
         public void BouncingBullet(float PUduration)
         {
             unitStatusControl.ChangeBullet(1);
@@ -84,6 +96,26 @@ namespace TankU.Unit
             {
                 unitStatusControl.ChangeBullet(0);
             }));
+        }
+
+        internal void CountDownShootBullet()
+        {
+            StartCoroutine(CountDown());
+            IEnumerator CountDown()
+            {
+                yield return new WaitForSeconds(unitStatusControl._shootBullet_delay);
+                unitStatusControl.SetShootStatus(true);
             }
+        }
+        internal void CountDownPlantBomb()
+        {
+            StartCoroutine(CountDown());
+            IEnumerator CountDown()
+            {
+                yield return new WaitForSeconds(unitStatusControl._plantBomb_delay);
+                unitStatusControl.SetPlantStatus(true);
+            }
+        }
+
     }
 }

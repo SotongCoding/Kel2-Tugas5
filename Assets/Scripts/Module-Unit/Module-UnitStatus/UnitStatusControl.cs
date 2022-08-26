@@ -11,7 +11,7 @@ namespace TankU.Unit.UnitStatus
     {
         Unit thisUnit;
 
-        public int id;
+        public int _id { private set; get; }
         public float _rotateSpeed { private set; get; }
 
         public int _unitHealth { private set; get; }
@@ -20,16 +20,32 @@ namespace TankU.Unit.UnitStatus
         public int _bulletUse { private set; get; }
         public int _bombUse { private set; get; }
 
+        public int _bombAmount { private set; get; }
+
+        public float _shootBullet_delay { private set; get; }
+        public float _plantBomb_delay { private set; get; }
+
+        public bool _canShoot { get; private set; } = true;
+        public bool _canPlant { get; private set; } = true;
+
+
+
         public void Initial(Unit unit, int id)
         {
             thisUnit = unit;
-            this.id = id;
+            _id = id;
 
-            _unitHealth = 10;
+            _unitHealth = 5;
             _unitSpeed = 3;
+            _rotateSpeed = 75f;
+
             _bulletUse = 0;
             _bombUse = 0;
-            _rotateSpeed = 75f;
+
+            _shootBullet_delay = 1.5f;
+            _plantBomb_delay = 5;
+
+            _bombAmount = 5;
         }
         private void InitialOnTieBreak()
         {
@@ -37,18 +53,32 @@ namespace TankU.Unit.UnitStatus
             _unitSpeed = 4.5f;
             _bulletUse = 1;
             _rotateSpeed = 100;
+
+            _shootBullet_delay = 0.75f;
+            _plantBomb_delay = 2.5f;
+
+            Debug.Log("Status Tie Break");
         }
 
-        public void ReduceHealth()
+        public void ReduceHealth(int damage)
         {
-            _unitHealth -= 1;
-            if (_unitHealth <= 0) PublishSubscribe.Instance.Publish<MessageUnitDie>(
-                new MessageUnitDie(id)
-            );
+            _unitHealth -= damage;
+            if (_unitHealth <= 0)
+            {
+                PublishSubscribe.Instance.Publish<MessageUnitDie>(
+                    new MessageUnitDie(thisUnit)
+                );
+
+                thisUnit.gameObject.SetActive(false);
+            }
+        }
+        public void ReduceBomb()
+        {
+            _bombAmount--;
         }
         public void AddHealth(int amount)
         {
-            _unitHealth += amount;
+            _unitHealth = Math.Clamp(_unitHealth + amount, 0, 5);
         }
 
         public void ChangeBullet(int bulletId)
@@ -56,10 +86,18 @@ namespace TankU.Unit.UnitStatus
             _bulletUse = bulletId;
         }
 
-        // public void InitialTieBreaker(MessegeTieBreaker messege)
-        // {
-        //    InitialOnTieBreak();
-        // }
+        public void InitialTieBreaker(MessageTieBreaker messege)
+        {
+            InitialOnTieBreak();
+        }
+        public void SetShootStatus(bool canShoot)
+        {
+            _canShoot = canShoot;
+        }
+        public void SetPlantStatus(bool canPlant)
+        {
+            _canPlant = canPlant;
+        }
     }
 }
 

@@ -109,7 +109,7 @@ namespace TankU.UnitWeaponSpawner
 
         private void MessageReciveSpawnBullet(MessageSpawnBullet message)
         {
-            GameObject _bulletToSpawn = message.useBouncing ? GetPooledBullet() : GetPooledBouncingBullet();
+            GameObject _bulletToSpawn = message.useBouncing ? GetPooledBouncingBullet() : GetPooledBullet();
             // if (message.shooter == "Player1")
             // {
             //     _bulletToSpawn.transform.SetPositionAndRotation(_spawnerPointPlayer1.transform.position, _spawnerPointPlayer1.transform.rotation);
