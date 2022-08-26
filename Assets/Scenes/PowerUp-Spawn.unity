@@ -3788,9 +3788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 174b86f7e046b684cbe1e1fb25b263ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visualEffect:
-  - name: Bullet Explosion
-    visualPref: {fileID: 3274044096572579042, guid: 5d47a1ebc23253144bbc1337b0c3f04b, type: 3}
+  visualEffect: []
 --- !u!4 &1858225898
 Transform:
   m_ObjectHideFlags: 0

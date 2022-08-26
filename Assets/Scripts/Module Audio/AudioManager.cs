@@ -14,7 +14,7 @@ namespace TankU.Audio
         private Soundfx[] soundfx;
         [SerializeField]
         private SoundBgm[] soundBgm;
-
+        
         private AudioSource sourceSoundfx;
         private AudioSource sourceSoundBgm;
 
