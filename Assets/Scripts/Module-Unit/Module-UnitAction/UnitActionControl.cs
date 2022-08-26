@@ -71,7 +71,8 @@ namespace TankU.Unit.UnitAction
         public void PlaceBomb()
         {
             PublishSubscribe.Instance.Publish<MessageSpawnBomb>(
-                new MessageSpawnBomb(thisUnit.transform));
+                new MessageSpawnBomb(thisUnit.transform, unitStatus.id));
+
         }
     }
 }

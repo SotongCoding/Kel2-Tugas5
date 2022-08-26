@@ -41,9 +41,11 @@ public struct MessageSpawnBullet
 public struct MessageSpawnBomb
 {
     public Transform shooter;
+    public int PlayerId;
 
-    public MessageSpawnBomb(Transform shooter)
+    public MessageSpawnBomb(Transform shooter, int playerId)
     {
         this.shooter = shooter;
+        PlayerId = playerId;
     }
 }
