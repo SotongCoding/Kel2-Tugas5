@@ -61,7 +61,7 @@ namespace TankU.Unit.UnitStatus
             if (_unitHealth <= 0)
             {
                 PublishSubscribe.Instance.Publish<MessageUnitDie>(
-                    new MessageUnitDie(id)
+                    new MessageUnitDie(thisUnit)
                 );
 
                 thisUnit.gameObject.SetActive(false);

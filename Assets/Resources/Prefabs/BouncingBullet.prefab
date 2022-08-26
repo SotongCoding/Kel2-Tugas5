@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2205290384166475104}
   - component: {fileID: 5368635185705810159}
   - component: {fileID: 2082206785465602595}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BouncingBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

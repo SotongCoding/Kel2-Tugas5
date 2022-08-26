@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.45115143, g: 0.49977505, b: 0.56770974, a: 1}
+  m_IndirectSpecularColor: {r: 0.45115095, g: 0.49977493, b: 0.56770915, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2181,6 +2181,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e78139a9863e39045bc15834b2d54d2a, type: 2}
+    - target: {fileID: 3795523435685102452, guid: 3d1fe7cf65ceaba4e80be2d6bad28f70, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3795523436086552688, guid: 3d1fe7cf65ceaba4e80be2d6bad28f70, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2199,7 +2203,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3795523436086552692, guid: 3d1fe7cf65ceaba4e80be2d6bad28f70, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.6925216
+      value: -3.606
       objectReference: {fileID: 0}
     - target: {fileID: 3795523436086552692, guid: 3d1fe7cf65ceaba4e80be2d6bad28f70, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3847,7 +3851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49a72ef13bec47244be567b7971f2663, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerGameplay: 5
+  timerGameplay: 1000
   timerText: {fileID: 186492279}
 --- !u!114 &1975465593
 MonoBehaviour:
