@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.45115095, g: 0.49977493, b: 0.56770915, a: 1}
+  m_IndirectSpecularColor: {r: 0.44125214, g: 0.49004245, b: 0.57010055, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1612,8 +1612,13 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 672445139}
   serializedVersion: 2
+<<<<<<< HEAD:Assets/Scenes/PowerUp-Spawn.unity
   m_Mass: 100
   m_Drag: 0
+=======
+  m_Mass: 1
+  m_Drag: 100
+>>>>>>> Development:Assets/Scenes/UseCore/Gameplay.unity
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -1743,7 +1748,7 @@ Light:
   m_GameObject: {fileID: 705507993}
   m_Enabled: 1
   serializedVersion: 10
-  m_Type: 0
+  m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.93798894, b: 0.7688679, a: 1}
   m_Intensity: 1
@@ -1803,14 +1808,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: 0.97622776, y: -0, z: -0, w: 0.2167471}
-  m_LocalPosition: {x: 0.4, y: 44.34964, z: 30.147058}
+  m_LocalRotation: {x: 0.5383296, y: 0, z: 0, w: 0.8427344}
+  m_LocalPosition: {x: 0.4, y: 55.6, z: 54.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 100, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 65.14, y: 0, z: 0}
 --- !u!1 &750189321
 GameObject:
   m_ObjectHideFlags: 0
@@ -4691,8 +4696,13 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1620600654}
   serializedVersion: 2
+<<<<<<< HEAD:Assets/Scenes/PowerUp-Spawn.unity
   m_Mass: 100
   m_Drag: 0
+=======
+  m_Mass: 1
+  m_Drag: 100
+>>>>>>> Development:Assets/Scenes/UseCore/Gameplay.unity
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0

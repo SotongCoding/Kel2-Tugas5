@@ -15,8 +15,10 @@ namespace TankU.Weapon
             OnHitWall(collision);
             if (collision.gameObject.CompareTag("Player"))
             {
-                collision.gameObject.GetComponent<Unit.Unit>().ReciveBulletDamage();
+                var hitTarget = collision.gameObject.GetComponent<Unit.Unit>();
+                hitTarget.ReciveBulletDamage();
                 gameObject.SetActive(false);
+                PublishSubscribe.Instance.Publish<MessageVfx>(new MessageVfx("bullet_explosion", transform.position));
             }
         }
 
@@ -25,6 +27,7 @@ namespace TankU.Weapon
             if (other.gameObject.CompareTag("Wall"))
             {
                 gameObject.SetActive(false);
+                PublishSubscribe.Instance.Publish<MessageVfx>(new MessageVfx("bullet_explosion", transform.position));
             }
         }
     }
