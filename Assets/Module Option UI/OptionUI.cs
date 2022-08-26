@@ -80,8 +80,6 @@ namespace TankU.OptionUI
             sfxCurrently = PlayerPrefs.GetFloat("sfxVolume");
             bgmCurrently = PlayerPrefs.GetFloat("bgmVolume");
 
-            
-
             // load mute button setting
             if (sfxCurrently == 0)
             {
