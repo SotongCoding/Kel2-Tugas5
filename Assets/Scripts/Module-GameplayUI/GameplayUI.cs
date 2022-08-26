@@ -10,7 +10,6 @@ namespace TankU.GameplayUI
     {
         [SerializeField]
         private TextMeshProUGUI TimerTxT;
-        [SerializeField]
         private GameStatus.TimerGameplay _TimerGameplay;
         [SerializeField]
         private GameObject[] BombP1, BombP2, BombP3, BombP4;
