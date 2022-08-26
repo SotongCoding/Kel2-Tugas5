@@ -14,15 +14,14 @@ namespace TankU.GameStatus
     {
         [SerializeField]
         private float timerGameplay = 100f;
-        [SerializeField]
-        private Text timerText;
 
         private bool timeActive;
+        [HideInInspector]
+        public float timer;
 
         private void Awake()
         {
             Subscriber();
-            timerText.text = timerGameplay.ToString();
         }
         private void OnDestroy()
         {
@@ -34,8 +33,8 @@ namespace TankU.GameStatus
             if (timeActive)
             {
                 timerGameplay -= Time.deltaTime;
-                timerText.text = Mathf.Round(timerGameplay).ToString();
-                if(timerGameplay <= 0)
+                timer = Mathf.Round(timerGameplay);
+                if (timerGameplay <= 0)
                 {
                     TimesUp();
                     timeActive = false;

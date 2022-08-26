@@ -2,17 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Agate.MVC.Core;
-
+using TankU.GameStatus;
+using TMPro;
 namespace TankU.GameplayUI
 {
     public class GameplayUI : MonoBehaviour
     {
         [SerializeField]
+        private TextMeshProUGUI TimerTxT;
+        [SerializeField]
+        private GameStatus.TimerGameplay _TimerGameplay;
+        [SerializeField]
         private GameObject[] BombP1, BombP2, BombP3, BombP4;
+        [SerializeField]
         private int[] BombLeft;
         // Start is called before the first frame update
         void Start()
         {
+            _TimerGameplay = GameObject.Find("GameStatus").GetComponent<TimerGameplay>();
             BombLeft = new int[4];
             BombLeft[0] = 5;
             BombLeft[1] = 5;
@@ -27,7 +34,7 @@ namespace TankU.GameplayUI
         // Update is called once per frame
         void Update()
         {
-            
+            TimerTxT.text = _TimerGameplay.timer.ToString();
         }
 
         void ReduceBomb(MessageSpawnBomb message)
