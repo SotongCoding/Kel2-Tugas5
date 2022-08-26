@@ -11,7 +11,7 @@ namespace TankU.Unit.UnitStatus
     {
         Unit thisUnit;
 
-        private int id;
+        public int id;
         public float _rotateSpeed { private set; get; }
 
         public int _unitHealth { private set; get; }
