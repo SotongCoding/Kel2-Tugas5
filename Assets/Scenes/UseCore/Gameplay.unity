@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.45115095, g: 0.49977493, b: 0.56770915, a: 1}
+  m_IndirectSpecularColor: {r: 0.43809444, g: 0.48608297, b: 0.5663624, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -971,6 +971,7 @@ MonoBehaviour:
   BombP3: []
   BombP4: []
   BombLeft: 
+  Health: []
 --- !u!1 &479915535
 GameObject:
   m_ObjectHideFlags: 0
@@ -1742,7 +1743,7 @@ Light:
   m_GameObject: {fileID: 705507993}
   m_Enabled: 1
   serializedVersion: 10
-  m_Type: 0
+  m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.93798894, b: 0.7688679, a: 1}
   m_Intensity: 1
@@ -1802,14 +1803,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: 0.97622776, y: -0, z: -0, w: 0.2167471}
+  m_LocalRotation: {x: 0.62046367, y: 0, z: 0, w: 0.78423524}
   m_LocalPosition: {x: 0.4, y: 44.34964, z: 30.147058}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 100, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 76.7, y: 0, z: 0}
 --- !u!1 &750189321
 GameObject:
   m_ObjectHideFlags: 0
@@ -2954,7 +2955,7 @@ GameObject:
   - component: {fileID: 1180960367}
   - component: {fileID: 1180960368}
   m_Layer: 5
-  m_Name: 'P2-Hp '
+  m_Name: P2-Hp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

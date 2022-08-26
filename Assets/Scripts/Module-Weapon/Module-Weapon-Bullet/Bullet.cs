@@ -36,4 +36,8 @@ namespace TankU.Weapon.Bullet
             _collider = GetComponent<Collider>();
         }
     }
+
+    public interface IHitAbleObject{
+        void HitEvent();
+    }
 }

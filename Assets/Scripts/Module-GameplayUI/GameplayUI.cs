@@ -14,7 +14,7 @@ namespace TankU.GameplayUI
         private TextMeshProUGUI TimerTxT;
         private GameStatus.TimerGameplay _TimerGameplay;
         [SerializeField]
-        private Unit.UnitStatus.UnitStatusControl _HP;
+       private Unit.UnitStatus.UnitStatusControl _HP;
         [SerializeField]
         private GameObject[] BombP1, BombP2, BombP3, BombP4;
         [SerializeField]
@@ -25,12 +25,12 @@ namespace TankU.GameplayUI
         void Start()
         {
             _TimerGameplay = GameObject.Find("GameStatus").GetComponent<TimerGameplay>();
-            _HP = GetComponent<UnitStatusControl>();
+            // _HP = GetComponent<UnitStatusControl>();
             Health = new Slider[2];
             Health[0] = GameObject.Find("P1-Hp").GetComponent<Slider>();
             Health[1] = GameObject.Find("P2-Hp").GetComponent<Slider>();
-            Health[0].value = _HP._unitHealth;
-            Health[1].value = _HP._unitHealth;
+            // Health[0].value = _HP._unitHealth;
+            // Health[1].value = _HP._unitHealth;
             BombLeft = new int[4];
             BombLeft[0] = 5;
             BombLeft[1] = 5;
@@ -50,12 +50,12 @@ namespace TankU.GameplayUI
 
         public void DisplayP1Health()
         {
-            Health[0].value = _HP._unitHealth;
+            // Health[0].value = _HP._unitHealth;
             
         }
         public void DisplayP2Health()
         {
-            Health[1].value = _HP._unitHealth;
+            // Health[1].value = _HP._unitHealth;
 
         }
         
