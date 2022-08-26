@@ -35,7 +35,7 @@ namespace TankU.Unit.UnitStatus
             thisUnit = unit;
             _id = id;
 
-            _unitHealth = 5;
+            _unitHealth = 10;
             _unitSpeed = 3;
             _rotateSpeed = 75f;
 

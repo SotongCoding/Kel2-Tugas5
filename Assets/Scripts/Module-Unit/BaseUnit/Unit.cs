@@ -22,7 +22,7 @@ namespace TankU.Unit
         public Transform head;
 
         //Global player Status Need
-        public float _healthPrecentage => unitStatusControl._unitHealth / 5;
+        public int _health => unitStatusControl._unitHealth;
 
         UnitAction.UnitActionControl unitActionControl = new UnitAction.UnitActionControl();
         UnitStatus.UnitStatusControl unitStatusControl = new UnitStatus.UnitStatusControl();
