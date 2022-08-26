@@ -22,6 +22,24 @@ namespace TankU.PubSub
 
     #endregion
 
+    #region Message Module Vfx
+    public struct MessageVfx
+    {
+        public string name;
+        public Vector3 position;
+        public MessageVfx(string name, Vector3 position)
+        {
+            this.name = name;
+            this.position = position;
+        }
+    }
+    #endregion
+
+    #region Message Module PowerUpSpawner
+
+    public struct Bounce { }
+    public struct Heal { }
+    #endregion
 
     public struct MessageUnitDie
     {
@@ -69,11 +87,6 @@ namespace TankU.PubSub
         }
     }
 
-    #region Message Module PowerUpSpawner
-
-    public struct Bounce { }
-    public struct Heal { }
-    #endregion
 }
 
 

@@ -14,27 +14,31 @@ namespace TankU.GameStatus
     {
         [SerializeField]
         private float timerGameplay = 100f;
-        [SerializeField]
-        private Text timerText;
+        private float timeCurrent;
+
 
         private bool timeActive;
 
         private void Awake()
         {
             Subscriber();
-            timerText.text = timerGameplay.ToString();
         }
         private void OnDestroy()
         {
             UnSubscriber();
+        }
+        private void Start()
+        {
+            timeCurrent = timerGameplay;
         }
 
         public void Update()
         {
             if (timeActive)
             {
+                // ambil data timeCurrent untuk ditampilkan di gameplay UI nanti
                 timerGameplay -= Time.deltaTime;
-                timerText.text = Mathf.Round(timerGameplay).ToString();
+                timeCurrent = Mathf.Round(timerGameplay);
                 if(timerGameplay <= 0)
                 {
                     TimesUp();
