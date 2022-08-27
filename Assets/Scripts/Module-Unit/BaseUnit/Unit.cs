@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TankU.PowerUp;
 using Agate.MVC.Core;
 using TankU.PubSub;
+using System;
 using TankU.Bullet;
 using TankU.Bomb;
 
@@ -86,6 +87,7 @@ namespace TankU.Unit
         public void ReciveBombDamage()
         {
             unitStatusControl.ReduceHealth(2);
+            Debug.Log("Recive Bomb Damage" + name);
         }
         public void BouncingBullet(float PUduration)
         {

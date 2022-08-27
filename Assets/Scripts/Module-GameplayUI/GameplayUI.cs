@@ -64,7 +64,6 @@ namespace TankU.GameplayUI
                 HealthBar[i] = GameObject.Find("P" + (i+1) + "-Hp").GetComponent<Slider>();
                 HealthBar[i].value = GameObject.Find("P" + (i + 1)).GetComponent<Unit.Unit>()._health;
             }
-
         }
         private void OnDestroy()
         {
@@ -99,7 +98,6 @@ namespace TankU.GameplayUI
         {
             TieBreakTxT.gameObject.SetActive(true);
         }
-        
     }
 }
 
