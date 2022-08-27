@@ -153,10 +153,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundfx:
-  - name: atk_bullet
-    clip: {fileID: 0}
+  - name: bullet_explosion
+    clip: {fileID: 8300000, guid: 45cec82756be7e644893453e06732e68, type: 3}
     source: {fileID: 0}
-  soundBgm: []
+  - name: bomb_explosion
+    clip: {fileID: 8300000, guid: 3e2a53d89c871ef4b9421c68bc5b40c5, type: 3}
+    source: {fileID: 0}
+  - name: collect
+    clip: {fileID: 8300000, guid: 6db4371e5628b9f40827770a8d043589, type: 3}
+    source: {fileID: 0}
+  - name: move
+    clip: {fileID: 8300000, guid: d0d3277d0d4e5d9429452f420c970ee6, type: 3}
+    source: {fileID: 0}
+  - name: shoot
+    clip: {fileID: 8300000, guid: 48119d55b32e23944a11c2580cd51d7f, type: 3}
+    source: {fileID: 0}
+  - name: gameover
+    clip: {fileID: 8300000, guid: 4242eb32f7c09514984a8a793c271b12, type: 3}
+    source: {fileID: 0}
+  soundBgm:
+  - name: mainmenu
+    clip: {fileID: 8300000, guid: e5a5eb8c28c44df428af66b1817e8173, type: 3}
+    source: {fileID: 0}
+  - name: gameplay
+    clip: {fileID: 8300000, guid: d4bf581527876094db690e69deb670d8, type: 3}
+    source: {fileID: 0}
 --- !u!4 &1017645171
 Transform:
   m_ObjectHideFlags: 0

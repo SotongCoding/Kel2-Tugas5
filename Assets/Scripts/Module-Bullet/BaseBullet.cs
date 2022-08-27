@@ -47,6 +47,8 @@ namespace TankU.Bullet
                     hitTarget.ReciveBulletDamage();
                     gameObject.SetActive(false);
                     PublishSubscribe.Instance.Publish<MessageVfx>(new MessageVfx("bullet_explosion", transform.position));
+                    PublishSubscribe.Instance.Publish<MessageSoundfx>(new MessageSoundfx("bullet_explosion"));
+
                 }
                 //hitTarget.ReciveBulletDamage();
                 //gameObject.SetActive(false);
@@ -60,6 +62,7 @@ namespace TankU.Bullet
             {
                 gameObject.SetActive(false);
                 PublishSubscribe.Instance.Publish<MessageVfx>(new MessageVfx("bullet_explosion", transform.position));
+                PublishSubscribe.Instance.Publish<MessageSoundfx>(new MessageSoundfx("bullet_explosion"));
             }
         }
     }
