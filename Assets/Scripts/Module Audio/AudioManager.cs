@@ -52,13 +52,14 @@ namespace TankU.Audio
             PublishSubscribe.Instance.Subscribe<MessageSoundBgm>(ReceiveMessageSoundBgm);
             PublishSubscribe.Instance.Subscribe<MessagePlaySoundOnce>(ReceiveMessagePlaySoundOnce);
             PublishSubscribe.Instance.Subscribe<MessagePauseSoundOnce>(ReceiveMessagePauseSoundOnce);
+            PublishSubscribe.Instance.Subscribe<MessageLoadVolume>(ReceiveMessageLoadVolume);
         }
         private void UnSubsriber()
         {
             PublishSubscribe.Instance.Unsubscribe<MessageSoundfx>(ReceiveMessageSoundfx);
             PublishSubscribe.Instance.Unsubscribe<MessageSoundBgm>(ReceiveMessageSoundBgm);
             PublishSubscribe.Instance.Unsubscribe<MessagePlaySoundOnce>(ReceiveMessagePlaySoundOnce);
-            PublishSubscribe.Instance.Unsubscribe<MessagePauseSoundOnce>(ReceiveMessagePauseSoundOnce);
+            PublishSubscribe.Instance.Unsubscribe<MessageLoadVolume>(ReceiveMessageLoadVolume);
 
         }
 
@@ -86,9 +87,10 @@ namespace TankU.Audio
         }
         private void ReceiveMessagePlaySoundOnce(MessagePlaySoundOnce message)
         {
+            AudioSource source;
             if (!playedSound.ContainsKey(message.name))
             {
-                var source = gameObject.AddComponent<AudioSource>();
+                source = gameObject.AddComponent<AudioSource>();
                 source.volume = GameSetting.GameSetting.Instance.savedData["soundSFX"];
                 Soundfx s = Array.Find(soundfx, sound => sound.name == message.name);
                 if (s == null)
@@ -103,13 +105,20 @@ namespace TankU.Audio
             else
             {
                 if (playedSound[message.name].isPlaying) { return; }
+                source = playedSound[message.name];
                 playedSound[message.name].volume = GameSetting.GameSetting.Instance.savedData["soundSFX"];
                 playedSound[message.name].Play();
             }
+            source.volume = GameSetting.GameSetting.Instance.savedData["soundSFX"];
         }
         private void ReceiveMessagePauseSoundOnce(MessagePauseSoundOnce message)
         {
             playedSound[message.name].Stop();
+        }
+        private void ReceiveMessageLoadVolume(MessageLoadVolume message)
+        {
+            sourceSoundfx.volume = GameSetting.GameSetting.Instance.savedData["soundSFX"];
+            sourceSoundBgm.volume = GameSetting.GameSetting.Instance.savedData["soundBGM"];
         }
     }
 

@@ -64,6 +64,7 @@ namespace TankU.PubSub
         public string name;
         public MessagePauseSoundOnce(string name) { this.name = name; }
     }
+    public struct MessageLoadVolume { }
     #endregion
 
     public struct MessageUnitDie

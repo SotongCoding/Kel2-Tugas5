@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TankU.GameSetting;
+using TankU.PubSub;
+using Agate.MVC.Core;
 
 namespace TankU.OptionUI
 {
@@ -113,6 +115,7 @@ namespace TankU.OptionUI
         {
             optionUI.SetActive(isActive);
             if (!isActive) Save();
+            PublishSubscribe.Instance.Publish<MessageLoadVolume>(new MessageLoadVolume());
         }
     }
 }
