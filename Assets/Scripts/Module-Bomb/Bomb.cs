@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using TankU.PubSub;
 using UnityEngine;
 
-namespace TankU.Weapon.Bomb
+namespace TankU.Bomb
 {
-    public class Bomb : Weapon
+    public class Bomb : MonoBehaviour
     {
-        private bool _activatedOnce;
-        private float _detonateWaitDuration;
-        private float _explosionRadius;
-        //[SerializeField] private List<GameObject> _explosionHitObjects = new List<GameObject>();
+        protected bool _activatedOnce;
+        protected float _detonateWaitDuration;
+        protected float _explosionRadius;
+        protected int damagePoint = 1;
 
         private void OnEnable()
         {
@@ -22,34 +22,43 @@ namespace TankU.Weapon.Bomb
             }
         }
 
-        private void Awake()
+        protected virtual void Awake()
         {
             _detonateWaitDuration = 3f;
             _explosionRadius = 3f;
         }
 
-        IEnumerator Detonate(float waitTime)
+        protected IEnumerator Detonate(float waitTime)
         {
             yield return new WaitForSeconds(waitTime);
             RaycastHit[] raycastHits = Physics.SphereCastAll(gameObject.transform.position, _explosionRadius, Vector3.one, Mathf.Infinity);
             foreach (RaycastHit hit in raycastHits)
             {
-                //// Check which objects get hit
-                //_explosionHitObjects.Add(hit.transform.gameObject);
+                var hitTarget = hit.transform.gameObject;
+                //// Check which object gets hit
+                //Debug.Log(hit.transform.gameObject.name);
 
-                if (hit.transform.gameObject.CompareTag("Player"))
+                if (hitTarget.CompareTag("Player"))
                 {
-                    hit.transform.GetComponent<Unit.Unit>().ReciveBombDamage();
+                    if (hitTarget.TryGetComponent(out IBombHitAble bombHitAble))
+                    {
+                        hitTarget.GetComponent<Unit.Unit>().ReciveBombDamage();
+                    }
                 }
             }
             gameObject.SetActive(false);
         }
 
+        //// View explosion radius for debug purposes
         //void OnDrawGizmosSelected()
         //{
-        //    // View explosion radius for debug purposes
         //    Gizmos.color = Color.yellow;
         //    Gizmos.DrawSphere(transform.position, _explosionRadius);
         //}
+    }
+
+    public interface IBombHitAble
+    {
+        void ReciveBombDamage();
     }
 }

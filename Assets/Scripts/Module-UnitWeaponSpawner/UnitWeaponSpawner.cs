@@ -1,7 +1,7 @@
 using Agate.MVC.Core;
 using System.Collections;
 using System.Collections.Generic;
-using TankU.Weapon.Bullet;
+using TankU.Bullet;
 using UnityEngine;
 using TankU.PubSub;
 namespace TankU.UnitWeaponSpawner
@@ -50,7 +50,7 @@ namespace TankU.UnitWeaponSpawner
             for (int i = 0; i < _bulletAmountToPool; i++)
             {
                 GameObject obj = Instantiate(_bullet, transform.position, _bullet.transform.rotation);
-                obj.AddComponent<Bullet>();
+                obj.AddComponent<BaseBullet>();
                 obj.SetActive(false);
                 _pooledBullet.Add(obj);
             }
