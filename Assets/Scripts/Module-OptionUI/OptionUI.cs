@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TankU.GameSetting;
 
 namespace TankU.OptionUI
 {
@@ -20,8 +21,12 @@ namespace TankU.OptionUI
         private Image[] iconButton;
         private bool[] isMute;
 
+        private GameSetting.GameSetting _gameSetting;
+        SaveData _save = new();
+
         private void Start()
         {
+            _gameSetting = GameSetting.GameSetting.Instance;
             isMute = new bool[iconButton.Length];
             Load();
         }
@@ -29,9 +34,6 @@ namespace TankU.OptionUI
         {
             sfxVolumeSlider.value = sfxCurrently;
             bgmVolumeSlider.value = bgmCurrently;
-
-            Save("sfxVolume", sfxCurrently);
-            Save("bgmVolume", bgmCurrently);
 
             if (sfxCurrently != 0) { isMute[0] = false; }
             if (bgmCurrently != 0) { isMute[1] = false; }
@@ -44,11 +46,12 @@ namespace TankU.OptionUI
         public void SetVolumeSfx()
         {
             sfxCurrently = sfxVolumeSlider.value;
+            Save();
         }
         public void SetVolumeBgm()
         {
             bgmCurrently = bgmVolumeSlider.value;
-            //GameSetting.Instance.SaveData("sfxVolume", sfxCurrently);
+            Save();
         }
         public void SwtichButton(int id)
         {
@@ -58,6 +61,7 @@ namespace TankU.OptionUI
                 iconButton[id].sprite = iconUnmute;
                 if(id == 0) { sfxCurrently = 1; }
                 if(id == 1) { bgmCurrently = 1; }
+                Save();
             }
             else
             {
@@ -65,20 +69,22 @@ namespace TankU.OptionUI
                 iconButton[id].sprite = iconMute;
                 if (id == 0) { sfxCurrently = 0; }
                 if (id == 1) { bgmCurrently = 0; }
+                Save();
             }
         }
 
-        private void Save(string name, float value)
+        private void Save()
         {
-            PlayerPrefs.SetFloat(name, value);
-            Debug.Log(PlayerPrefs.GetFloat(name));
+            _save.soundBGM = bgmCurrently;
+            _save.soundSFX = sfxCurrently;
+            _gameSetting.ConvertToJSON(_save);
         }
 
         private void Load()
         {
             // load slider setting
-            sfxCurrently = PlayerPrefs.GetFloat("sfxVolume");
-            bgmCurrently = PlayerPrefs.GetFloat("bgmVolume");
+            sfxCurrently = _gameSetting.savedData["soundSFX"];
+            bgmCurrently = _gameSetting.savedData["soundBGM"];
 
             // load mute button setting
             if (sfxCurrently == 0)
