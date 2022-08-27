@@ -32,6 +32,7 @@ namespace TankU.Bomb
         {
             yield return new WaitForSeconds(waitTime);
             PublishSubscribe.Instance.Publish<MessageSoundfx>(new MessageSoundfx("bomb_explosion"));
+            PublishSubscribe.Instance.Publish<MessageVfx>(new MessageVfx("bomb_explosion", this.transform.position));
 
             RaycastHit[] raycastHits = Physics.SphereCastAll(gameObject.transform.position, _explosionRadius, Vector3.one, Mathf.Infinity);
             foreach (RaycastHit hit in raycastHits)
@@ -54,8 +55,8 @@ namespace TankU.Bomb
         //// View explosion radius for debug purposes
         void OnDrawGizmosSelected()
         {
-           Gizmos.color = Color.yellow;
-           Gizmos.DrawSphere(transform.position, _explosionRadius);
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawSphere(transform.position, _explosionRadius);
         }
     }
 
