@@ -18,20 +18,23 @@ namespace TankU
                 return _instance;
             }
         }
-        public void LoadScene(string sceneName)
+        public void LoadScene(string sceneName, bool unloadCurrentActive = true)
         {
             var targetScene = SceneManager.GetSceneByName(sceneName);
-            if (targetScene.isLoaded)
+
+            if (targetScene.isLoaded) SceneManager.UnloadSceneAsync(targetScene).completed += delegate { LoadScene(); };
+            else LoadScene();
+
+            if (unloadCurrentActive)
             {
-                SceneManager.UnloadSceneAsync(targetScene).completed +=
-                delegate { SceneManager.LoadScene(targetScene.buildIndex, LoadSceneMode.Additive); };
-                SceneManager.SetActiveScene(targetScene);
+                SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
             }
-            else
+            void LoadScene()
             {
                 SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive).completed +=
                 delegate { SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName)); };
             }
         }
+
     }
 }
