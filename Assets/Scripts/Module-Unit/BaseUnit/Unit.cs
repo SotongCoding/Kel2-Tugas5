@@ -7,6 +7,7 @@ using TankU.PubSub;
 using System;
 using TankU.Bullet;
 using TankU.Bomb;
+using TankU.GameplayUI;
 
 namespace TankU.Unit
 {
@@ -78,15 +79,18 @@ namespace TankU.Unit
         public void AddHealth()
         {
             unitStatusControl.AddHealth(1);
+            FindObjectOfType<GameplayUI.GameplayUI>().UpdateHealth(unitId);
             Debug.Log("Heal");
         }
         public void ReciveBulletDamage()
         {
             unitStatusControl.ReduceHealth(1);
+            FindObjectOfType<GameplayUI.GameplayUI>().UpdateHealth(unitId);
         }
         public void ReciveBombDamage()
         {
             unitStatusControl.ReduceHealth(2);
+            FindObjectOfType<GameplayUI.GameplayUI>().UpdateHealth(unitId);
             Debug.Log("Recive Bomb Damage" + name);
         }
         public void BouncingBullet(float PUduration)
