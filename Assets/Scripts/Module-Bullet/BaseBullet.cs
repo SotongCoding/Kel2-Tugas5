@@ -6,12 +6,14 @@ using TankU.PubSub;
 
 namespace TankU.Bullet
 {
-    public class BaseBullet : MonoBehaviour
+    public class BaseBullet : MonoBehaviour, IPoolObject
     {
         [SerializeField] protected int _moveSpeed;
         protected Rigidbody _rigidbody;
         protected Collider _collider;
         protected int damagePoint = 1;
+
+        public PoolingSystem poolingSystem => throw new System.NotImplementedException();
 
         protected virtual void OnEnable()
         {
@@ -64,6 +66,21 @@ namespace TankU.Bullet
                 PublishSubscribe.Instance.Publish<MessageVfx>(new MessageVfx("bullet_explosion", transform.position));
                 PublishSubscribe.Instance.Publish<MessageSoundfx>(new MessageSoundfx("bullet_explosion"));
             }
+        }
+
+        public void Initial(PoolingSystem poolSystem)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void OnCreate()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void StoreToPool()
+        {
+            throw new System.NotImplementedException();
         }
     }
 
