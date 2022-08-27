@@ -6,6 +6,7 @@ using System;
 using TankU.PubSub;
 
 using Agate.MVC.Core;
+using TankU.GameSetting;
 
 namespace TankU.Audio
 {
@@ -18,8 +19,14 @@ namespace TankU.Audio
 
         private AudioSource sourceSoundfx;
         private AudioSource sourceSoundBgm;
+        private GameSetting.GameSetting _gameSetting;
+
         private Dictionary<string, AudioSource> playedSound = new Dictionary<string, AudioSource>();
 
+        private void Start()
+        {
+            _gameSetting = GameSetting.GameSetting.Instance;
+        }
         private void Awake()
         {
             sourceSoundfx = gameObject.AddComponent<AudioSource>();
@@ -34,13 +41,13 @@ namespace TankU.Audio
         }
         void SetupAudioSourceSoundfx()
         {
-            //sourceSoundfx.volume = 
+            sourceSoundfx.volume = _gameSetting.savedData["soundSFX"];
             sourceSoundfx.playOnAwake = false;
             sourceSoundfx.loop = false;
         }
         void SetupAudioSourceSoundBgm()
         {
-            //sourceSoundBgm.volume = 
+            sourceSoundBgm.volume = _gameSetting.savedData["soundBGM"];
             sourceSoundBgm.playOnAwake = false;
             sourceSoundBgm.loop = false;
         }
@@ -89,7 +96,7 @@ namespace TankU.Audio
             if (!playedSound.ContainsKey(message.name))
             {
                 var source = gameObject.AddComponent<AudioSource>();
-                
+                source.volume = _gameSetting.savedData["soundSFX"];
                 Soundfx s = Array.Find(soundfx, sound => sound.name == message.name);
                 if (s == null)
                 {
