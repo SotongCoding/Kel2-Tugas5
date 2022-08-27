@@ -6,6 +6,7 @@ namespace TankU
 {
     public class Initiator : MonoBehaviour
     {
+        
         private void Awake()
         {
             SceneLoader.Instance.LoadScene("Gameplay");

@@ -39,7 +39,7 @@ namespace TankU.GameplayUI
             HealthBar = new Slider[Player.Length];
             for (int i = 0; i < HealthBar.Length; i++)
             {
-                HealthBar[i] = GameObject.Find("P" + i + "-Hp").GetComponent<Slider>();
+                HealthBar[i] = GameObject.Find("P" + (i+1) + "-Hp").GetComponent<Slider>();
                 HealthBar[i].maxValue = HP[i];
             }
 
@@ -61,7 +61,7 @@ namespace TankU.GameplayUI
             TimerTxT.text = _TimerGameplay.timer.ToString();
             for (int i = 0; i < HealthBar.Length; i++)
             {
-                HealthBar[i] = GameObject.Find("P" + i + "-Hp").GetComponent<Slider>();
+                HealthBar[i] = GameObject.Find("P" + (i+1) + "-Hp").GetComponent<Slider>();
                 HealthBar[i].value = GameObject.Find("P" + (i + 1)).GetComponent<Unit.Unit>()._health;
             }
 

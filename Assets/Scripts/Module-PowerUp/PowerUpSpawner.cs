@@ -19,7 +19,7 @@ namespace TankU.PowerUpSpawner
             BouncePowerUp = GameObject.Find("Bounce-PowerUp");
             HealthPowerUp = GameObject.Find("Health-PowerUp");
             //Set Spawing Time 
-            SpawnTime = 25;
+            SpawnTime =25;
             //---------------
             //Instantiate(HealthPowerUp, new Vector3(Random.Range(-8, 8), 0.3f, Random.Range(-2.7f, 7.7f)), Quaternion.identity);
             //Instantiate(BouncePowerUp, new Vector3(Random.Range(-8, 8), 0.3f, Random.Range(-2.7f, 7.7f)), Quaternion.identity);
