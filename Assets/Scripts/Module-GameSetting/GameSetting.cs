@@ -1,48 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
+using Newtonsoft.Json;
 
 namespace TankU.GameSetting
 {
     public class GameSetting : MonoBehaviour
     {
-        #region Singleton
-
         public static GameSetting Instance;
 
         private void Awake()
         {
             Instance = this;
+            LoadData();
         }
 
-        #endregion
+        public Dictionary<string, float> savedData = new Dictionary<string, float>();
 
-        [SerializeField] Dictionary<string, object> saveData = new Dictionary<string, object>();
-
-        public void ConvertToJSON()
+        public void ConvertToJSON(SaveData save)
         {
-            JsonUtility.ToJson(new SaveData());
-            Debug.Log("bikin json");
-            Debug.Log(saveData);
+            string gameSetting = JsonUtility.ToJson(save);
+            File.WriteAllText(Application.dataPath + "/GameSetting.json", gameSetting);
         }
 
-        private void Start()
+        public void LoadData()
         {
-            Debug.Log(saveData);
-        }
+            string gameSetting = File.ReadAllText(Application.dataPath + "/GameSetting.json");
+            savedData = JsonConvert.DeserializeObject<Dictionary<string, float>>(gameSetting);
 
-
-        public void SaveData(string name, object value)
-        {
-            Debug.Log("Masuk");
-            saveData[name] = value;
-            ConvertToJSON();
+            //// Check if savedData contain settings from json
+            //foreach (KeyValuePair<string, float> pair in savedData) { Debug.Log(pair); }
         }
     }
 
     public struct SaveData
     {
-        public float soundSFX;
         public float soundBGM;
+        public float soundSFX;
     }
 }
