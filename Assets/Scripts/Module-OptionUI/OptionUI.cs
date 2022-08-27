@@ -8,6 +8,8 @@ namespace TankU.OptionUI
 {
     public class OptionUI : MonoBehaviour
     {
+        public static OptionUI Instance;
+
         [SerializeField]
         private Slider sfxVolumeSlider;
         [SerializeField]
@@ -21,12 +23,20 @@ namespace TankU.OptionUI
         private Image[] iconButton;
         private bool[] isMute;
 
+        [SerializeField]
+        GameObject optionUI;
         private GameSetting.GameSetting _gameSetting;
         SaveData _save = new();
 
         private void Start()
         {
+            Instance = this;
+
             _gameSetting = GameSetting.GameSetting.Instance;
+
+            _save.soundSFX = _gameSetting.savedData["soundSFX"];
+            _save.soundBGM = _gameSetting.savedData["soundBGM"];
+            
             isMute = new bool[iconButton.Length];
             Load();
         }
@@ -46,12 +56,12 @@ namespace TankU.OptionUI
         public void SetVolumeSfx()
         {
             sfxCurrently = sfxVolumeSlider.value;
-            Save();
+            // Save();
         }
         public void SetVolumeBgm()
         {
             bgmCurrently = bgmVolumeSlider.value;
-            Save();
+            // Save();
         }
         public void SwtichButton(int id)
         {
@@ -59,9 +69,9 @@ namespace TankU.OptionUI
             {
                 isMute[id] = false;
                 iconButton[id].sprite = iconUnmute;
-                if(id == 0) { sfxCurrently = 1; }
-                if(id == 1) { bgmCurrently = 1; }
-                Save();
+                if (id == 0) { sfxCurrently = 1; }
+                if (id == 1) { bgmCurrently = 1; }
+                // Save();
             }
             else
             {
@@ -69,7 +79,7 @@ namespace TankU.OptionUI
                 iconButton[id].sprite = iconMute;
                 if (id == 0) { sfxCurrently = 0; }
                 if (id == 1) { bgmCurrently = 0; }
-                Save();
+                // Save();
             }
         }
 
@@ -83,8 +93,8 @@ namespace TankU.OptionUI
         private void Load()
         {
             // load slider setting
-            sfxCurrently = _gameSetting.savedData["soundSFX"];
-            bgmCurrently = _gameSetting.savedData["soundBGM"];
+            sfxCurrently = _save.soundSFX;// _gameSetting.savedData["soundSFX"];
+            bgmCurrently = _save.soundBGM;// _gameSetting.savedData["soundBGM"];
 
             // load mute button setting
             if (sfxCurrently == 0)
@@ -97,6 +107,12 @@ namespace TankU.OptionUI
                 isMute[1] = true;
                 iconButton[1].sprite = iconMute;
             }
+        }
+
+        public void SetUIOption(bool isActive)
+        {
+            optionUI.SetActive(isActive);
+            if (!isActive) Save();
         }
     }
 }

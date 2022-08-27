@@ -34,15 +34,15 @@ namespace TankU.Audio
         }
         void SetupAudioSourceSoundfx()
         {
-            //sourceSoundfx.volume = 
+            sourceSoundfx.volume = GameSetting.GameSetting.Instance.savedData["soundSFX"];
             sourceSoundfx.playOnAwake = false;
             sourceSoundfx.loop = false;
         }
         void SetupAudioSourceSoundBgm()
         {
-            //sourceSoundBgm.volume = 
+            sourceSoundBgm.volume = GameSetting.GameSetting.Instance.savedData["soundBGM"];
             sourceSoundBgm.playOnAwake = false;
-            sourceSoundBgm.loop = false;
+            sourceSoundBgm.loop = true;
         }
 
 
@@ -89,7 +89,7 @@ namespace TankU.Audio
             if (!playedSound.ContainsKey(message.name))
             {
                 var source = gameObject.AddComponent<AudioSource>();
-                
+                source.volume = GameSetting.GameSetting.Instance.savedData["soundSFX"];
                 Soundfx s = Array.Find(soundfx, sound => sound.name == message.name);
                 if (s == null)
                 {
@@ -103,6 +103,7 @@ namespace TankU.Audio
             else
             {
                 if (playedSound[message.name].isPlaying) { return; }
+                playedSound[message.name].volume = GameSetting.GameSetting.Instance.savedData["soundSFX"];
                 playedSound[message.name].Play();
             }
         }

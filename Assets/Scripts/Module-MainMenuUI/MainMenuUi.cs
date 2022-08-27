@@ -10,11 +10,19 @@ namespace TankU.MainMenu
     {
         [SerializeField]
         private Canvas MainMenuCanvas;
-        
+
+        private void Start() {
+            PublishSubscribe.Instance.Publish<MessageSoundBgm>(new MessageSoundBgm("mainmenu"));
+        }
+
         public void GameplayScene()
         {
             SceneLoader.Instance.LoadScene("Gameplay");
             MainMenuCanvas.gameObject.SetActive(false);
+        }
+        public void OptionScene()
+        {
+            OptionUI.OptionUI.Instance.SetUIOption(true);
         }
     }
 }

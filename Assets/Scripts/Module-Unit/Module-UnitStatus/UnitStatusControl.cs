@@ -78,7 +78,7 @@ namespace TankU.Unit.UnitStatus
         }
         public void AddHealth(int amount)
         {
-            _unitHealth =+amount;// Math.Clamp(_unitHealth + amount, 0, 5);
+            _unitHealth = Math.Clamp(_unitHealth + amount, 0, 10);
         }
 
         public void ChangeBullet(int bulletId)

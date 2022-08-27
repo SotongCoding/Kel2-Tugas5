@@ -8,12 +8,12 @@ namespace TankU.Unit.UnitVisual
     public class UnitVisualControl
     {
         public Animator animator;
-        private Unit thisUnit;
         public Transform body;
-        private void Intial(Unit unit)
-        {
-            thisUnit = unit;
-        }
+        [Header("Tank Part")]
+        [SerializeField]
+        MeshRenderer bodyRender;
+        [SerializeField]
+        MeshRenderer headRender, frontRender;
 
         [SerializeField] ParticleSystem dustParticel;
         public void PlayVisual_Move(Vector3 target)
@@ -31,8 +31,12 @@ namespace TankU.Unit.UnitVisual
         {
             animator.Play("idle");
         }
-        public void SetUnitColor()
+        public void SetUnitColor(Color mainColor, Color subColor)
         {
+            headRender.material.color = mainColor;
+            frontRender.material.color = mainColor;
+
+            bodyRender.material.color = subColor;
 
         }
     }

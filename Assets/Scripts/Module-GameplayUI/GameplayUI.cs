@@ -27,10 +27,11 @@ namespace TankU.GameplayUI
         //private int[] BombLeft;
         //[SerializeField]
         //private Slider[] HealthBar;
-        
+
         void Start()
         {
             _TimerGameplay = GameObject.Find("GameStatus").GetComponent<TimerGameplay>();
+            PublishSubscribe.Instance.Publish<MessageSoundBgm>(new MessageSoundBgm("gameplay"));
             //Player = new GameObject[2];
             //HP = new int[Player.Length];
             //Debug.Log("player length: " + Player.Length);
@@ -62,7 +63,7 @@ namespace TankU.GameplayUI
         void Update()
         {
             TimerTxT.text = _TimerGameplay.timer.ToString();
-            
+
             //for (int i = 0; i < UnitStatusUI.HealthBar.Length; i++)
             //{
             //    HealthBar[i] = GameObject.Find("P" + (i + 1) + "-Hp").GetComponent<Slider>();
@@ -76,12 +77,12 @@ namespace TankU.GameplayUI
         }
         void ReduceBomb(MessageSpawnBomb message)
         {
-            PlayerUI[message.PlayerId-1].ReduceBomb();
+            PlayerUI[message.PlayerId - 1].ReduceBomb();
         }
 
         public void UpdateHealth(int id)
         {
-            PlayerUI[id-1].UpdateHealth();
+            PlayerUI[id - 1].UpdateHealth();
         }
 
         void Tiebreaker(MessageTieBreaker message)

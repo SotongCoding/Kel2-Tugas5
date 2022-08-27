@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9058874787393336387}
   - component: {fileID: 9058874787393336386}
   - component: {fileID: 9058874787393336385}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bounce-PowerUp
   m_TagString: BouncePowerUp
   m_Icon: {fileID: 0}

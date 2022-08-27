@@ -24,6 +24,10 @@ namespace TankU.Unit
         public Transform bulletOutPos;
         public Transform head;
 
+        [Header("Color")]
+        MeshRenderer bodyRender,
+        headRender, frontRender;
+
         //Global player Status Need
         public int _health => unitStatusControl._unitHealth;
 
@@ -50,6 +54,7 @@ namespace TankU.Unit
         {
             Intial();
             SubscribeMessege();
+            visualControl.SetUnitColor(Color.white,Color.cyan);
 
             //Testing
             SetController(keyBoardControl);
@@ -104,7 +109,7 @@ namespace TankU.Unit
             }));
         }
 
-        internal void CountDownShootBullet()
+        public void CountDownShootBullet()
         {
             StartCoroutine(CountDown());
             IEnumerator CountDown()
@@ -113,7 +118,7 @@ namespace TankU.Unit
                 unitStatusControl.SetShootStatus(true);
             }
         }
-        internal void CountDownPlantBomb()
+        public void CountDownPlantBomb()
         {
             StartCoroutine(CountDown());
             IEnumerator CountDown()
@@ -123,5 +128,10 @@ namespace TankU.Unit
             }
         }
 
+        public void SetUnitColor(Color mainColor, Color subColor)
+        {
+            visualControl.SetUnitColor(mainColor, subColor);
+
+        }
     }
 }
