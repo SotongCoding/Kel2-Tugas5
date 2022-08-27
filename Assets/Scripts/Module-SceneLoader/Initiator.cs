@@ -8,7 +8,7 @@ namespace TankU
     {
         private void Awake()
         {
-            SceneLoader.Instance.LoadScene("Gameplay");
+            SceneLoader.Instance.LoadScene("MainMenu");
         }
     }
 }

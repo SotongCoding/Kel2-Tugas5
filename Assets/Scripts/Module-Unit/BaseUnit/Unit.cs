@@ -5,10 +5,12 @@ using TankU.PowerUp;
 using Agate.MVC.Core;
 using TankU.PubSub;
 using System;
+using TankU.Bullet;
+using TankU.Bomb;
 
 namespace TankU.Unit
 {
-    public class Unit : MonoBehaviour
+    public class Unit : MonoBehaviour, IBulletHitAble, IBombHitAble
     {
         //Testing
         [SerializeField]
