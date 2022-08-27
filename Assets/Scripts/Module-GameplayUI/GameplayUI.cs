@@ -87,6 +87,8 @@ namespace TankU.GameplayUI
         void Tiebreaker(MessageTieBreaker message)
         {
             TieBreakTxT.gameObject.SetActive(true);
+            PlayerUI[0].UpdateHealth();
+            PlayerUI[1].UpdateHealth();
         }
     }
 }
