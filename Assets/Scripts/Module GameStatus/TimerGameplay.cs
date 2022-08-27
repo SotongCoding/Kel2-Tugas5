@@ -15,13 +15,14 @@ namespace TankU.GameStatus
         [SerializeField]
         private float timerGameplay = 100f;
 
-        private bool timeActive;
+        private bool timeActive = false;
         [HideInInspector]
-        public float timer;
+        public float timer, GameTimer;
 
         private void Awake()
         {
             Subscriber();
+            GameTimer = timerGameplay;
         }
         private void OnDestroy()
         {
@@ -42,6 +43,11 @@ namespace TankU.GameStatus
                 }
             }
         }
+
+        public void InitializeTime()
+        {
+            timerGameplay = GameTimer;
+        } 
 
         private void Subscriber()
         {
