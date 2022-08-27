@@ -91,6 +91,13 @@ namespace TankU.GameplayUI
             PlayerUI[0].UpdateHealth();
             PlayerUI[1].UpdateHealth();
         }
+
+        public void SetPlayerColor(){
+            foreach (var player_ui in PlayerUI)
+            {
+                player_ui.SendColor();
+            }
+        }
     }
 }
 
