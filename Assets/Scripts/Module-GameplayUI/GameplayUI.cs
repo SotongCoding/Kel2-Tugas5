@@ -7,6 +7,7 @@ using TankU.Unit;
 using TMPro;
 using UnityEngine.UI;
 using TankU.PubSub;
+
 namespace TankU.GameplayUI
 {
     public class GameplayUI : MonoBehaviour
@@ -15,39 +16,41 @@ namespace TankU.GameplayUI
         private TextMeshProUGUI TimerTxT, TieBreakTxT;
         private GameStatus.TimerGameplay _TimerGameplay;
         [SerializeField]
-        private GameObject[] Player;
-        [SerializeField]
-        private int[] HP;
-        [SerializeField]
-        private GameObject[] BombP1, BombP2, BombP3, BombP4;
-        [SerializeField]
-        private int[] BombLeft;
-        [SerializeField]
-        private Slider[] HealthBar;
-        // Start is called before the first frame update
+        private UnitStatusUI[] PlayerUI;
+        //[SerializeField]
+        //private GameObject[] Player;
+        //[SerializeField]
+        //private int[] HP;
+        //[SerializeField]
+        //private GameObject[] BombP1, BombP2, BombP3, BombP4;
+        //[SerializeField]
+        //private int[] BombLeft;
+        //[SerializeField]
+        //private Slider[] HealthBar;
+        
         void Start()
         {
             _TimerGameplay = GameObject.Find("GameStatus").GetComponent<TimerGameplay>();
-            Player = new GameObject[2];
-            HP = new int[Player.Length];
-            Debug.Log("player length: " + Player.Length);
-            for (int i = 0; i < HP.Length; i++)
-            {
-                HP[i] = GameObject.Find("P" + (i + 1)).GetComponent<Unit.Unit>()._health;
-            }
+            //Player = new GameObject[2];
+            //HP = new int[Player.Length];
+            //Debug.Log("player length: " + Player.Length);
+            //for (int i = 0; i < HP.Length; i++)
+            //{
+            //    HP[i] = GameObject.Find("P" + (i + 1)).GetComponent<Unit.Unit>()._health;
+            //}
 
-            HealthBar = new Slider[Player.Length];
-            for (int i = 0; i < HealthBar.Length; i++)
-            {
-                HealthBar[i] = GameObject.Find("P" + i + "-Hp").GetComponent<Slider>();
-                HealthBar[i].maxValue = HP[i];
-            }
+            //HealthBar = new Slider[Player.Length];
+            //for (int i = 0; i < HealthBar.Length; i++)
+            //{
+            //    HealthBar[i] = GameObject.Find("P" + (i + 1) + "-Hp").GetComponent<Slider>();
+            //    HealthBar[i].maxValue = HP[i];
+            //}
 
-            BombLeft = new int[Player.Length];
-            for (int i = 0; i < BombLeft.Length; i++)
-            {
-                BombLeft[i] = 5;
-            }
+            //BombLeft = new int[Player.Length];
+            //for (int i = 0; i < BombLeft.Length; i++)
+            //{
+            //    BombLeft[i] = 5;
+            //}
         }
 
         private void Awake()
@@ -59,11 +62,12 @@ namespace TankU.GameplayUI
         void Update()
         {
             TimerTxT.text = _TimerGameplay.timer.ToString();
-            for (int i = 0; i < HealthBar.Length; i++)
-            {
-                HealthBar[i] = GameObject.Find("P" + i + "-Hp").GetComponent<Slider>();
-                HealthBar[i].value = GameObject.Find("P" + (i + 1)).GetComponent<Unit.Unit>()._health;
-            }
+            
+            //for (int i = 0; i < UnitStatusUI.HealthBar.Length; i++)
+            //{
+            //    HealthBar[i] = GameObject.Find("P" + (i + 1) + "-Hp").GetComponent<Slider>();
+            //    HealthBar[i].value = GameObject.Find("P" + (i + 1)).GetComponent<Unit.Unit>()._health;
+            //}
         }
         private void OnDestroy()
         {
@@ -72,26 +76,12 @@ namespace TankU.GameplayUI
         }
         void ReduceBomb(MessageSpawnBomb message)
         {
-            if (message.PlayerId == 1)
-            {
-                BombLeft[0]--;
-                BombP1[BombLeft[0]].SetActive(false);
-            }
-            else if (message.PlayerId == 2)
-            {
-                BombLeft[1]--;
-                BombP2[BombLeft[1]].SetActive(false);
-            }
-            else if (message.PlayerId == 3)
-            {
-                BombLeft[2]--;
-                BombP3[BombLeft[2]].SetActive(false);
-            }
-            else if (message.PlayerId == 4)
-            {
-                BombLeft[3]--;
-                BombP4[BombLeft[3]].SetActive(false);
-            }
+            PlayerUI[message.PlayerId-1].ReduceBomb();
+        }
+
+        public void UpdateHealth(int id)
+        {
+            PlayerUI[id-1].UpdateHealth();
         }
 
         void Tiebreaker(MessageTieBreaker message)

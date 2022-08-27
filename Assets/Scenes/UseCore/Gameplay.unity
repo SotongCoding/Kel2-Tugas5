@@ -564,7 +564,7 @@ GameObject:
   - component: {fileID: 221440042}
   - component: {fileID: 221440043}
   m_Layer: 5
-  m_Name: P1-Hp
+  m_Name: P2-Hp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1047,6 +1047,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 450765905}
+  - component: {fileID: 450765906}
   m_Layer: 5
   m_Name: P2
   m_TagString: Player
@@ -1077,6 +1078,28 @@ RectTransform:
   m_AnchoredPosition: {x: 52.999847, y: -121}
   m_SizeDelta: {x: -100, y: 235.541}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &450765906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450765904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183416ffe4e3f094ca8a68417f81c4e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 672445140}
+  HP: 0
+  Bomb:
+  - {fileID: 1431014410}
+  - {fileID: 1053694943}
+  - {fileID: 1565364201}
+  - {fileID: 1485938941}
+  - {fileID: 614072034}
+  BombLeft: 5
+  HealthBar: {fileID: 221440043}
 --- !u!1 &455806276
 GameObject:
   m_ObjectHideFlags: 0
@@ -1221,6 +1244,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 458354698}
+  - component: {fileID: 458354699}
   m_Layer: 5
   m_Name: P1
   m_TagString: Player
@@ -1251,6 +1275,28 @@ RectTransform:
   m_AnchoredPosition: {x: -52.00003, y: -120}
   m_SizeDelta: {x: -100, y: 235.541}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &458354699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458354697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183416ffe4e3f094ca8a68417f81c4e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 1243005102}
+  HP: 0
+  Bomb:
+  - {fileID: 599782498}
+  - {fileID: 1256190972}
+  - {fileID: 2006635939}
+  - {fileID: 514113808}
+  - {fileID: 1090498812}
+  BombLeft: 5
+  HealthBar: {fileID: 512798190}
 --- !u!1 &512798188
 GameObject:
   m_ObjectHideFlags: 0
@@ -1262,7 +1308,7 @@ GameObject:
   - component: {fileID: 512798189}
   - component: {fileID: 512798190}
   m_Layer: 5
-  m_Name: P0-Hp
+  m_Name: P1-Hp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1798,6 +1844,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3795523436086552688, guid: 3d1fe7cf65ceaba4e80be2d6bad28f70, type: 3}
   m_PrefabInstance: {fileID: 672445138}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &672445140 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3795523436086552695, guid: 3d1fe7cf65ceaba4e80be2d6bad28f70, type: 3}
+  m_PrefabInstance: {fileID: 672445138}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672445139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05773033122680648ae98c83b9ae66ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &672445141
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4019,6 +4076,17 @@ PrefabInstance:
     - {fileID: 3795523437333728447, guid: 3d1fe7cf65ceaba4e80be2d6bad28f70, type: 3}
     - {fileID: 3795523437519302347, guid: 3d1fe7cf65ceaba4e80be2d6bad28f70, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3d1fe7cf65ceaba4e80be2d6bad28f70, type: 3}
+--- !u!114 &1243005102 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3795523436086552695, guid: 3d1fe7cf65ceaba4e80be2d6bad28f70, type: 3}
+  m_PrefabInstance: {fileID: 1243005101}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620600654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05773033122680648ae98c83b9ae66ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1256190972
 GameObject:
   m_ObjectHideFlags: 0
@@ -4974,26 +5042,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimerTxT: {fileID: 985523280}
   TieBreakTxT: {fileID: 455806277}
-  Player:
-  - {fileID: 1620600654}
-  - {fileID: 672445139}
-  HP: 
-  BombP1:
-  - {fileID: 599782498}
-  - {fileID: 1256190972}
-  - {fileID: 2006635939}
-  - {fileID: 514113808}
-  - {fileID: 1090498812}
-  BombP2:
-  - {fileID: 1431014410}
-  - {fileID: 1053694943}
-  - {fileID: 1565364201}
-  - {fileID: 1485938941}
-  - {fileID: 614072034}
-  BombP3: []
-  BombP4: []
-  BombLeft: 
-  HealthBar: []
+  PlayerUI:
+  - {fileID: 458354699}
+  - {fileID: 450765906}
 --- !u!1 &1533893546
 GameObject:
   m_ObjectHideFlags: 0
