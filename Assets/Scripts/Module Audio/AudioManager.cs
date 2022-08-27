@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using System;
+using TankU.PubSub;
 
 using Agate.MVC.Core;
 
@@ -17,6 +18,7 @@ namespace TankU.Audio
 
         private AudioSource sourceSoundfx;
         private AudioSource sourceSoundBgm;
+        private Dictionary<string, AudioSource> playedSound = new Dictionary<string, AudioSource>();
 
         private void Awake()
         {
@@ -48,11 +50,15 @@ namespace TankU.Audio
         {
             PublishSubscribe.Instance.Subscribe<MessageSoundfx>(ReceiveMessageSoundfx);
             PublishSubscribe.Instance.Subscribe<MessageSoundBgm>(ReceiveMessageSoundBgm);
+            PublishSubscribe.Instance.Subscribe<MessagePlaySoundOnce>(ReceiveMessagePlaySoundOnce);
+            PublishSubscribe.Instance.Subscribe<MessagePauseSoundOnce>(ReceiveMessagePauseSoundOnce);
         }
         private void UnSubsriber()
         {
             PublishSubscribe.Instance.Unsubscribe<MessageSoundfx>(ReceiveMessageSoundfx);
             PublishSubscribe.Instance.Unsubscribe<MessageSoundBgm>(ReceiveMessageSoundBgm);
+            PublishSubscribe.Instance.Unsubscribe<MessagePlaySoundOnce>(ReceiveMessagePlaySoundOnce);
+            PublishSubscribe.Instance.Unsubscribe<MessagePauseSoundOnce>(ReceiveMessagePauseSoundOnce);
 
         }
 
@@ -69,7 +75,7 @@ namespace TankU.Audio
         }
         private void ReceiveMessageSoundBgm(MessageSoundBgm message)
         {
-            Soundfx s = Array.Find(soundfx, sound => sound.name == message.name);
+            SoundBgm s = Array.Find(soundBgm, sound => sound.name == message.name);
             if (s == null)
             {
                 Debug.LogWarning("Sound : " + s + " not found");
@@ -78,20 +84,34 @@ namespace TankU.Audio
             sourceSoundBgm.clip = s.clip;
             sourceSoundBgm.Play();
         }
+        private void ReceiveMessagePlaySoundOnce(MessagePlaySoundOnce message)
+        {
+            if (!playedSound.ContainsKey(message.name))
+            {
+                var source = gameObject.AddComponent<AudioSource>();
+                
+                Soundfx s = Array.Find(soundfx, sound => sound.name == message.name);
+                if (s == null)
+                {
+                    Debug.LogWarning("Sound : " + s + " not found");
+                    return;
+                }
+                playedSound.Add(message.name, source);
+                source.clip = s.clip;
+                source.Play();
+            }
+            else
+            {
+                if (playedSound[message.name].isPlaying) { return; }
+                playedSound[message.name].Play();
+            }
+        }
+        private void ReceiveMessagePauseSoundOnce(MessagePauseSoundOnce message)
+        {
+            playedSound[message.name].Stop();
+        }
     }
 
-    public struct MessageSoundfx
-    {
-        public string name;
-        public MessageSoundfx(string name) { this.name = name; }
-            
-    }
-    public struct MessageSoundBgm
-    {
-        public string name;
-        public MessageSoundBgm(string name) { this.name = name; }
-            
-    }
 }
 
 

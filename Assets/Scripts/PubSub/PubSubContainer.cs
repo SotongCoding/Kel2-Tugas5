@@ -41,6 +41,31 @@ namespace TankU.PubSub
     public struct Heal { }
     #endregion
 
+    #region Module Audio
+    public struct MessageSoundfx
+    {
+        public string name;
+        public MessageSoundfx(string name) { this.name = name; }
+
+    }
+    public struct MessageSoundBgm
+    {
+        public string name;
+        public MessageSoundBgm(string name) { this.name = name; }
+
+    }
+    public struct MessagePlaySoundOnce
+    {
+        public string name;
+        public MessagePlaySoundOnce(string name) { this.name = name; }
+    }
+    public struct MessagePauseSoundOnce
+    {
+        public string name;
+        public MessagePauseSoundOnce(string name) { this.name = name; }
+    }
+    #endregion
+
     public struct MessageUnitDie
     {
         public Unit.Unit unit;
