@@ -39,6 +39,15 @@ namespace TankU.PubSub
 
     public struct Bounce { }
     public struct Heal { }
+    public struct MessageBounceTimeUp
+    {
+        public int unitId;
+
+        public MessageBounceTimeUp(int unitId)
+        {
+            this.unitId = unitId;
+        }
+    }
     #endregion
 
     #region Module Audio
@@ -87,20 +96,27 @@ namespace TankU.PubSub
     {
         public Transform shooter;
         public Transform bulletOutPos;
+        public bool useBouncing;
+        public int unitId;
 
-        public MessageSpawnBullet(Transform shooter, Transform bulletOutPos)
+        public MessageSpawnBullet(Transform shooter, Transform bulletOutPos, bool useBouncing, int unitId)
         {
             this.shooter = shooter;
             this.bulletOutPos = bulletOutPos;
+            this.useBouncing = useBouncing;
+            this.unitId = unitId;
         }
     }
+
     public struct MessageSpawnBomb
     {
         public Transform shooter;
+        public int PlayerId;
 
-        public MessageSpawnBomb(Transform shooter)
+        public MessageSpawnBomb(Transform shooter, int playerId)
         {
             this.shooter = shooter;
+            PlayerId = playerId;
         }
     }
     public struct Hit

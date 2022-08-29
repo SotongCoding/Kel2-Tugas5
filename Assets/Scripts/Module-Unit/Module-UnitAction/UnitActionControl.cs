@@ -68,7 +68,8 @@ namespace TankU.Unit.UnitAction
         public void ShootBullet()
         {
             PublishSubscribe.Instance.Publish<MessageSpawnBullet>(
-                new MessageSpawnBullet(thisUnit.head.transform, thisUnit.bulletOutPos, unitStatus._bulletUse == 1));
+                new MessageSpawnBullet(thisUnit.head.transform, thisUnit.bulletOutPos,
+                unitStatus._bulletUse == 1, unitStatus._id));
             PublishSubscribe.Instance.Publish<MessageSoundfx>(new MessageSoundfx("shoot"));
 
             thisUnit.CountDownShootBullet();
@@ -76,7 +77,7 @@ namespace TankU.Unit.UnitAction
         }
         public void PlaceBomb()
         {
-            if(unitStatus._bombAmount <=0) return;
+            if (unitStatus._bombAmount <= 0) return;
 
             PublishSubscribe.Instance.Publish<MessageSpawnBomb>(
                 new MessageSpawnBomb(thisUnit.transform, unitStatus._id));

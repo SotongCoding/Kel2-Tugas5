@@ -23,29 +23,3 @@ public class TestSpawn : MonoBehaviour
     //     }
     // }
 }
-
-public struct MessageSpawnBullet
-{
-    public Transform shooter;
-    public Transform bulletOutPos;
-    public bool useBouncing;
-
-    public MessageSpawnBullet(Transform shooter, Transform bulletOutPos, bool useBouncing)
-    {
-        this.shooter = shooter;
-        this.bulletOutPos = bulletOutPos;
-        this.useBouncing = useBouncing;
-    }
-}
-
-public struct MessageSpawnBomb
-{
-    public Transform shooter;
-    public int PlayerId;
-
-    public MessageSpawnBomb(Transform shooter, int playerId)
-    {
-        this.shooter = shooter;
-        PlayerId = playerId;
-    }
-}

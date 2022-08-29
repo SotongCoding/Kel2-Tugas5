@@ -18,7 +18,7 @@ namespace TankU.Unit
         InputModule.KeyBoard.KeyBoardControl keyBoardControl;
         //======================================
         [Header("Identity")]
-        [SerializeField] public int unitId;
+        [SerializeField] private int unitId;
 
         [Header("Shooting Setting")]
         public Transform bulletOutPos;
@@ -114,6 +114,7 @@ namespace TankU.Unit
             {
                 yield return new WaitForSeconds(unitStatusControl._shootBullet_delay);
                 unitStatusControl.SetShootStatus(true);
+                PublishSubscribe.Instance.Publish<MessageBounceTimeUp>(new MessageBounceTimeUp(unitId));
             }
         }
         public void CountDownPlantBomb()
