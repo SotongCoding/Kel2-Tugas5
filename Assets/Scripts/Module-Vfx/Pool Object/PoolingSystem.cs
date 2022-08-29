@@ -3,46 +3,49 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoolingSystem
+namespace TankU.Vfx
 {
-    int poolLimit;
-    Queue<IPoolObject> storedList = new Queue<IPoolObject>();
-    Queue<IPoolObject> spawnedList = new Queue<IPoolObject>();
-
-    public PoolingSystem(int poolLimit = 10)
+    public class PoolingSystem
     {
-        this.poolLimit = poolLimit;
-    }
+        int poolLimit;
+        Queue<IPoolObject> storedList = new Queue<IPoolObject>();
+        Queue<IPoolObject> spawnedList = new Queue<IPoolObject>();
 
-    public IPoolObject CreateObject(IPoolObject objectPrefab, Vector3 spawnPos, Transform parent = null)
-    {
-        IPoolObject outObject;
-        if (storedList.Count < 1)
+        public PoolingSystem(int poolLimit = 10)
         {
-            outObject = MonoBehaviour.Instantiate(objectPrefab.gameObject).
-            GetComponent<IPoolObject>();
-            outObject.Initial(this);
+            this.poolLimit = poolLimit;
         }
-        else
+
+        public IPoolObject CreateObject(IPoolObject objectPrefab, Vector3 spawnPos, Transform parent = null)
         {
-            outObject = storedList.Dequeue();
+            IPoolObject outObject;
+            if (storedList.Count < 1)
+            {
+                outObject = MonoBehaviour.Instantiate(objectPrefab.gameObject).
+                GetComponent<IPoolObject>();
+                outObject.Initial(this);
+            }
+            else
+            {
+                outObject = storedList.Dequeue();
+            }
+            outObject.transform.position = spawnPos;
+            outObject.transform.parent = parent;
+
+
+            outObject.OnCreate();
+            outObject.gameObject.SetActive(true);
+
+            spawnedList.Enqueue(outObject);
+
+
+            return outObject;
+
         }
-        outObject.transform.position = spawnPos;
-        outObject.transform.parent = parent;
 
-
-        outObject.OnCreate();
-        outObject.gameObject.SetActive(true);
-
-        spawnedList.Enqueue(outObject);
-
-
-        return outObject;
-
-    }
-
-    public void Store(IPoolObject poolObject)
-    {
-        storedList.Enqueue((IPoolObject)poolObject);
+        public void Store(IPoolObject poolObject)
+        {
+            storedList.Enqueue((IPoolObject)poolObject);
+        }
     }
 }

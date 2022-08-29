@@ -7,7 +7,6 @@ namespace TankU.Vfx
     [System.Serializable]
     public class Vfx
     {
-        public string name;
         public VfxObject visualPref;
         PoolingSystem pool = new PoolingSystem();
         public void CreateObject(Vector3 pos)

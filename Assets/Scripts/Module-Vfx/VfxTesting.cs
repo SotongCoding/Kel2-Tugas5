@@ -12,7 +12,7 @@ public class VfxTesting : MonoBehaviour
             PublishSubscribe.Instance.Publish<MessageVfx>(new MessageVfx("bomb_explosion",transform.position));
         if(Input.GetMouseButtonDown(1))
             PublishSubscribe.Instance.Publish<MessageVfx>(new MessageVfx("bullet_explosion", transform.position));
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space))
             PublishSubscribe.Instance.Publish<MessageVfx>(new MessageVfx("move", transform.position));
     }
 }
