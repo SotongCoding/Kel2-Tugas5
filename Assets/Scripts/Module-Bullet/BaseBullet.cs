@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TankU.PubSub;
+using TankU.PoolingSystem;
 
 namespace TankU.Bullet
 {
-    public class BaseBullet : MonoBehaviour
+    public class BaseBullet : PoolObject
     {
         [SerializeField] protected int _moveSpeed;
         protected Rigidbody _rigidbody;
@@ -45,14 +46,10 @@ namespace TankU.Bullet
                 if (hitTarget.TryGetComponent(out IBulletHitAble bulletHitAble))
                 {
                     hitTarget.ReciveBulletDamage();
-                    gameObject.SetActive(false);
+                    StoreToPool();
                     PublishSubscribe.Instance.Publish<MessageVfx>(new MessageVfx("bullet_explosion", transform.position));
                     PublishSubscribe.Instance.Publish<MessageSoundfx>(new MessageSoundfx("bullet_explosion"));
-
                 }
-                //hitTarget.ReciveBulletDamage();
-                //gameObject.SetActive(false);
-                //PublishSubscribe.Instance.Publish<MessageVfx>(new MessageVfx("bullet_explosion", transform.position));
             }
         }
 
@@ -60,10 +57,15 @@ namespace TankU.Bullet
         {
             if (other.gameObject.CompareTag("Wall"))
             {
-                gameObject.SetActive(false);
+                StoreToPool();
                 PublishSubscribe.Instance.Publish<MessageVfx>(new MessageVfx("bullet_explosion", transform.position));
                 PublishSubscribe.Instance.Publish<MessageSoundfx>(new MessageSoundfx("bullet_explosion"));
             }
+        }
+
+        public override void OnCreate()
+        {
+            
         }
     }
 
