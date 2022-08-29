@@ -6920,7 +6920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49a72ef13bec47244be567b7971f2663, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerGameplay: 1
+  timerGameplay: 99
   timer: 0
   GameTimer: 0
 --- !u!114 &1016856419
