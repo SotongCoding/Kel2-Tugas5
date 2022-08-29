@@ -1,19 +1,20 @@
 using Agate.MVC.Core;
 using System.Collections;
 using System.Collections.Generic;
+using TankU.PoolingSystem;
 using TankU.PubSub;
 using UnityEngine;
 
 namespace TankU.Bomb
 {
-    public class Bomb : MonoBehaviour, IPoolObject
+    public class Bomb : PoolObject
     {
         protected bool _activatedOnce;
         protected float _detonateWaitDuration;
         protected float _explosionRadius;
         protected int damagePoint = 1;
 
-        public PoolingSystem poolingSystem { private set; get; }
+        
 
         private void OnEnable()
         {
@@ -51,7 +52,8 @@ namespace TankU.Bomb
                     }
                 }
             }
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
+            StoreToPool();
         }
 
         //// View explosion radius for debug purposes
@@ -61,22 +63,9 @@ namespace TankU.Bomb
             Gizmos.DrawSphere(transform.position, _explosionRadius);
         }
 
-        void IPoolObject.Initial(PoolingSystem poolSystem)
-        {
-            Debug.Log("Intial" + poolSystem);
-            poolingSystem = poolSystem;
-        }
-
-        public void OnCreate()
+        public override void OnCreate()
         {
 
-        }
-
-        public void StoreToPool()
-        {
-            Debug.Log(poolingSystem);
-            poolingSystem.Store(this);
-            gameObject.SetActive(false);
         }
     }
 

@@ -3,17 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TankU.PubSub;
+using TankU.PoolingSystem;
 
 namespace TankU.Bullet
 {
-    public class BaseBullet : MonoBehaviour, IPoolObject
+    public class BaseBullet : PoolObject
     {
         [SerializeField] protected int _moveSpeed;
         protected Rigidbody _rigidbody;
         protected Collider _collider;
         protected int damagePoint = 1;
-
-        public PoolingSystem poolingSystem => throw new System.NotImplementedException();
 
         protected virtual void OnEnable()
         {
@@ -47,14 +46,10 @@ namespace TankU.Bullet
                 if (hitTarget.TryGetComponent(out IBulletHitAble bulletHitAble))
                 {
                     hitTarget.ReciveBulletDamage();
-                    gameObject.SetActive(false);
+                    StoreToPool();
                     PublishSubscribe.Instance.Publish<MessageVfx>(new MessageVfx("bullet_explosion", transform.position));
                     PublishSubscribe.Instance.Publish<MessageSoundfx>(new MessageSoundfx("bullet_explosion"));
-
                 }
-                //hitTarget.ReciveBulletDamage();
-                //gameObject.SetActive(false);
-                //PublishSubscribe.Instance.Publish<MessageVfx>(new MessageVfx("bullet_explosion", transform.position));
             }
         }
 
@@ -62,25 +57,15 @@ namespace TankU.Bullet
         {
             if (other.gameObject.CompareTag("Wall"))
             {
-                gameObject.SetActive(false);
+                StoreToPool();
                 PublishSubscribe.Instance.Publish<MessageVfx>(new MessageVfx("bullet_explosion", transform.position));
                 PublishSubscribe.Instance.Publish<MessageSoundfx>(new MessageSoundfx("bullet_explosion"));
             }
         }
 
-        public void Initial(PoolingSystem poolSystem)
+        public override void OnCreate()
         {
-            throw new System.NotImplementedException();
-        }
-
-        public void OnCreate()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void StoreToPool()
-        {
-            throw new System.NotImplementedException();
+            
         }
     }
 

@@ -2,25 +2,22 @@ using Agate.MVC.Core;
 using System.Collections;
 using System.Collections.Generic;
 using TankU.Bullet;
+using TankU.Bomb;
 using UnityEngine;
 using TankU.PubSub;
+using TankU.PoolingSystem;
+
 namespace TankU.UnitWeaponSpawner
 {
     public class UnitWeaponSpawner : MonoBehaviour
     {
-        [SerializeField] private List<GameObject> _pooledBullet;
-        [SerializeField] private List<GameObject> _pooledBouncingBullet;
-        [SerializeField] private List<GameObject> _pooledBomb;
-        [SerializeField] private GameObject _bullet;
-        [SerializeField] private GameObject _bouncingBullet;
-        [SerializeField] private GameObject _bomb;
-        [SerializeField] private int _bulletAmountToPool;
-        [SerializeField] private int _bouncingBulletAmountToPool;
-        [SerializeField] private int _bombAmountToPool;
-        // private Bullet _bulletScript;
-        // // private BouncingBullet _bouncingBulletScript;
-        // [SerializeField] private GameObject _spawnerPointPlayer1;
-        // [SerializeField] private GameObject _spawnerPointPlayer2;
+        PoolingSystem.PoolingSystem _baseBulletPool = new();
+        PoolingSystem.PoolingSystem _bouncingBulletPool = new();
+        PoolingSystem.PoolingSystem _bombPool = new();
+
+        public BaseBullet _baseBullet;
+        public BouncingBullet _bounceBullet;
+        public Bomb.Bomb _bombBomb;
 
         private void Awake()
         {
@@ -35,99 +32,40 @@ namespace TankU.UnitWeaponSpawner
 
         private void Start()
         {
-            _pooledBullet = new List<GameObject>();
-            _pooledBouncingBullet = new List<GameObject>();
-            _pooledBomb = new List<GameObject>();
-            _bullet = Resources.Load<GameObject>(@"Prefabs/Bullet");
-            _bouncingBullet = Resources.Load<GameObject>(@"Prefabs/BouncingBullet");
-            _bomb = Resources.Load<GameObject>(@"Prefabs/Bomb");
-            _bulletAmountToPool = 10;
-            _bouncingBulletAmountToPool = 10;
-            _bombAmountToPool = 10;
-            // _spawnerPointPlayer1 = GameObject.FindGameObjectWithTag("SpawnPoint1");
-            // _spawnerPointPlayer2 = GameObject.FindGameObjectWithTag("SpawnPoint2");
-
-            for (int i = 0; i < _bulletAmountToPool; i++)
-            {
-                GameObject obj = Instantiate(_bullet, transform.position, _bullet.transform.rotation);
-                obj.AddComponent<BaseBullet>();
-                obj.SetActive(false);
-                _pooledBullet.Add(obj);
-            }
-
-            for (int i = 0; i < _bouncingBulletAmountToPool; i++)
-            {
-                GameObject obj = Instantiate(_bouncingBullet, transform.position, transform.rotation);
-                obj.AddComponent<BouncingBullet>();
-                obj.SetActive(false);
-                _pooledBouncingBullet.Add(obj);
-            }
-
-            for (int i = 0; i < _bombAmountToPool; i++)
-            {
-                GameObject obj = Instantiate(_bomb, transform.position, Quaternion.identity);
-                obj.SetActive(false);
-                _pooledBomb.Add(obj);
-            }
-        }
-
-        private GameObject GetPooledBullet()
-        {
-            for (int i = 0; i < _bulletAmountToPool; i++)
-            {
-                if (!_pooledBullet[i].activeInHierarchy)
-                {
-                    return _pooledBullet[i];
-                }
-            }
-            return null;
-        }
-
-        private GameObject GetPooledBouncingBullet()
-        {
-            for (int i = 0; i < _bouncingBulletAmountToPool; i++)
-            {
-                if (!_pooledBouncingBullet[i].activeInHierarchy)
-                {
-                    return _pooledBouncingBullet[i];
-                }
-            }
-            return null;
-        }
-
-        private GameObject GetPooledBomb()
-        {
-            for (int i = 0; i < _bombAmountToPool; i++)
-            {
-                if (!_pooledBomb[i].activeInHierarchy)
-                {
-                    return _pooledBomb[i];
-                }
-            }
-            return null;
+            _baseBullet = Resources.Load<BaseBullet>(@"Prefabs/Bullet");
+            _bounceBullet = Resources.Load<BouncingBullet>(@"Prefabs/BouncingBullet");
+            _bombBomb = Resources.Load<Bomb.Bomb>(@"Prefabs/Bomb");
         }
 
         private void MessageReciveSpawnBullet(MessageSpawnBullet message)
         {
-            GameObject _bulletToSpawn = message.useBouncing ? GetPooledBouncingBullet() : GetPooledBullet();
-            // if (message.shooter == "Player1")
-            // {
-            //     _bulletToSpawn.transform.SetPositionAndRotation(_spawnerPointPlayer1.transform.position, _spawnerPointPlayer1.transform.rotation);
-            // }
-            // else if (message.shooter == "Player2")
-            // {
-            //     _bulletToSpawn.transform.SetPositionAndRotation(_spawnerPointPlayer2.transform.position, _spawnerPointPlayer2.transform.rotation);
-            // }
-            _bulletToSpawn.transform.SetPositionAndRotation(
-                message.bulletOutPos.position, message.shooter.rotation);
-            _bulletToSpawn.SetActive(true);
+            IPoolObject _bulletToSpawn = message.useBouncing ?
+                CreateBouncingBullet(message.bulletOutPos.position, message.shooter.rotation) : CreateBaseBullet(message.bulletOutPos.position, message.shooter.rotation);
+            _bulletToSpawn.transform.SetPositionAndRotation(message.bulletOutPos.position, message.shooter.rotation);
+
         }
 
         private void MessageReciveSpawnBomb(MessageSpawnBomb message)
         {
-            GameObject _bombToSpawn = GetPooledBomb();
-            _bombToSpawn.transform.SetPositionAndRotation(message.shooter.position, Quaternion.identity);
-            _bombToSpawn.SetActive(true);
+            IPoolObject _bombToSpawn = CreateBomb(message.shooter.position);
+        }
+
+        public IPoolObject CreateBaseBullet(Vector3 position, Quaternion rotation)
+        {
+            IPoolObject createdBaseBullet = _baseBulletPool.CreateObject(_baseBullet, position, rotation);
+            return createdBaseBullet;
+        }
+
+        public IPoolObject CreateBouncingBullet(Vector3 position, Quaternion rotation)
+        {
+            IPoolObject createdBouncingBullet = _bouncingBulletPool.CreateObject(_bounceBullet, position, rotation);
+            return createdBouncingBullet;
+        }
+
+        public IPoolObject CreateBomb(Vector3 position)
+        {
+            IPoolObject createdBomb = _bombPool.CreateObject(_bombBomb, position);
+            return createdBomb;
         }
     }
 }
