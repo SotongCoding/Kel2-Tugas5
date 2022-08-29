@@ -4689,7 +4689,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7490415536710137473}
-  - component: {fileID: 2439562279103922428}
+  - component: {fileID: -6035327297607606188}
   m_Layer: 0
   m_Name: Bomb Explosion
   m_TagString: Untagged
@@ -4715,7 +4715,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2439562279103922428
+--- !u!114 &-6035327297607606188
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4724,10 +4724,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4724622156793817733}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6f8193e89561fa439009776c1364945, type: 3}
+  m_Script: {fileID: 11500000, guid: 24d79aa3d47278d47b995e9ba96e265c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 3
 --- !u!1 &5755641973738939948
 GameObject:
   m_ObjectHideFlags: 0

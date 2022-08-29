@@ -22,7 +22,8 @@ namespace TankU.Vfx
         private void ReceiveMessageVfx(MessageVfx message)
         {
             Vfx v = Array.Find(visualEffect, vfx => vfx.name == message.name);
-            Instantiate(v.visualPref, message.position, Quaternion.identity);
+            //Instantiate(v.visualPref, message.position, Quaternion.identity);
+            v.CreateObject(message.position);
         }
         private void OnDestroy()
         {
