@@ -54,7 +54,7 @@ namespace TankU.Unit
         {
             Intial();
             SubscribeMessege();
-            visualControl.SetUnitColor(Color.white,Color.cyan);
+            //visualControl.SetUnitColor(Color.white,Color.cyan);
 
             //Testing
             SetController(keyBoardControl);

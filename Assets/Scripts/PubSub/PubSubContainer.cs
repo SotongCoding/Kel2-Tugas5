@@ -113,6 +113,16 @@ namespace TankU.PubSub
         }
     }
 
+    public struct ColourIn
+    {
+        public string message;
+
+        public ColourIn(string message)
+        {
+            this.message = message;
+        }
+    }
+
 }
 
 

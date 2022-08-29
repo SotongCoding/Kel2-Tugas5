@@ -15,7 +15,8 @@ namespace TankU.GameplayUI
         private int BombLeft;
         [SerializeField]
         private Slider HealthBar;
-        //ColorSelector selector;
+        [SerializeField]
+        ColourSelector Selector;
 
         public void UpdateHealth()
         {
@@ -27,8 +28,9 @@ namespace TankU.GameplayUI
             Bomb[BombLeft].SetActive(false);
         }
 
-        public void SendColor(){
-           // Player.SetUnitColor(selector.mainColor,selector.subColor);
+        public void SendColor()
+        {
+           Player.SetUnitColor(Selector.MainColour, Selector.SubColour);
         }
     }
 }

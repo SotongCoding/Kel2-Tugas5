@@ -63,7 +63,6 @@ namespace TankU.GameplayUI
         void Update()
         {
             TimerTxT.text = _TimerGameplay.timer.ToString();
-
             //for (int i = 0; i < UnitStatusUI.HealthBar.Length; i++)
             //{
             //    HealthBar[i] = GameObject.Find("P" + (i + 1) + "-Hp").GetComponent<Slider>();
