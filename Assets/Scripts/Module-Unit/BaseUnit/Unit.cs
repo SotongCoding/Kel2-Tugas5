@@ -40,6 +40,7 @@ namespace TankU.Unit
         {
             unitStatusControl.Initial(this, unitId);
             unitActionControl.Initial(this, unitStatusControl, visualControl);
+            visualControl.Initial(this);
         }
         private void SubscribeMessege()
         {
@@ -84,18 +85,15 @@ namespace TankU.Unit
         public void AddHealth()
         {
             unitStatusControl.AddHealth(1);
-            FindObjectOfType<GameplayUI.GameplayUI>().UpdateHealth(unitId);
             Debug.Log("Heal");
         }
         public void ReciveBulletDamage()
         {
             unitStatusControl.ReduceHealth(1);
-            FindObjectOfType<GameplayUI.GameplayUI>().UpdateHealth(unitId);
         }
         public void ReciveBombDamage()
         {
             unitStatusControl.ReduceHealth(2);
-            FindObjectOfType<GameplayUI.GameplayUI>().UpdateHealth(unitId);
             Debug.Log("Recive Bomb Damage" + name);
         }
         public void BouncingBullet(float PUduration)

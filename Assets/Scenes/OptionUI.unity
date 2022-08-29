@@ -379,8 +379,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 641543507}
         m_TargetAssemblyTypeName: TankU.OptionUI.OptionUI, Assembly-CSharp
-        m_MethodName: CloseUIOption
-        m_Mode: 1
+        m_MethodName: SetUIOption
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -803,6 +803,7 @@ MonoBehaviour:
   iconButton:
   - {fileID: 110046215}
   - {fileID: 750993939}
+  optionUI: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

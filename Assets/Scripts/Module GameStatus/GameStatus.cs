@@ -12,8 +12,8 @@ namespace TankU.GameStatus
     public class GameStatus : MonoBehaviour
     {
 
-        //[SerializeField]
-        //private GameObject gameOverPanel;
+        [SerializeField]
+        private GameObject gameOverPanel;
         List<Unit.Unit> unitOnCombat = new List<Unit.Unit>();
 
         private string playerWon;
@@ -70,7 +70,7 @@ namespace TankU.GameStatus
             }
             GameoverUI(playerWon);
             EndGameplay();
-            //gameOverPanel.SetActive(true);
+            gameOverPanel.SetActive(true);
         }
         #endregion
     }

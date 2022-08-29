@@ -25,6 +25,10 @@ namespace TankU.Audio
             sourceSoundfx = gameObject.AddComponent<AudioSource>();
             Subscriber();
             sourceSoundBgm = gameObject.AddComponent<AudioSource>();
+        }
+
+        private void Start()
+        {
             SetupAudioSourceSoundfx();
             SetupAudioSourceSoundBgm();
         }
@@ -117,6 +121,7 @@ namespace TankU.Audio
         }
         private void ReceiveMessageLoadVolume(MessageLoadVolume message)
         {
+            Debug.Log("Set Volume");
             sourceSoundfx.volume = GameSetting.GameSetting.Instance.savedData["soundSFX"];
             sourceSoundBgm.volume = GameSetting.GameSetting.Instance.savedData["soundBGM"];
         }

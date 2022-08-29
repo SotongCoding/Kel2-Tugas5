@@ -56,8 +56,8 @@ namespace TankU.Unit.UnitStatus
 
             _shootBullet_delay = 0.75f;
             _plantBomb_delay = 2.5f;
+            MonoBehaviour.FindObjectOfType<GameplayUI.GameplayUI>().UpdateHealth(_id);
 
-            Debug.Log("Status Tie Break");
         }
 
         public void ReduceHealth(int damage)
@@ -71,6 +71,7 @@ namespace TankU.Unit.UnitStatus
 
                 thisUnit.gameObject.SetActive(false);
             }
+            MonoBehaviour.FindObjectOfType<GameplayUI.GameplayUI>().UpdateHealth(_id);
         }
         public void ReduceBomb()
         {
@@ -79,6 +80,7 @@ namespace TankU.Unit.UnitStatus
         public void AddHealth(int amount)
         {
             _unitHealth = Math.Clamp(_unitHealth + amount, 0, 10);
+            MonoBehaviour.FindObjectOfType<GameplayUI.GameplayUI>().UpdateHealth(_id);
         }
 
         public void ChangeBullet(int bulletId)

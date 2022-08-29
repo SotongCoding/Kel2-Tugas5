@@ -22,6 +22,7 @@ namespace TankU.GameSetting
         {
             string gameSetting = JsonUtility.ToJson(save);
             File.WriteAllText(Application.dataPath + "/GameSetting.json", gameSetting);
+            savedData = JsonConvert.DeserializeObject<Dictionary<string, float>>(gameSetting);
         }
 
         public void LoadData()
