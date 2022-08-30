@@ -97,6 +97,16 @@ namespace TankU.GameplayUI
                 player_ui.SendColor();
             }
         }
+
+        public void Retry()
+        {
+            SceneLoader.Instance.LoadScene("Gameplay");
+        }
+
+        public void MainMenu()
+        {
+            SceneLoader.Instance.LoadScene("MainMenu");
+        }
     }
 }
 
