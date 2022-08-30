@@ -4036,7 +4036,7 @@ MonoBehaviour:
   - {fileID: 614072034}
   BombLeft: 5
   HealthBar: {fileID: 221440043}
-  Selector: {fileID: 0}
+  Selector: {fileID: 438372801}
 --- !u!1 &455806276
 GameObject:
   m_ObjectHideFlags: 0
@@ -5109,7 +5109,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00084496284, y: 0}
+  m_AnchoredPosition: {x: 0.0002208153, y: 0}
   m_SizeDelta: {x: -45.950012, y: 230}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &545924108
@@ -7656,9 +7656,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1016856418}
-        m_TargetAssemblyTypeName: TankU.GameStatus.TimerGameplay, Assembly-CSharp
-        m_MethodName: InitializeTime
+      - m_Target: {fileID: 1519810601}
+        m_TargetAssemblyTypeName: TankU.GameplayUI.GameplayUI, Assembly-CSharp
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11012,7 +11012,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerGameplay: 99
   timer: 0
-  GameTimer: 0
 --- !u!114 &1016856419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16253,7 +16252,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000046654455, y: 0}
+  m_AnchoredPosition: {x: 0.00017715701, y: 0}
   m_SizeDelta: {x: -45.950012, y: 230}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1503880047

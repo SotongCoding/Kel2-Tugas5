@@ -17,41 +17,13 @@ namespace TankU.GameplayUI
         private GameStatus.TimerGameplay _TimerGameplay;
         [SerializeField]
         private UnitStatusUI[] PlayerUI;
-        //[SerializeField]
-        //private GameObject[] Player;
-        //[SerializeField]
-        //private int[] HP;
-        //[SerializeField]
-        //private GameObject[] BombP1, BombP2, BombP3, BombP4;
-        //[SerializeField]
-        //private int[] BombLeft;
-        //[SerializeField]
-        //private Slider[] HealthBar;
+   
 
         void Start()
         {
             _TimerGameplay = GameObject.Find("GameStatus").GetComponent<TimerGameplay>();
             PublishSubscribe.Instance.Publish<MessageSoundBgm>(new MessageSoundBgm("gameplay"));
-            //Player = new GameObject[2];
-            //HP = new int[Player.Length];
-            //Debug.Log("player length: " + Player.Length);
-            //for (int i = 0; i < HP.Length; i++)
-            //{
-            //    HP[i] = GameObject.Find("P" + (i + 1)).GetComponent<Unit.Unit>()._health;
-            //}
-
-            //HealthBar = new Slider[Player.Length];
-            //for (int i = 0; i < HealthBar.Length; i++)
-            //{
-            //    HealthBar[i] = GameObject.Find("P" + (i + 1) + "-Hp").GetComponent<Slider>();
-            //    HealthBar[i].maxValue = HP[i];
-            //}
-
-            //BombLeft = new int[Player.Length];
-            //for (int i = 0; i < BombLeft.Length; i++)
-            //{
-            //    BombLeft[i] = 5;
-            //}
+          
         }
 
         private void Awake()
@@ -63,11 +35,7 @@ namespace TankU.GameplayUI
         void Update()
         {
             TimerTxT.text = _TimerGameplay.timer.ToString();
-            //for (int i = 0; i < UnitStatusUI.HealthBar.Length; i++)
-            //{
-            //    HealthBar[i] = GameObject.Find("P" + (i + 1) + "-Hp").GetComponent<Slider>();
-            //    HealthBar[i].value = GameObject.Find("P" + (i + 1)).GetComponent<Unit.Unit>()._health;
-            //}
+           
         }
         private void OnDestroy()
         {
@@ -96,6 +64,9 @@ namespace TankU.GameplayUI
             {
                 player_ui.SendColor();
             }
+        }
+        public void StartGame(){
+            PublishSubscribe.Instance.Publish<MessageStartGameplay>(new MessageStartGameplay());
         }
 
         public void Retry()
