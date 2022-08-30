@@ -1,11 +1,37 @@
+using Agate.MVC.Core;
 using System.Collections;
 using System.Collections.Generic;
+using TankU.PubSub;
 using UnityEngine;
 
 namespace TankU.Bullet
 {
     public class BouncingBullet : BaseBullet
     {
+        [SerializeField] private bool _isBounceActive;
+        [SerializeField] private int _playerID;
+
+        private void Awake()
+        {
+            PublishSubscribe.Instance.Subscribe<MessageBounceTimeUp>(MessageReciveBounceTimeUp);
+        }
+        private void OnDisable()
+        {
+            PublishSubscribe.Instance.Unsubscribe<MessageBounceTimeUp>(MessageReciveBounceTimeUp);
+        }
+
+        public void SetPlayerID(int id)
+        {
+            _playerID = id;
+        }
+
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            PublishSubscribe.Instance.Subscribe<MessageBounceTimeUp>(MessageReciveBounceTimeUp);
+            _isBounceActive = true;
+        }
+
         protected override void SetPhysicsMaterial()
         {
             base.SetPhysicsMaterial();
@@ -18,12 +44,21 @@ namespace TankU.Bullet
 
         protected override void OnHitWall(Collision other)
         {
-            if (_collider.material.bounciness == 0)
+            if (_isBounceActive == false)
             {
                 if (other.gameObject.CompareTag("Wall"))
                 {
-                    gameObject.SetActive(false);
+                    StoreToPool();
+                    PlayEffects();
                 }
+            }
+        }
+
+        private void MessageReciveBounceTimeUp(MessageBounceTimeUp message)
+        {
+            if (_playerID == message.unitId)
+            {
+                _isBounceActive = false;
             }
         }
     }

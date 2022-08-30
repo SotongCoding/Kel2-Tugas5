@@ -47,8 +47,7 @@ namespace TankU.Bullet
                 {
                     hitTarget.ReciveBulletDamage();
                     StoreToPool();
-                    PublishSubscribe.Instance.Publish<MessageVfx>(new MessageVfx("bullet_explosion", transform.position));
-                    PublishSubscribe.Instance.Publish<MessageSoundfx>(new MessageSoundfx("bullet_explosion"));
+                    PlayEffects();
                 }
             }
         }
@@ -58,14 +57,19 @@ namespace TankU.Bullet
             if (other.gameObject.CompareTag("Wall"))
             {
                 StoreToPool();
-                PublishSubscribe.Instance.Publish<MessageVfx>(new MessageVfx("bullet_explosion", transform.position));
-                PublishSubscribe.Instance.Publish<MessageSoundfx>(new MessageSoundfx("bullet_explosion"));
+                PlayEffects();
             }
         }
 
         public override void OnCreate()
         {
             
+        }
+
+        protected void PlayEffects()
+        {
+            PublishSubscribe.Instance.Publish<MessageVfx>(new MessageVfx("bullet_explosion", transform.position));
+            PublishSubscribe.Instance.Publish<MessageSoundfx>(new MessageSoundfx("bullet_explosion"));
         }
     }
 
