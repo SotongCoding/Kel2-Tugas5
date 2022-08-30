@@ -31,6 +31,7 @@ namespace TankU.GameplayUI
         public void SendColor()
         {
            Player.SetUnitColor(Selector.MainColour, Selector.SubColour);
+           Debug.Log("Main Color: " + Selector.MainColour + "Sub Color: " + Selector.SubColour);
         }
     }
 }

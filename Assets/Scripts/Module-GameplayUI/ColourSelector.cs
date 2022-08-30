@@ -16,6 +16,9 @@ namespace TankU.GameplayUI
         public int ColorIndex;
         private Button[] ColorButton;
         private bool IsMainSelected, isSubSelected;
+        //private int PlayerReady;
+        [SerializeField]
+        private GameplayUI _GameplayReady;
 
         // Start is called before the first frame update
         void Start()
@@ -26,9 +29,16 @@ namespace TankU.GameplayUI
         // Update is called once per frame
         void Update()
         {
-            if (IsMainSelected && isSubSelected)
+            if (IsMainSelected && isSubSelected && _GameplayReady.PlayerReady == 4)
             {
                 PlayButton.gameObject.SetActive(true);
+                //PlayerReady = +1;
+                //Debug.Log("Ready Amount: " + PlayerReady);
+                //if (PlayerReady == 2)
+                //{
+                //    PlayButton.gameObject.SetActive(true);
+                //}
+                
             }
         }
         public void MainColor(Image MainImg)
@@ -36,13 +46,16 @@ namespace TankU.GameplayUI
             MainColour = MainImg.color;
             PublishSubscribe.Instance.Publish<PubSub.ColourIn>(new PubSub.ColourIn());
             IsMainSelected = true;
+            _GameplayReady.PlayerReady++;
         }
         public void SubColor(Image SubImg)
         {
             SubColour = SubImg.color;
             PublishSubscribe.Instance.Publish<PubSub.ColourIn>(new PubSub.ColourIn());
             isSubSelected = true;
+            _GameplayReady.PlayerReady++;
         }
+        
     }
 }
 
