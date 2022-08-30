@@ -70,7 +70,7 @@ namespace TankU.Audio
         // Message Received
         private void ReceiveMessageSoundfx(MessageSoundfx message)
         {
-            Soundfx s = Array.Find(soundfx, sound => sound.name == message.name);
+            Soundfx s = Array.Find(soundfx, sound => sound.clip.name == message.name);
             if (s == null)
             {
                 Debug.LogWarning("Sound : " + s + " not found");
@@ -80,7 +80,7 @@ namespace TankU.Audio
         }
         private void ReceiveMessageSoundBgm(MessageSoundBgm message)
         {
-            SoundBgm s = Array.Find(soundBgm, sound => sound.name == message.name);
+            SoundBgm s = Array.Find(soundBgm, sound => sound.clip.name == message.name);
             if (s == null)
             {
                 Debug.LogWarning("Sound : " + s + " not found");
@@ -96,7 +96,7 @@ namespace TankU.Audio
             {
                 source = gameObject.AddComponent<AudioSource>();
                 source.volume = GameSetting.GameSetting.Instance.savedData["soundSFX"];
-                Soundfx s = Array.Find(soundfx, sound => sound.name == message.name);
+                Soundfx s = Array.Find(soundfx, sound => sound.clip.name == message.name);
                 if (s == null)
                 {
                     Debug.LogWarning("Sound : " + s + " not found");
