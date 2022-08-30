@@ -1312,7 +1312,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1065709633900220870, guid: f0ad4f17dd44f204e91ebf5e351f44cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1065709633900220870, guid: f0ad4f17dd44f204e91ebf5e351f44cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
@@ -1380,7 +1380,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1065709633900220870, guid: f0ad4f17dd44f204e91ebf5e351f44cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
-      value: set_interactable
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1065709633900220870, guid: f0ad4f17dd44f204e91ebf5e351f44cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
@@ -1396,7 +1396,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1065709633900220870, guid: f0ad4f17dd44f204e91ebf5e351f44cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
-      value: UnityEngine.UI.Selectable, UnityEngine.UI
+      value: TankU.GameplayUI.ColourSelector, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1065709633900220870, guid: f0ad4f17dd44f204e91ebf5e351f44cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_TargetAssemblyTypeName
@@ -1424,7 +1424,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1065709633900220870, guid: f0ad4f17dd44f204e91ebf5e351f44cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1065709633900220870, guid: f0ad4f17dd44f204e91ebf5e351f44cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -1585,7 +1585,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6692224446419382802, guid: 684e57324bb59474a8f4c5879698c764, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6692224446419382802, guid: 684e57324bb59474a8f4c5879698c764, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
@@ -1641,7 +1641,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6692224446419382802, guid: 684e57324bb59474a8f4c5879698c764, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
-      value: set_interactable
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6692224446419382802, guid: 684e57324bb59474a8f4c5879698c764, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
@@ -1653,7 +1653,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6692224446419382802, guid: 684e57324bb59474a8f4c5879698c764, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
-      value: UnityEngine.UI.Selectable, UnityEngine.UI
+      value: TankU.GameplayUI.ColourSelector, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6692224446419382802, guid: 684e57324bb59474a8f4c5879698c764, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_TargetAssemblyTypeName
@@ -1673,7 +1673,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6692224446419382802, guid: 684e57324bb59474a8f4c5879698c764, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6692224446419382802, guid: 684e57324bb59474a8f4c5879698c764, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -3454,7 +3454,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6255035664366491383, guid: a658ac3a696b76641ab23237d07bee99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6255035664366491383, guid: a658ac3a696b76641ab23237d07bee99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
@@ -3475,7 +3475,7 @@ PrefabInstance:
     - target: {fileID: 6255035664366491383, guid: a658ac3a696b76641ab23237d07bee99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 438372801}
     - target: {fileID: 6255035664366491383, guid: a658ac3a696b76641ab23237d07bee99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
@@ -3510,7 +3510,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6255035664366491383, guid: a658ac3a696b76641ab23237d07bee99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
-      value: set_interactable
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6255035664366491383, guid: a658ac3a696b76641ab23237d07bee99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
@@ -3522,7 +3522,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6255035664366491383, guid: a658ac3a696b76641ab23237d07bee99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
-      value: UnityEngine.UI.Selectable, UnityEngine.UI
+      value: TankU.GameplayUI.ColourSelector, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6255035664366491383, guid: a658ac3a696b76641ab23237d07bee99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_TargetAssemblyTypeName
@@ -3542,7 +3542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6255035664366491383, guid: a658ac3a696b76641ab23237d07bee99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6255035664366491383, guid: a658ac3a696b76641ab23237d07bee99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -3975,6 +3975,7 @@ MonoBehaviour:
   SubColour: {r: 0, g: 0, b: 0, a: 0}
   PlayButton: {fileID: 1760780707}
   ColorIndex: 0
+  _GameplayReady: {fileID: 1519810601}
 --- !u!1 &450765904
 GameObject:
   m_ObjectHideFlags: 0
@@ -4279,7 +4280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9210911096268041113, guid: e4273f42783a6d348a500e0bae1b63b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9210911096268041113, guid: e4273f42783a6d348a500e0bae1b63b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
@@ -4347,7 +4348,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9210911096268041113, guid: e4273f42783a6d348a500e0bae1b63b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
-      value: set_interactable
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9210911096268041113, guid: e4273f42783a6d348a500e0bae1b63b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
@@ -4363,7 +4364,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9210911096268041113, guid: e4273f42783a6d348a500e0bae1b63b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
-      value: UnityEngine.UI.Selectable, UnityEngine.UI
+      value: TankU.GameplayUI.ColourSelector, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 9210911096268041113, guid: e4273f42783a6d348a500e0bae1b63b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_TargetAssemblyTypeName
@@ -4391,7 +4392,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9210911096268041113, guid: e4273f42783a6d348a500e0bae1b63b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9210911096268041113, guid: e4273f42783a6d348a500e0bae1b63b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -5109,7 +5110,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0002208153, y: 0}
+  m_AnchoredPosition: {x: 0.00010342702, y: 0}
   m_SizeDelta: {x: -45.950012, y: 230}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &545924108
@@ -5375,7 +5376,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 577705151352969887, guid: 091a2aeb6806c5041b8d7cb8278cd9d8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 577705151352969887, guid: 091a2aeb6806c5041b8d7cb8278cd9d8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
@@ -5396,7 +5397,7 @@ PrefabInstance:
     - target: {fileID: 577705151352969887, guid: 091a2aeb6806c5041b8d7cb8278cd9d8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 438372801}
     - target: {fileID: 577705151352969887, guid: 091a2aeb6806c5041b8d7cb8278cd9d8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
@@ -5431,7 +5432,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 577705151352969887, guid: 091a2aeb6806c5041b8d7cb8278cd9d8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
-      value: set_interactable
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 577705151352969887, guid: 091a2aeb6806c5041b8d7cb8278cd9d8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
@@ -5443,7 +5444,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 577705151352969887, guid: 091a2aeb6806c5041b8d7cb8278cd9d8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
-      value: UnityEngine.UI.Selectable, UnityEngine.UI
+      value: TankU.GameplayUI.ColourSelector, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 577705151352969887, guid: 091a2aeb6806c5041b8d7cb8278cd9d8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_TargetAssemblyTypeName
@@ -5463,7 +5464,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 577705151352969887, guid: 091a2aeb6806c5041b8d7cb8278cd9d8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 577705151352969887, guid: 091a2aeb6806c5041b8d7cb8278cd9d8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -6031,6 +6032,7 @@ MonoBehaviour:
   SubColour: {r: 0, g: 0, b: 0, a: 0}
   PlayButton: {fileID: 1760780707}
   ColorIndex: 0
+  _GameplayReady: {fileID: 1519810601}
 --- !u!1 &620154693
 GameObject:
   m_ObjectHideFlags: 0
@@ -6659,10 +6661,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3795523436086552695, guid: 3d1fe7cf65ceaba4e80be2d6bad28f70, type: 3}
-      propertyPath: UnitId
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3795523436086552695, guid: 3d1fe7cf65ceaba4e80be2d6bad28f70, type: 3}
       propertyPath: unitId
       value: 2
       objectReference: {fileID: 0}
@@ -6759,7 +6757,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2100555576020845478, guid: 8103e30a52f020b46a71f028585993a1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2100555576020845478, guid: 8103e30a52f020b46a71f028585993a1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
@@ -6780,7 +6778,7 @@ PrefabInstance:
     - target: {fileID: 2100555576020845478, guid: 8103e30a52f020b46a71f028585993a1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 438372801}
     - target: {fileID: 2100555576020845478, guid: 8103e30a52f020b46a71f028585993a1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
@@ -6815,7 +6813,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2100555576020845478, guid: 8103e30a52f020b46a71f028585993a1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
-      value: set_interactable
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2100555576020845478, guid: 8103e30a52f020b46a71f028585993a1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
@@ -6827,7 +6825,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2100555576020845478, guid: 8103e30a52f020b46a71f028585993a1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
-      value: UnityEngine.UI.Selectable, UnityEngine.UI
+      value: TankU.GameplayUI.ColourSelector, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2100555576020845478, guid: 8103e30a52f020b46a71f028585993a1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_TargetAssemblyTypeName
@@ -6847,7 +6845,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2100555576020845478, guid: 8103e30a52f020b46a71f028585993a1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2100555576020845478, guid: 8103e30a52f020b46a71f028585993a1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -7656,9 +7654,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1519810601}
-        m_TargetAssemblyTypeName: TankU.GameplayUI.GameplayUI, Assembly-CSharp
-        m_MethodName: StartGame
+      - m_Target: {fileID: 1016856418}
+        m_TargetAssemblyTypeName: TankU.GameStatus.TimerGameplay, Assembly-CSharp
+        m_MethodName: InitializeTime
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8799,7 +8797,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6692224446419382802, guid: 684e57324bb59474a8f4c5879698c764, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6692224446419382802, guid: 684e57324bb59474a8f4c5879698c764, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
@@ -8820,7 +8818,7 @@ PrefabInstance:
     - target: {fileID: 6692224446419382802, guid: 684e57324bb59474a8f4c5879698c764, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 438372801}
     - target: {fileID: 6692224446419382802, guid: 684e57324bb59474a8f4c5879698c764, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
@@ -8855,7 +8853,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6692224446419382802, guid: 684e57324bb59474a8f4c5879698c764, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
-      value: set_interactable
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6692224446419382802, guid: 684e57324bb59474a8f4c5879698c764, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
@@ -8867,7 +8865,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6692224446419382802, guid: 684e57324bb59474a8f4c5879698c764, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
-      value: UnityEngine.UI.Selectable, UnityEngine.UI
+      value: TankU.GameplayUI.ColourSelector, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6692224446419382802, guid: 684e57324bb59474a8f4c5879698c764, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_TargetAssemblyTypeName
@@ -8887,7 +8885,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6692224446419382802, guid: 684e57324bb59474a8f4c5879698c764, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6692224446419382802, guid: 684e57324bb59474a8f4c5879698c764, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -9551,7 +9549,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'P1: 0'
+  m_text: 'P2: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9964,6 +9962,7 @@ MonoBehaviour:
   SubColour: {r: 0, g: 0, b: 0, a: 0}
   PlayButton: {fileID: 1760780707}
   ColorIndex: 0
+  _GameplayReady: {fileID: 0}
 --- !u!1 &978885585
 GameObject:
   m_ObjectHideFlags: 0
@@ -11012,6 +11011,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerGameplay: 99
   timer: 0
+  GameTimer: 0
 --- !u!114 &1016856419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11849,7 +11849,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 577705151352969887, guid: 091a2aeb6806c5041b8d7cb8278cd9d8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 577705151352969887, guid: 091a2aeb6806c5041b8d7cb8278cd9d8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
@@ -11905,7 +11905,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 577705151352969887, guid: 091a2aeb6806c5041b8d7cb8278cd9d8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
-      value: set_interactable
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 577705151352969887, guid: 091a2aeb6806c5041b8d7cb8278cd9d8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
@@ -11917,7 +11917,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 577705151352969887, guid: 091a2aeb6806c5041b8d7cb8278cd9d8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
-      value: UnityEngine.UI.Selectable, UnityEngine.UI
+      value: TankU.GameplayUI.ColourSelector, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 577705151352969887, guid: 091a2aeb6806c5041b8d7cb8278cd9d8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_TargetAssemblyTypeName
@@ -11937,7 +11937,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 577705151352969887, guid: 091a2aeb6806c5041b8d7cb8278cd9d8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 577705151352969887, guid: 091a2aeb6806c5041b8d7cb8278cd9d8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -12006,7 +12006,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6774613739857890137, guid: d6d9ea1b725cca4468551e8dc61456dc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6774613739857890137, guid: d6d9ea1b725cca4468551e8dc61456dc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
@@ -12074,7 +12074,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6774613739857890137, guid: d6d9ea1b725cca4468551e8dc61456dc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
-      value: set_interactable
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6774613739857890137, guid: d6d9ea1b725cca4468551e8dc61456dc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
@@ -12090,7 +12090,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6774613739857890137, guid: d6d9ea1b725cca4468551e8dc61456dc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
-      value: UnityEngine.UI.Selectable, UnityEngine.UI
+      value: TankU.GameplayUI.ColourSelector, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6774613739857890137, guid: d6d9ea1b725cca4468551e8dc61456dc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_TargetAssemblyTypeName
@@ -12118,7 +12118,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6774613739857890137, guid: d6d9ea1b725cca4468551e8dc61456dc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6774613739857890137, guid: d6d9ea1b725cca4468551e8dc61456dc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -12360,7 +12360,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1740200333}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99809515
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -13184,10 +13184,6 @@ PrefabInstance:
     - target: {fileID: 3795523436086552692, guid: 3d1fe7cf65ceaba4e80be2d6bad28f70, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3795523436086552695, guid: 3d1fe7cf65ceaba4e80be2d6bad28f70, type: 3}
-      propertyPath: UnitId
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3795523436367827368, guid: 3d1fe7cf65ceaba4e80be2d6bad28f70, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -14053,7 +14049,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2100555576020845478, guid: 8103e30a52f020b46a71f028585993a1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2100555576020845478, guid: 8103e30a52f020b46a71f028585993a1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
@@ -14109,7 +14105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2100555576020845478, guid: 8103e30a52f020b46a71f028585993a1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
-      value: set_interactable
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2100555576020845478, guid: 8103e30a52f020b46a71f028585993a1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
@@ -14121,7 +14117,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2100555576020845478, guid: 8103e30a52f020b46a71f028585993a1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
-      value: UnityEngine.UI.Selectable, UnityEngine.UI
+      value: TankU.GameplayUI.ColourSelector, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2100555576020845478, guid: 8103e30a52f020b46a71f028585993a1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_TargetAssemblyTypeName
@@ -14141,7 +14137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2100555576020845478, guid: 8103e30a52f020b46a71f028585993a1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2100555576020845478, guid: 8103e30a52f020b46a71f028585993a1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -14348,7 +14344,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 551663521}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99809515
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -14436,7 +14432,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9210911096268041113, guid: e4273f42783a6d348a500e0bae1b63b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9210911096268041113, guid: e4273f42783a6d348a500e0bae1b63b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
@@ -14461,11 +14457,11 @@ PrefabInstance:
     - target: {fileID: 9210911096268041113, guid: e4273f42783a6d348a500e0bae1b63b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 438372801}
     - target: {fileID: 9210911096268041113, guid: e4273f42783a6d348a500e0bae1b63b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
-      objectReference: {fileID: 474087314}
+      objectReference: {fileID: 0}
     - target: {fileID: 9210911096268041113, guid: e4273f42783a6d348a500e0bae1b63b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Target
       value: 
@@ -14504,7 +14500,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9210911096268041113, guid: e4273f42783a6d348a500e0bae1b63b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
-      value: set_interactable
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9210911096268041113, guid: e4273f42783a6d348a500e0bae1b63b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
@@ -14520,7 +14516,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9210911096268041113, guid: e4273f42783a6d348a500e0bae1b63b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
-      value: UnityEngine.UI.Selectable, UnityEngine.UI
+      value: TankU.GameplayUI.ColourSelector, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 9210911096268041113, guid: e4273f42783a6d348a500e0bae1b63b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_TargetAssemblyTypeName
@@ -14544,7 +14540,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9210911096268041113, guid: e4273f42783a6d348a500e0bae1b63b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9210911096268041113, guid: e4273f42783a6d348a500e0bae1b63b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -14995,7 +14991,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1606552693120463087, guid: 615b2383971bc7f40815246ee2b9d28d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1606552693120463087, guid: 615b2383971bc7f40815246ee2b9d28d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
@@ -15063,7 +15059,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1606552693120463087, guid: 615b2383971bc7f40815246ee2b9d28d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
-      value: set_interactable
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1606552693120463087, guid: 615b2383971bc7f40815246ee2b9d28d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
@@ -15079,7 +15075,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1606552693120463087, guid: 615b2383971bc7f40815246ee2b9d28d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
-      value: UnityEngine.UI.Selectable, UnityEngine.UI
+      value: TankU.GameplayUI.ColourSelector, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1606552693120463087, guid: 615b2383971bc7f40815246ee2b9d28d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_TargetAssemblyTypeName
@@ -15107,7 +15103,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1606552693120463087, guid: 615b2383971bc7f40815246ee2b9d28d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1606552693120463087, guid: 615b2383971bc7f40815246ee2b9d28d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -16252,7 +16248,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00017715701, y: 0}
+  m_AnchoredPosition: {x: 0.00007290944, y: 0}
   m_SizeDelta: {x: -45.950012, y: 230}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1503880047
@@ -16415,6 +16411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a1c14c9df491f442876145164242e12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerReady: 0
   TimerTxT: {fileID: 985523280}
   TieBreakTxT: {fileID: 455806277}
   PlayerUI:
@@ -16862,7 +16859,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1606552693120463087, guid: 615b2383971bc7f40815246ee2b9d28d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1606552693120463087, guid: 615b2383971bc7f40815246ee2b9d28d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
@@ -16887,7 +16884,7 @@ PrefabInstance:
     - target: {fileID: 1606552693120463087, guid: 615b2383971bc7f40815246ee2b9d28d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 438372801}
     - target: {fileID: 1606552693120463087, guid: 615b2383971bc7f40815246ee2b9d28d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
@@ -16930,7 +16927,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1606552693120463087, guid: 615b2383971bc7f40815246ee2b9d28d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
-      value: set_interactable
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1606552693120463087, guid: 615b2383971bc7f40815246ee2b9d28d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
@@ -16946,7 +16943,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1606552693120463087, guid: 615b2383971bc7f40815246ee2b9d28d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
-      value: UnityEngine.UI.Selectable, UnityEngine.UI
+      value: TankU.GameplayUI.ColourSelector, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1606552693120463087, guid: 615b2383971bc7f40815246ee2b9d28d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_TargetAssemblyTypeName
@@ -16966,7 +16963,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1606552693120463087, guid: 615b2383971bc7f40815246ee2b9d28d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1606552693120463087, guid: 615b2383971bc7f40815246ee2b9d28d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -18472,7 +18469,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6255035664366491383, guid: a658ac3a696b76641ab23237d07bee99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6255035664366491383, guid: a658ac3a696b76641ab23237d07bee99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
@@ -18528,7 +18525,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6255035664366491383, guid: a658ac3a696b76641ab23237d07bee99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
-      value: set_interactable
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6255035664366491383, guid: a658ac3a696b76641ab23237d07bee99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
@@ -18540,7 +18537,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6255035664366491383, guid: a658ac3a696b76641ab23237d07bee99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
-      value: UnityEngine.UI.Selectable, UnityEngine.UI
+      value: TankU.GameplayUI.ColourSelector, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6255035664366491383, guid: a658ac3a696b76641ab23237d07bee99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_TargetAssemblyTypeName
@@ -18560,7 +18557,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6255035664366491383, guid: a658ac3a696b76641ab23237d07bee99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6255035664366491383, guid: a658ac3a696b76641ab23237d07bee99, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -19454,7 +19451,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6774613739857890137, guid: d6d9ea1b725cca4468551e8dc61456dc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6774613739857890137, guid: d6d9ea1b725cca4468551e8dc61456dc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
@@ -19479,11 +19476,11 @@ PrefabInstance:
     - target: {fileID: 6774613739857890137, guid: d6d9ea1b725cca4468551e8dc61456dc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 438372801}
     - target: {fileID: 6774613739857890137, guid: d6d9ea1b725cca4468551e8dc61456dc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
-      objectReference: {fileID: 1121593658}
+      objectReference: {fileID: 0}
     - target: {fileID: 6774613739857890137, guid: d6d9ea1b725cca4468551e8dc61456dc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Target
       value: 
@@ -19522,7 +19519,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6774613739857890137, guid: d6d9ea1b725cca4468551e8dc61456dc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
-      value: set_interactable
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6774613739857890137, guid: d6d9ea1b725cca4468551e8dc61456dc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
@@ -19538,7 +19535,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6774613739857890137, guid: d6d9ea1b725cca4468551e8dc61456dc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
-      value: UnityEngine.UI.Selectable, UnityEngine.UI
+      value: TankU.GameplayUI.ColourSelector, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6774613739857890137, guid: d6d9ea1b725cca4468551e8dc61456dc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_TargetAssemblyTypeName
@@ -19562,7 +19559,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6774613739857890137, guid: d6d9ea1b725cca4468551e8dc61456dc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6774613739857890137, guid: d6d9ea1b725cca4468551e8dc61456dc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -22214,6 +22211,7 @@ MonoBehaviour:
   SubColour: {r: 0, g: 0, b: 0, a: 0}
   PlayButton: {fileID: 1760780707}
   ColorIndex: 0
+  _GameplayReady: {fileID: 0}
 --- !u!1 &2055456980
 GameObject:
   m_ObjectHideFlags: 0
@@ -22838,7 +22836,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1065709633900220870, guid: f0ad4f17dd44f204e91ebf5e351f44cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1065709633900220870, guid: f0ad4f17dd44f204e91ebf5e351f44cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
@@ -22863,11 +22861,11 @@ PrefabInstance:
     - target: {fileID: 1065709633900220870, guid: f0ad4f17dd44f204e91ebf5e351f44cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 438372801}
     - target: {fileID: 1065709633900220870, guid: f0ad4f17dd44f204e91ebf5e351f44cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
-      objectReference: {fileID: 195302716}
+      objectReference: {fileID: 0}
     - target: {fileID: 1065709633900220870, guid: f0ad4f17dd44f204e91ebf5e351f44cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Target
       value: 
@@ -22906,7 +22904,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1065709633900220870, guid: f0ad4f17dd44f204e91ebf5e351f44cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
-      value: set_interactable
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1065709633900220870, guid: f0ad4f17dd44f204e91ebf5e351f44cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
@@ -22922,7 +22920,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1065709633900220870, guid: f0ad4f17dd44f204e91ebf5e351f44cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
-      value: UnityEngine.UI.Selectable, UnityEngine.UI
+      value: TankU.GameplayUI.ColourSelector, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1065709633900220870, guid: f0ad4f17dd44f204e91ebf5e351f44cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_TargetAssemblyTypeName
@@ -22946,7 +22944,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1065709633900220870, guid: f0ad4f17dd44f204e91ebf5e351f44cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1065709633900220870, guid: f0ad4f17dd44f204e91ebf5e351f44cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_ObjectArgumentAssemblyTypeName

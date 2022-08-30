@@ -12,6 +12,7 @@ namespace TankU.GameplayUI
 {
     public class GameplayUI : MonoBehaviour
     {
+        public int PlayerReady;
         [SerializeField]
         private TextMeshProUGUI TimerTxT, TieBreakTxT;
         private GameStatus.TimerGameplay _TimerGameplay;
@@ -64,6 +65,7 @@ namespace TankU.GameplayUI
             {
                 player_ui.SendColor();
             }
+
         }
         public void StartGame(){
             PublishSubscribe.Instance.Publish<MessageStartGameplay>(new MessageStartGameplay());
