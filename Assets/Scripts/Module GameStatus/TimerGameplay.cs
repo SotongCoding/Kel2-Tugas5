@@ -17,12 +17,11 @@ namespace TankU.GameStatus
 
         private bool timeActive = false;
         [HideInInspector]
-        public float timer, GameTimer;
+        public float timer;
 
         private void Awake()
         {
             Subscriber();
-            GameTimer = timerGameplay;
         }
         private void OnDestroy()
         {
@@ -43,11 +42,6 @@ namespace TankU.GameStatus
                 }
             }
         }
-
-        public void InitializeTime()
-        {
-            timerGameplay = GameTimer;
-        } 
 
         private void Subscriber()
         {

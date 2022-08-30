@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 using Agate.MVC.Core;
 
 using TankU.PubSub;
@@ -14,6 +14,8 @@ namespace TankU.GameStatus
 
         [SerializeField]
         private GameObject gameOverPanel;
+        [SerializeField]
+        private TextMeshProUGUI PlayerWinner;
         List<Unit.Unit> unitOnCombat = new List<Unit.Unit>();
         
 

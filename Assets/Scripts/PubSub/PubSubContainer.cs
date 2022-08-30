@@ -119,15 +119,6 @@ namespace TankU.PubSub
             PlayerId = playerId;
         }
     }
-    public struct Hit
-    {
-        int _hitDamage;
-
-        public Hit(int damagePoint)
-        {
-            this._hitDamage = damagePoint;
-        }
-    }
 
     public struct ColourIn
     {
