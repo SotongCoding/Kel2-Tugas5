@@ -9,7 +9,6 @@ namespace TankU.Audio
     [System.Serializable]
     public class Soundfx
     {
-        public string name;
         public AudioClip clip;
 
         [HideInInspector]

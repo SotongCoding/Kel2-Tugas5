@@ -9,7 +9,6 @@ namespace TankU.Audio
     [System.Serializable]
     public class SoundBgm
     {
-        public string name;
         public AudioClip clip;
 
         [HideInInspector]
