@@ -39,10 +39,17 @@ namespace TankU.UnitWeaponSpawner
 
         private void MessageReciveSpawnBullet(MessageSpawnBullet message)
         {
-            IPoolObject _bulletToSpawn = message.useBouncing ?
-                CreateBouncingBullet(message.bulletOutPos.position, message.shooter.rotation) : CreateBaseBullet(message.bulletOutPos.position, message.shooter.rotation);
+            IPoolObject _bulletToSpawn;
+            if (message.useBouncing)
+            {
+                _bulletToSpawn = CreateBouncingBullet(message.bulletOutPos.position, message.shooter.rotation);
+                _bulletToSpawn.gameObject.GetComponent<BouncingBullet>().SetPlayerID(message.unitId);
+            }
+            else
+            {
+                _bulletToSpawn = CreateBaseBullet(message.bulletOutPos.position, message.shooter.rotation);
+            }
             _bulletToSpawn.transform.SetPositionAndRotation(message.bulletOutPos.position, message.shooter.rotation);
-
         }
 
         private void MessageReciveSpawnBomb(MessageSpawnBomb message)

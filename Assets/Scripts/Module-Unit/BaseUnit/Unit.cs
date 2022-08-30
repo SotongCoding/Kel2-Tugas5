@@ -104,6 +104,7 @@ namespace TankU.Unit
             () =>
             {
                 unitStatusControl.ChangeBullet(0);
+                PublishSubscribe.Instance.Publish<MessageBounceTimeUp>(new MessageBounceTimeUp(unitId));
             }));
         }
 
@@ -114,7 +115,6 @@ namespace TankU.Unit
             {
                 yield return new WaitForSeconds(unitStatusControl._shootBullet_delay);
                 unitStatusControl.SetShootStatus(true);
-                PublishSubscribe.Instance.Publish<MessageBounceTimeUp>(new MessageBounceTimeUp(unitId));
             }
         }
         public void CountDownPlantBomb()
