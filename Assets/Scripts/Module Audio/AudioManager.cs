@@ -38,13 +38,17 @@ namespace TankU.Audio
         }
         void SetupAudioSourceSoundfx()
         {
-            sourceSoundfx.volume = GameSetting.GameSetting.Instance.savedData["soundSFX"];
+            //sourceSoundfx.volume = GameRecord.GameRecord.Instance.savedData["soundSFX"];
+            Debug.Log(GameRecord.GameRecord.Instance.savedAudioData["soundSFX"]);
+            sourceSoundfx.volume = GameRecord.GameRecord.Instance.savedAudioData["soundSFX"];
             sourceSoundfx.playOnAwake = false;
             sourceSoundfx.loop = false;
         }
         void SetupAudioSourceSoundBgm()
         {
-            sourceSoundBgm.volume = GameSetting.GameSetting.Instance.savedData["soundBGM"];
+            //sourceSoundBgm.volume = GameRecord.GameRecord.Instance.savedData["soundBGM"];
+            Debug.Log(GameRecord.GameRecord.Instance.savedAudioData["soundBGM"]);
+            sourceSoundBgm.volume = GameRecord.GameRecord.Instance.savedAudioData["soundBGM"];
             sourceSoundBgm.playOnAwake = false;
             sourceSoundBgm.loop = true;
         }
@@ -95,7 +99,8 @@ namespace TankU.Audio
             if (!playedSound.ContainsKey(message.name))
             {
                 source = gameObject.AddComponent<AudioSource>();
-                source.volume = GameSetting.GameSetting.Instance.savedData["soundSFX"];
+                //source.volume = GameRecord.GameRecord.Instance.savedData["soundSFX"];
+                source.volume = GameRecord.GameRecord.Instance.savedAudioData["soundBGM"];
                 Soundfx s = Array.Find(soundfx, sound => sound.name == message.name);
                 if (s == null)
                 {
@@ -110,10 +115,12 @@ namespace TankU.Audio
             {
                 if (playedSound[message.name].isPlaying) { return; }
                 source = playedSound[message.name];
-                playedSound[message.name].volume = GameSetting.GameSetting.Instance.savedData["soundSFX"];
+                //playedSound[message.name].volume = GameRecord.GameRecord.Instance.savedData["soundSFX"];
+                playedSound[message.name].volume = GameRecord.GameRecord.Instance.savedAudioData["soundSFX"];
                 playedSound[message.name].Play();
             }
-            source.volume = GameSetting.GameSetting.Instance.savedData["soundSFX"];
+            //source.volume = GameRecord.GameRecord.Instance.savedData["soundSFX"];
+            source.volume = GameRecord.GameRecord.Instance.savedAudioData["soundSFX"];
         }
         private void ReceiveMessagePauseSoundOnce(MessagePauseSoundOnce message)
         {
@@ -122,8 +129,10 @@ namespace TankU.Audio
         private void ReceiveMessageLoadVolume(MessageLoadVolume message)
         {
             Debug.Log("Set Volume");
-            sourceSoundfx.volume = GameSetting.GameSetting.Instance.savedData["soundSFX"];
-            sourceSoundBgm.volume = GameSetting.GameSetting.Instance.savedData["soundBGM"];
+            //sourceSoundfx.volume = GameRecord.GameRecord.Instance.savedData["soundSFX"];
+            //sourceSoundBgm.volume = GameRecord.GameRecord.Instance.savedData["soundBGM"];
+            sourceSoundfx.volume = GameRecord.GameRecord.Instance.savedAudioData["soundSFX"];
+            sourceSoundBgm.volume = GameRecord.GameRecord.Instance.savedAudioData["soundBGM"];
         }
     }
 

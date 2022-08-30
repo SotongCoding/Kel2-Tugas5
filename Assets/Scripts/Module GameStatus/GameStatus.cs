@@ -4,18 +4,19 @@ using UnityEngine;
 using UnityEngine.UI;
 
 using Agate.MVC.Core;
-
+using TankU.GameRecord;
 using TankU.PubSub;
 
 namespace TankU.GameStatus
 {
     public class GameStatus : MonoBehaviour
     {
+        private GameRecord.GameRecord _gameRecord;
+        AudioData _save = new();
 
         [SerializeField]
         private GameObject gameOverPanel;
         List<Unit.Unit> unitOnCombat = new List<Unit.Unit>();
-        
 
         public string playerWon { get; private set; }
 
@@ -45,6 +46,8 @@ namespace TankU.GameStatus
             //load total player dengan unitId menang
             //masukan ke variable dan tambahkan 1
             //save
+            int _playerID = unitOnCombat[0].unitId;
+            GameRecord.GameRecord.Instance.ConvertMatchHistoryToJSON(_playerID);
         }    
 
         private void Subscriber()
