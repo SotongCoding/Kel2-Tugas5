@@ -8,7 +8,7 @@ namespace TankU.Vfx
     public class Vfx
     {
         public VfxObject visualPref;
-        PoolingSystem pool = new PoolingSystem();
+        PoolingSystem.PoolingSystem pool = new PoolingSystem.PoolingSystem();
         public void CreateObject(Vector3 pos)
         {
             pool.CreateObject(visualPref, pos);
