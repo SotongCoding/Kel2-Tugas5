@@ -11,8 +11,8 @@ namespace TankU.PubSub
     #region Message Module GameStatus
 
     #region GameStatus as Publisher
-    public struct MessageStartGameplay { }
-    public struct MessageEndGameplay { }
+    public struct MessageStartGameplayTime { }
+    public struct MessageEndGameplayTime { }
     public struct MessageTieBreaker { }
     #endregion
 
@@ -139,6 +139,7 @@ namespace TankU.PubSub
         }
     }
 
+    public struct MessageStartGameplay { }
 }
 
 

@@ -51,13 +51,14 @@ namespace TankU.GameStatus
 
         private void Subscriber()
         {
-            PublishSubscribe.Instance.Subscribe<MessageStartGameplay>(ReceiveMessageStartGameplay);
-            PublishSubscribe.Instance.Subscribe<MessageEndGameplay>(ReceiveMessageEndGameplay);
+            PublishSubscribe.Instance.Subscribe<MessageStartGameplayTime>(ReceiveMessageStartGameplayTime);
+            PublishSubscribe.Instance.Subscribe<MessageEndGameplayTime>(ReceiveMessageEndGameplayTime);
         }
         private void UnSubscriber()
         {
-            PublishSubscribe.Instance.Unsubscribe<MessageStartGameplay>(ReceiveMessageStartGameplay);
-            PublishSubscribe.Instance.Unsubscribe<MessageEndGameplay>(ReceiveMessageEndGameplay);
+            
+            PublishSubscribe.Instance.Unsubscribe<MessageStartGameplayTime>(ReceiveMessageStartGameplayTime);
+            PublishSubscribe.Instance.Unsubscribe<MessageEndGameplayTime>(ReceiveMessageEndGameplayTime);
         }
 
         
@@ -66,8 +67,8 @@ namespace TankU.GameStatus
         #endregion
 
         #region Message Received
-        private void ReceiveMessageStartGameplay(MessageStartGameplay message) { timeActive = true; }
-        private void ReceiveMessageEndGameplay(MessageEndGameplay message) { timeActive = false; }
+        private void ReceiveMessageStartGameplayTime(MessageStartGameplayTime message) { timeActive = true; }
+        private void ReceiveMessageEndGameplayTime(MessageEndGameplayTime message) { timeActive = false; }
         #endregion
     }
 }

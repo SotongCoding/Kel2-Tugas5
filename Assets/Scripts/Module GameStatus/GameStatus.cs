@@ -36,7 +36,6 @@ namespace TankU.GameStatus
         private void Start()
         {
             FindUnitReference();
-            StartGameplay();
         }
 
         private void DeterminePlayerWon()
@@ -49,19 +48,21 @@ namespace TankU.GameStatus
 
         private void Subscriber()
         {
+            PublishSubscribe.Instance.Subscribe<MessageStartGameplay>(ReceiveMessageStartGameplay);
             PublishSubscribe.Instance.Subscribe<MessageTimesUp>(ReceiveMessageTimesUp);
             PublishSubscribe.Instance.Subscribe<MessageUnitDie>(ReceiveMessageUnitDie);
         }
         private void UnSubsriber()
         {
+            PublishSubscribe.Instance.Unsubscribe<MessageStartGameplay>(ReceiveMessageStartGameplay);
             PublishSubscribe.Instance.Unsubscribe<MessageTimesUp>(ReceiveMessageTimesUp);
             PublishSubscribe.Instance.Unsubscribe<MessageUnitDie>(ReceiveMessageUnitDie);
 
         }
 
         #region Send Message
-        private void StartGameplay() { PublishSubscribe.Instance.Publish<MessageStartGameplay>(new MessageStartGameplay()); }
-        private void EndGameplay() { PublishSubscribe.Instance.Publish<MessageEndGameplay>(new MessageEndGameplay()); }
+        private void StartGameplay() { PublishSubscribe.Instance.Publish<MessageStartGameplayTime>(new MessageStartGameplayTime()); }
+        private void EndGameplay() { PublishSubscribe.Instance.Publish<MessageEndGameplayTime>(new MessageEndGameplayTime()); }
         private void TieBreaker() { PublishSubscribe.Instance.Publish<MessageTieBreaker>(new MessageTieBreaker()); }
         private void GameoverUI(string playerWon)
         {
@@ -70,6 +71,7 @@ namespace TankU.GameStatus
         #endregion
 
         #region Message Received
+        private void ReceiveMessageStartGameplay(MessageStartGameplay message) { StartGameplay(); }
         private void ReceiveMessageTimesUp(MessageTimesUp message) { TieBreaker(); }
         private void ReceiveMessageUnitDie(MessageUnitDie message)
         {
