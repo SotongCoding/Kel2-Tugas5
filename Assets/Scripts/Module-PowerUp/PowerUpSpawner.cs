@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using Agate.MVC.Core;
+using TankU.PubSub;
 
 namespace TankU.PowerUpSpawner
 {
@@ -20,6 +21,7 @@ namespace TankU.PowerUpSpawner
         void Start()
         {
             PublishSubscribe.Instance.Subscribe<PubSub.MessageStartGameplay>(ReceiveMessageStartGameplay);
+            PublishSubscribe.Instance.Subscribe<PubSub.MessageTieBreaker>(ReceiveMessageTieBreak);
 
             BouncePowerUp = GameObject.Find("Bounce-PowerUp");
             HealthPowerUp = GameObject.Find("Health-PowerUp");
@@ -31,9 +33,11 @@ namespace TankU.PowerUpSpawner
             HealthPowerUp.SetActive(false);
 
         }
+
         private void OnDisable()
         {
             PublishSubscribe.Instance.Unsubscribe<PubSub.MessageStartGameplay>(ReceiveMessageStartGameplay);
+            PublishSubscribe.Instance.Unsubscribe<PubSub.MessageTieBreaker>(ReceiveMessageTieBreak);
         }
 
         // Update is called once per frame
@@ -42,8 +46,8 @@ namespace TankU.PowerUpSpawner
             if (isGameStart)
             {
                 PowerUpSpawning();
-                PowerUpLasting();
             }
+            PowerUpLasting();
 
         }
 
@@ -96,8 +100,10 @@ namespace TankU.PowerUpSpawner
         {
             isGameStart = true;
         }
-
-
+        private void ReceiveMessageTieBreak(MessageTieBreaker obj)
+        {
+            isGameStart = false;
+        }
     }
 }
 
