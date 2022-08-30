@@ -17,7 +17,8 @@ namespace TankU.Unit
         [SerializeField]
         InputModule.KeyBoard.KeyBoardControl keyBoardControl;
         //======================================
-        public int unitId { get; private set; }
+        [SerializeField] private int UnitId;
+        public int unitId { get => UnitId; }
 
         [Header("Shooting Setting")]
         public Transform bulletOutPos;
