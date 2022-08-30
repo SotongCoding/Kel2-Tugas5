@@ -11,8 +11,8 @@ namespace TankU.PubSub
     #region Message Module GameStatus
 
     #region GameStatus as Publisher
-    public struct MessageStartGameplay { }
-    public struct MessageEndGameplay { }
+    public struct MessageStartGameplayTime { }
+    public struct MessageEndGameplayTime { }
     public struct MessageTieBreaker { }
     #endregion
 
@@ -119,15 +119,6 @@ namespace TankU.PubSub
             PlayerId = playerId;
         }
     }
-    public struct Hit
-    {
-        int _hitDamage;
-
-        public Hit(int damagePoint)
-        {
-            this._hitDamage = damagePoint;
-        }
-    }
 
     public struct ColourIn
     {
@@ -139,6 +130,7 @@ namespace TankU.PubSub
         }
     }
 
+    public struct MessageStartGameplay { }
 }
 
 

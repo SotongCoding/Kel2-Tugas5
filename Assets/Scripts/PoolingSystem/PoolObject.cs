@@ -13,7 +13,7 @@ namespace TankU.PoolingSystem
             poolingSystem = poolSystem;
         }
         public abstract void OnCreate();
-        public void StoreToPool()
+        public virtual void StoreToPool()
         {
             Debug.Log(poolingSystem);
             poolingSystem.Store(this);
