@@ -87,6 +87,7 @@ namespace TankU.GameStatus
                 GameoverUI(playerWon);
                 EndGameplay();
                 gameOverPanel.SetActive(true);
+                PlayerWinner.text = playerWon;
             }
         }
         #endregion
