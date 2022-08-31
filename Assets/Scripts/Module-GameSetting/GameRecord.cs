@@ -113,6 +113,8 @@ namespace TankU.GameRecord
         {
             string gameRecordData = JsonConvert.SerializeObject(savedData);
             File.WriteAllText(Application.dataPath + "/GameRecord.json", gameRecordData);
+            savedAudioData = GetAudioData();
+            savedMatchData = GetMatchData();
         }
     }
 
