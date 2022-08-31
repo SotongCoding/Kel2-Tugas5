@@ -14,9 +14,9 @@ namespace TankU.Unit.UnitVisual
         public Transform body;
         [Header("Tank Part")]
         [SerializeField]
-        MeshRenderer bodyRender;
+        MeshRenderer[] mainRender;
         [SerializeField]
-        MeshRenderer headRender, frontRender;
+        MeshRenderer[] subRender;
         public Unit thisUnit { get; private set; }
 
         bool hasMove = false;
@@ -54,10 +54,14 @@ namespace TankU.Unit.UnitVisual
         }
         public void SetUnitColor(Color mainColor, Color subColor)
         {
-            headRender.material.color = mainColor;
-            frontRender.material.color = mainColor;
-
-            bodyRender.material.color = subColor;
+            for (int i = 0; i < mainRender.Length; i++)
+            {
+                mainRender[i].material.color = mainColor;
+            }
+            for (int i = 0; i < subRender.Length; i++)
+            {
+                subRender[i].material.color = subColor;
+            }
 
         }
     }
