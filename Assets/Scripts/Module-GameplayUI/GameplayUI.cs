@@ -7,6 +7,7 @@ using TankU.Unit;
 using TMPro;
 using UnityEngine.UI;
 using TankU.PubSub;
+using TankU.GameRecord;
 
 namespace TankU.GameplayUI
 {
@@ -15,6 +16,8 @@ namespace TankU.GameplayUI
         public int PlayerReady;
         [SerializeField]
         private TextMeshProUGUI TimerTxT, TieBreakTxT;
+        [SerializeField]
+        private TextMeshProUGUI[] PlayerWinTxT;
         private GameStatus.TimerGameplay _TimerGameplay;
         [SerializeField]
         private UnitStatusUI[] PlayerUI;
@@ -24,7 +27,7 @@ namespace TankU.GameplayUI
         {
             _TimerGameplay = GameObject.Find("GameStatus").GetComponent<TimerGameplay>();
             PublishSubscribe.Instance.Publish<MessageSoundBgm>(new MessageSoundBgm("gameplay"));
-          
+            ShowMatchData();          
         }
 
         private void Awake()
@@ -79,6 +82,17 @@ namespace TankU.GameplayUI
         public void MainMenu()
         {
             SceneLoader.Instance.LoadScene("MainMenu");
+        }
+
+        public void ShowMatchData()
+        {
+            Debug.Log(PlayerWinTxT.Length);
+            for (int i = 0; i <= PlayerWinTxT.Length; i++)
+            {
+                PlayerWinTxT[i].text = "P" + (i+1) + ": " + GameRecord.GameRecord.Instance.savedMatchData[i+1];
+                Debug.Log("Win amount: " + GameRecord.GameRecord.Instance.savedMatchData[i]);
+            }
+
         }
     }
 }

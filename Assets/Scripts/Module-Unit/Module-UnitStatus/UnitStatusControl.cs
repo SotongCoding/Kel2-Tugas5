@@ -37,7 +37,7 @@ namespace TankU.Unit.UnitStatus
 
             _unitHealth = 10;
             _unitSpeed = 3;
-            _rotateSpeed = 75f;
+            _rotateSpeed = 200;
 
             _bulletUse = 0;
             _bombUse = 0;
@@ -52,7 +52,7 @@ namespace TankU.Unit.UnitStatus
             _unitHealth = 1;
             _unitSpeed = 4.5f;
             _bulletUse = 1;
-            _rotateSpeed = 100;
+            _rotateSpeed = 300;
 
             _shootBullet_delay = 0.75f;
             _plantBomb_delay = 2.5f;

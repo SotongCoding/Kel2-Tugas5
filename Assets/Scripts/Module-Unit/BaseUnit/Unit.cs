@@ -30,6 +30,7 @@ namespace TankU.Unit
 
         //Global player Status Need
         public int _health => unitStatusControl._unitHealth;
+        public bool isGameStart = false;
 
         UnitAction.UnitActionControl unitActionControl = new UnitAction.UnitActionControl();
         UnitStatus.UnitStatusControl unitStatusControl = new UnitStatus.UnitStatusControl();
@@ -41,16 +42,19 @@ namespace TankU.Unit
             unitStatusControl.Initial(this, unitId);
             unitActionControl.Initial(this, unitStatusControl, visualControl);
             visualControl.Initial(this);
-            
-            
+            isGameStart = false;
+
+
         }
         private void SubscribeMessege()
         {
             PublishSubscribe.Instance.Subscribe<MessageTieBreaker>(unitStatusControl.InitialTieBreaker);
+            PublishSubscribe.Instance.Subscribe<MessageStartGameplay>(GameStart);
         }
         private void UnsubscribeMessege()
         {
             PublishSubscribe.Instance.Unsubscribe<MessageTieBreaker>(unitStatusControl.InitialTieBreaker);
+            PublishSubscribe.Instance.Unsubscribe<MessageStartGameplay>(GameStart);
         }
 
         private void Start()
@@ -69,21 +73,24 @@ namespace TankU.Unit
 
         private void Update()
         {
-            unitActionControl.RunAction();
+            if (isGameStart) unitActionControl.RunAction();
 
+        }
+
+        private IEnumerator PowerUpEffectDuration(float duration, System.Action onDurationEnd)
+        {
+            yield return new WaitForSeconds(duration);
+            onDurationEnd?.Invoke();
+        }
+        private void GameStart(MessageStartGameplay message)
+        {
+            isGameStart = true;
         }
 
         public void SetController(IUnitKeyAction keyControl)
         {
             unitActionControl.InitialControl(keyControl);
         }
-
-        IEnumerator PowerUpEffectDuration(float duration, System.Action onDurationEnd)
-        {
-            yield return new WaitForSeconds(duration);
-            onDurationEnd?.Invoke();
-        }
-
         public void AddHealth()
         {
             unitStatusControl.AddHealth(1);
@@ -134,5 +141,6 @@ namespace TankU.Unit
             visualControl.SetUnitColor(mainColor, subColor);
 
         }
+
     }
 }

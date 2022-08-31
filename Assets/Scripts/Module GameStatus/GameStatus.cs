@@ -88,6 +88,7 @@ namespace TankU.GameStatus
                 EndGameplay();
                 gameOverPanel.SetActive(true);
                 PublishSubscribe.Instance.Publish<MessageSoundfx>(new MessageSoundfx("gameover"));
+                PlayerWinner.text = playerWon;
             }
         }
         #endregion
