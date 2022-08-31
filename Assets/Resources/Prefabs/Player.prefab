@@ -389,6 +389,7 @@ MonoBehaviour:
   UnitId: 1
   bulletOutPos: {fileID: 5554068936959546774}
   head: {fileID: 2330970742270452101}
+  isGameStart: 0
   visualControl:
     animator: {fileID: 6942323572865035322}
     body: {fileID: 8413044631520923351}
@@ -432,8 +433,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.1051139, z: 0.83969164}
-  m_Center: {x: 0, y: 0.33943897, z: 0.08015418}
+  m_Size: {x: 1, y: 1.0837561, z: 1.4661887}
+  m_Center: {x: 0, y: 0.3145216, z: 0.08727324}
 --- !u!95 &6942323572865035322
 Animator:
   serializedVersion: 4
