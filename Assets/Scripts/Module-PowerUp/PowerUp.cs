@@ -28,7 +28,7 @@ namespace TankU.PowerUp
             if (collision.gameObject.CompareTag("Wall"))
             {
                 Debug.Log("Walled!");
-                this.gameObject.transform.SetPositionAndRotation(new Vector3(Random.Range(-17.5f, 17.6f), 0.3f, Random.Range(-4, 13)), Quaternion.identity);
+                this.gameObject.transform.SetPositionAndRotation(new Vector3(Random.Range(-18.5f, 13.5f), 0.3f, Random.Range(2, -21)), Quaternion.identity);
             }
             else if (collision.gameObject.CompareTag("Player"))
             {
