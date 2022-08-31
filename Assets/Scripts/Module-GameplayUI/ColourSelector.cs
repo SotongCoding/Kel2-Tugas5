@@ -9,8 +9,8 @@ namespace TankU.GameplayUI
     public class ColourSelector : MonoBehaviour
     {
         public Color MainColour, SubColour;
-        //public List<Color> MainColour = new List<Color>();
-        //public List<Color> SubColour = new List<Color>();
+        [SerializeField] private List<Button> mainColorBtn;
+        [SerializeField] private List<Button> subColorBtn;
         public Button PlayButton;
         [HideInInspector]
         public int ColorIndex;
@@ -38,7 +38,7 @@ namespace TankU.GameplayUI
                 //{
                 //    PlayButton.gameObject.SetActive(true);
                 //}
-                
+
             }
         }
         public void MainColor(Image MainImg)
@@ -55,7 +55,18 @@ namespace TankU.GameplayUI
             isSubSelected = true;
             _GameplayReady.PlayerReady++;
         }
-        
+
+        public void SetColorBtn(int playerWinAmount)
+        {
+            int unlockAmount = Mathf.RoundToInt(playerWinAmount / 3);
+            int maxIndex = Mathf.Clamp(unlockAmount, 1, mainColorBtn.Count);
+            for (int i = 1; i <= maxIndex; i++)
+            {
+                mainColorBtn[i].interactable = true;
+                subColorBtn[i].interactable = true;
+            }
+        }
+
     }
 }
 

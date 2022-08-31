@@ -18,6 +18,11 @@ namespace TankU.GameplayUI
         [SerializeField]
         ColourSelector Selector;
 
+        private void Start()
+        {
+            Selector.SetColorBtn(GameRecord.GameRecord.Instance.savedMatchData[Player.unitId]);
+        }
+
         public void UpdateHealth()
         {
             HealthBar.value = Player._health;
@@ -30,8 +35,8 @@ namespace TankU.GameplayUI
 
         public void SendColor()
         {
-           Player.SetUnitColor(Selector.MainColour, Selector.SubColour);
-           Debug.Log("Main Color: " + Selector.MainColour + "Sub Color: " + Selector.SubColour);
+            Player.SetUnitColor(Selector.MainColour, Selector.SubColour);
+            Debug.Log("Main Color: " + Selector.MainColour + "Sub Color: " + Selector.SubColour);
         }
     }
 }
