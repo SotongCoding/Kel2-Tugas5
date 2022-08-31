@@ -37,13 +37,11 @@ namespace TankU.GameRecord
             //savedData = JsonConvert.DeserializeObject<Dictionary<string, float>>(gameSetting);
 
             string keySound = "audio";
-
             string saveSound = JsonUtility.ToJson(save);
             Debug.Log(saveSound);
             savedData[keySound] = saveSound;
             SaveRecord();
-            //============================================================
-
+            savedAudioData = GetAudioData();
         }
 
         public void ConvertMatchHistoryToJSON(int playerID)
@@ -52,8 +50,8 @@ namespace TankU.GameRecord
             savedMatchData[playerID]++;
             string matchHistory = JsonConvert.SerializeObject(savedMatchData);
             savedData[keyMatchHistory] = matchHistory;
-            //foreach (KeyValuePair<string, string> pair in savedData) { Debug.Log(pair); }
             SaveRecord();
+            savedMatchData = GetMatchData();
         }
 
         private Dictionary<string, float> GetAudioData()
@@ -113,8 +111,6 @@ namespace TankU.GameRecord
         {
             string gameRecordData = JsonConvert.SerializeObject(savedData);
             File.WriteAllText(Application.dataPath + "/GameRecord.json", gameRecordData);
-            savedAudioData = GetAudioData();
-            savedMatchData = GetMatchData();
         }
     }
 
