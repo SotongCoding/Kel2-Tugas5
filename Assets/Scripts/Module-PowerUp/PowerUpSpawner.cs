@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using Agate.MVC.Core;
+using TankU.PubSub;
+
 namespace TankU.PowerUpSpawner
 {
     public class PowerUpSpawner : MonoBehaviour
@@ -12,32 +15,40 @@ namespace TankU.PowerUpSpawner
         private float SpawnTime, PowerUpTime;
         private int RngPowerUp;
         private bool isSpawn = false;
+        private bool isGameStart = false;
 
         // Start is called before the first frame update
         void Start()
         {
+            PublishSubscribe.Instance.Subscribe<PubSub.MessageStartGameplay>(ReceiveMessageStartGameplay);
+            PublishSubscribe.Instance.Subscribe<PubSub.MessageTieBreaker>(ReceiveMessageTieBreak);
+
             BouncePowerUp = GameObject.Find("Bounce-PowerUp");
             HealthPowerUp = GameObject.Find("Health-PowerUp");
             //Set Spawing Time 
-            SpawnTime =2;
+            SpawnTime = 2;
             //---------------
-            //Instantiate(HealthPowerUp, new Vector3(Random.Range(-8, 8), 0.3f, Random.Range(-2.7f, 7.7f)), Quaternion.identity);
-            //Instantiate(BouncePowerUp, new Vector3(Random.Range(-8, 8), 0.3f, Random.Range(-2.7f, 7.7f)), Quaternion.identity);
+
             BouncePowerUp.SetActive(false);
             HealthPowerUp.SetActive(false);
-            
+
         }
-        
+
+        private void OnDisable()
+        {
+            PublishSubscribe.Instance.Unsubscribe<PubSub.MessageStartGameplay>(ReceiveMessageStartGameplay);
+            PublishSubscribe.Instance.Unsubscribe<PubSub.MessageTieBreaker>(ReceiveMessageTieBreak);
+        }
+
         // Update is called once per frame
         void Update()
         {
-            PowerUpSpawning();
-            PowerUpLasting();
-            //Debug.Log(SpawnTime);
-            if (isSpawn == true)
+            if (isGameStart)
             {
-                //Debug.Log("RNG: " + RngPowerUp + "Time: " + PowerUpTime);
+                PowerUpSpawning();
             }
+            PowerUpLasting();
+
         }
 
         private void PowerUpSpawning()
@@ -85,9 +96,14 @@ namespace TankU.PowerUpSpawner
                 HealthPowerUp.SetActive(false);
             }
         }
-
-        
-
+        private void ReceiveMessageStartGameplay(PubSub.MessageStartGameplay message)
+        {
+            isGameStart = true;
+        }
+        private void ReceiveMessageTieBreak(MessageTieBreaker obj)
+        {
+            isGameStart = false;
+        }
     }
 }
 

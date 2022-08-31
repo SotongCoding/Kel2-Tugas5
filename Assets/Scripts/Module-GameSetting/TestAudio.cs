@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace TankU.GameSetting
+namespace TankU.GameRecord
 {
     // For debugging GameSetting in Weapon scene
 
     public class TestAudio : MonoBehaviour
     {
-        private GameSetting _gameSetting;
-        SaveData _save = new();
+        private GameRecord _gameSetting;
+        AudioData _save = new();
         [SerializeField] private AudioSource _bgm;
         [SerializeField] private AudioSource _sfx;
         [SerializeField] private Toggle _bgmToggle;
@@ -20,7 +20,7 @@ namespace TankU.GameSetting
 
         void Start()
         {
-            _gameSetting = GameSetting.Instance;
+            _gameSetting = GameRecord.Instance;
             LoadAudio();
         }
 
@@ -28,21 +28,23 @@ namespace TankU.GameSetting
         {
             _bgm.volume = value;
             _save.soundBGM = _bgm.volume;
-            _gameSetting.ConvertToJSON(_save);
+            _gameSetting.ConvertAudioToJSON(_save);
         }
 
         public void OnSFXVolumeChange(float value)
         {
             _sfx.volume = value;
             _save.soundSFX = _sfx.volume;
-            _gameSetting.ConvertToJSON(_save);
+            _gameSetting.ConvertAudioToJSON(_save);
         }
 
         public void LoadAudio()
         {
-            _bgm.volume = _gameSetting.savedData["soundBGM"];
+            //_bgm.volume = _gameSetting.savedData["soundBGM"];
+            _bgm.volume = _gameSetting.savedAudioData["soundBGM"];
             _bgmSlider.value = _bgm.volume;
-            _sfx.volume = _gameSetting.savedData["soundSFX"];
+            //_sfx.volume = _gameSetting.savedData["soundSFX"];
+            _sfx.volume = _gameSetting.savedAudioData["soundSFX"];
             _sfxSlider.value = _sfx.volume;
         }
     }

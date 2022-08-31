@@ -17,8 +17,8 @@ namespace TankU.Unit
         [SerializeField]
         InputModule.KeyBoard.KeyBoardControl keyBoardControl;
         //======================================
-        [Header("Identity")]
-        [SerializeField] public int unitId;
+        [SerializeField] private int UnitId;
+        public int unitId { get => UnitId; }
 
         [Header("Shooting Setting")]
         public Transform bulletOutPos;
@@ -40,6 +40,9 @@ namespace TankU.Unit
         {
             unitStatusControl.Initial(this, unitId);
             unitActionControl.Initial(this, unitStatusControl, visualControl);
+            visualControl.Initial(this);
+            
+            
         }
         private void SubscribeMessege()
         {
@@ -54,7 +57,7 @@ namespace TankU.Unit
         {
             Intial();
             SubscribeMessege();
-            visualControl.SetUnitColor(Color.white,Color.cyan);
+            //visualControl.SetUnitColor(Color.white,Color.cyan);
 
             //Testing
             SetController(keyBoardControl);
@@ -84,18 +87,15 @@ namespace TankU.Unit
         public void AddHealth()
         {
             unitStatusControl.AddHealth(1);
-            FindObjectOfType<GameplayUI.GameplayUI>().UpdateHealth(unitId);
             Debug.Log("Heal");
         }
         public void ReciveBulletDamage()
         {
             unitStatusControl.ReduceHealth(1);
-            FindObjectOfType<GameplayUI.GameplayUI>().UpdateHealth(unitId);
         }
         public void ReciveBombDamage()
         {
             unitStatusControl.ReduceHealth(2);
-            FindObjectOfType<GameplayUI.GameplayUI>().UpdateHealth(unitId);
             Debug.Log("Recive Bomb Damage" + name);
         }
         public void BouncingBullet(float PUduration)
@@ -106,6 +106,7 @@ namespace TankU.Unit
             () =>
             {
                 unitStatusControl.ChangeBullet(0);
+                PublishSubscribe.Instance.Publish<MessageBounceTimeUp>(new MessageBounceTimeUp(unitId));
             }));
         }
 

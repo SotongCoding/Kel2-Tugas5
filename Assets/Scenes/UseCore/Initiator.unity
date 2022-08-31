@@ -1618,10 +1618,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualEffect:
-  - name: bullet_explosion
-    visualPref: {fileID: 1283983867276937189, guid: 5d47a1ebc23253144bbc1337b0c3f04b, type: 3}
   - name: bomb_explosion
-    visualPref: {fileID: 4724622156793817733, guid: 3a3b438e6ee15ee409cbd607acd565e3, type: 3}
+    visualPref: {fileID: -6035327297607606188, guid: 3a3b438e6ee15ee409cbd607acd565e3, type: 3}
+  - name: bullet_explosion
+    visualPref: {fileID: -2844244457549341171, guid: 5d47a1ebc23253144bbc1337b0c3f04b, type: 3}
+  - name: move
+    visualPref: {fileID: 6391512854097199461, guid: 33db5d680643626488a27a0771312e26, type: 3}
 --- !u!4 &1287525937
 Transform:
   m_ObjectHideFlags: 0

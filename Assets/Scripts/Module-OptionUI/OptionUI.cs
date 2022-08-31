@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TankU.GameSetting;
+using TankU.GameRecord;
 using TankU.PubSub;
 using Agate.MVC.Core;
 
@@ -27,18 +27,20 @@ namespace TankU.OptionUI
 
         [SerializeField]
         GameObject optionUI;
-        private GameSetting.GameSetting _gameSetting;
-        SaveData _save = new();
+        private GameRecord.GameRecord _gameSetting;
+        AudioData _save = new();
 
         private void Start()
         {
             Instance = this;
 
-            _gameSetting = GameSetting.GameSetting.Instance;
+            _gameSetting = GameRecord.GameRecord.Instance;
 
-            _save.soundSFX = _gameSetting.savedData["soundSFX"];
-            _save.soundBGM = _gameSetting.savedData["soundBGM"];
-            
+            //_save.soundSFX = _gameSetting.savedData["soundSFX"];
+            //_save.soundBGM = _gameSetting.savedData["soundBGM"];
+            _save.soundSFX = _gameSetting.savedAudioData["soundSFX"];
+            _save.soundBGM = _gameSetting.savedAudioData["soundBGM"];
+
             isMute = new bool[iconButton.Length];
             Load();
         }
@@ -89,7 +91,7 @@ namespace TankU.OptionUI
         {
             _save.soundBGM = bgmCurrently;
             _save.soundSFX = sfxCurrently;
-            _gameSetting.ConvertToJSON(_save);
+            _gameSetting.ConvertAudioToJSON(_save);
         }
 
         private void Load()

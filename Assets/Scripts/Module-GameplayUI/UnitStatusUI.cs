@@ -15,7 +15,13 @@ namespace TankU.GameplayUI
         private int BombLeft;
         [SerializeField]
         private Slider HealthBar;
-        //ColorSelector selector;
+        [SerializeField]
+        ColourSelector Selector;
+
+        private void Start()
+        {
+            Selector.SetColorBtn(GameRecord.GameRecord.Instance.savedMatchData[Player.unitId]);
+        }
 
         public void UpdateHealth()
         {
@@ -27,8 +33,10 @@ namespace TankU.GameplayUI
             Bomb[BombLeft].SetActive(false);
         }
 
-        public void SendColor(){
-           // Player.SetUnitColor(selector.mainColor,selector.subColor);
+        public void SendColor()
+        {
+            Player.SetUnitColor(Selector.MainColour, Selector.SubColour);
+            Debug.Log("Main Color: " + Selector.MainColour + "Sub Color: " + Selector.SubColour);
         }
     }
 }
