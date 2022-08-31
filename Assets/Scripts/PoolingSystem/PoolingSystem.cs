@@ -19,7 +19,7 @@ namespace TankU.PoolingSystem
         public IPoolObject CreateObject(IPoolObject objectPrefab, Vector3 spawnPos, Transform parent = null)
         {
             IPoolObject outObject;
-            if (storedList.Count < 1)
+            if (storedList.Count < 1 || storedList.Peek().gameObject == null)
             {
                 outObject = MonoBehaviour.Instantiate(objectPrefab.gameObject).
                 GetComponent<IPoolObject>();

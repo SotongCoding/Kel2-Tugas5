@@ -18,12 +18,13 @@ namespace TankU.Vfx
         {
             PublishSubscribe.Instance.Subscribe<MessageVfx>(ReceiveMessageVfx);
         }
-        
+
         private void ReceiveMessageVfx(MessageVfx message)
         {
             Vfx v = Array.Find(visualEffect, vfx => vfx.visualPref.name == message.name);
             //Instantiate(v.visualPref, message.position, Quaternion.identity);
-            v.CreateObject(message.position);
+            v.CreateObject(message.position).transform.SetParent(this.transform);
+
         }
         private void OnDestroy()
         {
