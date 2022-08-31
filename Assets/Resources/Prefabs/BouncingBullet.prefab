@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5368635185705810159}
   - component: {fileID: 2082206785465602595}
   - component: {fileID: -5230763062919410120}
+  - component: {fileID: 2137221174478181818}
   m_Layer: 6
   m_Name: BouncingBullet
   m_TagString: Untagged
@@ -128,3 +129,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 0
+  _isBounceActive: 0
+  _playerID: 0
+--- !u!114 &2137221174478181818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5826408344160815060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc3f6981070a56849b23cdf137df9a0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PowerUps: {fileID: 0}
