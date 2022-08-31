@@ -45,11 +45,11 @@ namespace TankU.Unit.UnitAction
         {
             Vector3 dir = thisUnit.transform.position;
 
-            if (KeyAction._moveUp) { thisUnit.transform.Translate(Vector3.forward * unitStatus._unitSpeed * Time.deltaTime); dir = thisUnit.transform.forward; }
-            else if (KeyAction._moveDown) { thisUnit.transform.Translate(Vector3.back * unitStatus._unitSpeed * Time.deltaTime); dir = -thisUnit.transform.forward; }
+            if (KeyAction._moveUp) { thisUnit.transform.Translate(thisUnit.head.transform.forward * unitStatus._unitSpeed * Time.deltaTime); dir = thisUnit.transform.forward; }
+            else if (KeyAction._moveDown) { thisUnit.transform.Translate(-thisUnit.head.transform.forward * unitStatus._unitSpeed * Time.deltaTime); dir = -thisUnit.transform.forward; }
 
-            else if (KeyAction._moveLeft) { thisUnit.transform.Translate(Vector3.left * unitStatus._unitSpeed * Time.deltaTime); dir = -thisUnit.transform.right; }
-            else if (KeyAction._moveRight) { thisUnit.transform.Translate(Vector3.right * unitStatus._unitSpeed * Time.deltaTime); dir = thisUnit.transform.right; }
+            else if (KeyAction._moveLeft) { thisUnit.transform.Translate(-thisUnit.head.transform.right * unitStatus._unitSpeed * Time.deltaTime); dir = -thisUnit.transform.right; }
+            else if (KeyAction._moveRight) { thisUnit.transform.Translate(thisUnit.head.transform.right * unitStatus._unitSpeed * Time.deltaTime); dir = thisUnit.transform.right; }
 
             if (KeyAction._moveUp || KeyAction._moveDown || KeyAction._moveLeft || KeyAction._moveRight)
             {

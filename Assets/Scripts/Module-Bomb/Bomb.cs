@@ -34,6 +34,7 @@ namespace TankU.Bomb
         protected IEnumerator Detonate(float waitTime)
         {
             yield return new WaitForSeconds(waitTime);
+            StoreToPool();
             PublishSubscribe.Instance.Publish<MessageSoundfx>(new MessageSoundfx("bomb_explosion"));
             PublishSubscribe.Instance.Publish<MessageVfx>(new MessageVfx("bomb_explosion", this.transform.position));
 
@@ -53,7 +54,7 @@ namespace TankU.Bomb
                 }
             }
             //gameObject.SetActive(false);
-            StoreToPool();
+           
         }
 
         //// View explosion radius for debug purposes

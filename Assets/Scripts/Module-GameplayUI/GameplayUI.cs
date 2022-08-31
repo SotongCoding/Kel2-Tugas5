@@ -87,7 +87,7 @@ namespace TankU.GameplayUI
         public void ShowMatchData()
         {
             Debug.Log(PlayerWinTxT.Length);
-            for (int i = 0; i <= PlayerWinTxT.Length; i++)
+            for (int i = 0; i < PlayerWinTxT.Length; i++)
             {
                 PlayerWinTxT[i].text = "P" + (i+1) + ": " + GameRecord.GameRecord.Instance.savedMatchData[i+1];
             }
