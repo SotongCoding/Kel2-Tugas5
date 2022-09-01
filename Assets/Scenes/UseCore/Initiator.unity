@@ -1560,6 +1560,8 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 4242eb32f7c09514984a8a793c271b12, type: 3}
     source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 808c8f70f2f7011469c404e132010b27, type: 3}
+    source: {fileID: 0}
   soundBgm:
   - clip: {fileID: 8300000, guid: e5a5eb8c28c44df428af66b1817e8173, type: 3}
     source: {fileID: 0}

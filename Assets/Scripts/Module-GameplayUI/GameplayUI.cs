@@ -73,16 +73,19 @@ namespace TankU.GameplayUI
         }
         public void StartGame()
         {
+            PublishSubscribe.Instance.Publish<MessageSoundfx>(new MessageSoundfx("button_click"));
             PublishSubscribe.Instance.Publish<MessageStartGameplay>(new MessageStartGameplay());
         }
 
         public void Retry()
         {
+            PublishSubscribe.Instance.Publish<MessageSoundfx>(new MessageSoundfx("button_click"));
             SceneLoader.Instance.LoadScene("Gameplay");
         }
 
         public void MainMenu()
         {
+            PublishSubscribe.Instance.Publish<MessageSoundfx>(new MessageSoundfx("button_click"));
             SceneLoader.Instance.LoadScene("MainMenu");
         }
 
