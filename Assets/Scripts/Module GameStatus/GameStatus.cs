@@ -11,11 +11,6 @@ namespace TankU.GameStatus
 {
     public class GameStatus : MonoBehaviour
     {
-        private GameRecord.GameRecord _gameRecord;
-        AudioData _save = new();
-
-        [SerializeField]
-        private GameObject gameOverPanel;
         List<Unit.Unit> unitOnCombat = new List<Unit.Unit>();
         List<int> loseUnits = new List<int>();
 
@@ -52,12 +47,12 @@ namespace TankU.GameStatus
             GameRecord.GameRecord.Instance.ConvertMatchHistoryToJSON(winPlayerId, loseUnits.ToArray());
             //Milestone Win
             var matchData = new GameRecord.PlayerMatchRecord(winPlayerId);
-            CalculateMilestone(matchData);
+            GameRecord.GameRecord.Instance.CalculateMilestone(matchData);
             //MileStoneLose
             for (int i = 0; i < loseUnits.Count; i++)
             {
                 var loseMatchData = new GameRecord.PlayerMatchRecord(loseUnits[i]);
-                CalculateMilestone(loseMatchData);
+                GameRecord.GameRecord.Instance.CalculateMilestone(loseMatchData);
             }
 
         }
@@ -99,33 +94,10 @@ namespace TankU.GameStatus
                 DeterminePlayerWon();
                 GameoverUI(playerWon);
                 EndGameplay();
-                gameOverPanel.SetActive(true);
                 PublishSubscribe.Instance.Publish<MessageSoundfx>(new MessageSoundfx("gameover"));
             }
         }
-        private void CalculateMilestone(PlayerMatchRecord matchRecord)
-        {  //New Version Calculate
-
-            try
-            {
-                int level = 0;
-                int exp = 0;
-                int milestoneGet = 0;
-
-                exp += matchRecord.win * 100;
-                exp += matchRecord.lose * 50;
-
-                level = Mathf.RoundToInt(exp / 500);
-                milestoneGet = Mathf.RoundToInt(level / 2);
-
-                GameRecord.GameRecord.Instance.ConvertMileStoneToJSON(matchRecord.playerId, Mathf.RoundToInt(milestoneGet));
-            }
-            catch
-            {
-                GameRecord.GameRecord.Instance.ConvertMileStoneToJSON(matchRecord.playerId, Mathf.RoundToInt(matchRecord.win / 3));
-            }
-
-        }
+       
         #endregion
     }
 }

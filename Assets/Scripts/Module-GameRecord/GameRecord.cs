@@ -135,7 +135,30 @@ namespace TankU.GameRecord
             string gameRecordData = JsonConvert.SerializeObject(savedData);
             File.WriteAllText(Application.dataPath + "/GameRecord.json", gameRecordData);
         }
+        
+         public void CalculateMilestone(PlayerMatchRecord matchRecord)
+        {  //New Version Calculate
 
+            try
+            {
+                int level = 0;
+                int exp = 0;
+                int milestoneGet = 0;
+
+                exp += matchRecord.win * 100;
+                exp += matchRecord.lose * 50;
+
+                level = Mathf.RoundToInt(exp / 500);
+                milestoneGet = Mathf.RoundToInt(level / 2);
+
+                ConvertMileStoneToJSON(matchRecord.playerId, Mathf.RoundToInt(milestoneGet));
+            }
+            catch
+            {
+                ConvertMileStoneToJSON(matchRecord.playerId, Mathf.RoundToInt(matchRecord.win / 3));
+            }
+
+        }
     }
 
     public struct AudioData

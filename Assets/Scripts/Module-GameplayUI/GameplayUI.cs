@@ -15,12 +15,13 @@ namespace TankU.GameplayUI
     {
         public int PlayerReady;
         [SerializeField]
-        private TextMeshProUGUI TimerTxT, TieBreakTxT,playerWinText;
+        private TextMeshProUGUI TimerTxT, TieBreakTxT, playerWinText;
         [SerializeField]
         private TextMeshProUGUI[] PlayerWinTxT;
         private GameStatus.TimerGameplay _TimerGameplay;
         [SerializeField]
         private UnitStatusUI[] PlayerUI;
+        [SerializeField] private GameObject gameOverPanel;
 
         void Start()
         {
@@ -33,7 +34,7 @@ namespace TankU.GameplayUI
         {
             PublishSubscribe.Instance.Subscribe<MessageSpawnBomb>(ReduceBomb);
             PublishSubscribe.Instance.Subscribe<MessageTieBreaker>(Tiebreaker);
-            PublishSubscribe.Instance.Subscribe<MessageGameoverUI>(SetPlayerWonText);
+            PublishSubscribe.Instance.Subscribe<MessageGameoverUI>(ShowGameOver);
         }
         // Update is called once per frame
         void Update()
@@ -45,7 +46,7 @@ namespace TankU.GameplayUI
         {
             PublishSubscribe.Instance.Unsubscribe<MessageSpawnBomb>(ReduceBomb);
             PublishSubscribe.Instance.Unsubscribe<MessageTieBreaker>(Tiebreaker);
-            PublishSubscribe.Instance.Unsubscribe<MessageGameoverUI>(SetPlayerWonText);
+            PublishSubscribe.Instance.Unsubscribe<MessageGameoverUI>(ShowGameOver);
         }
         void ReduceBomb(MessageSpawnBomb message)
         {
@@ -64,9 +65,10 @@ namespace TankU.GameplayUI
             PlayerUI[1].UpdateHealth();
         }
 
-        void SetPlayerWonText(MessageGameoverUI message)
+        void ShowGameOver(MessageGameoverUI message)
         {
             playerWinText.text = message.playerWonText;
+            gameOverPanel.SetActive(true);
         }
 
         public void SetPlayerColor()

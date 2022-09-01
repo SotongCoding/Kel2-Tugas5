@@ -11442,7 +11442,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a804cbc7448c6564da26c19b1e1a167b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverPanel: {fileID: 825003116}
 --- !u!1 &1026831800
 GameObject:
   m_ObjectHideFlags: 0
@@ -13054,7 +13053,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1740200333}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.9999964
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -15059,7 +15058,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 551663521}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.9999964
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -16964,6 +16963,7 @@ MonoBehaviour:
   PlayerUI:
   - {fileID: 458354699}
   - {fileID: 450765906}
+  gameOverPanel: {fileID: 825003116}
 --- !u!1 &1528421139
 GameObject:
   m_ObjectHideFlags: 0
