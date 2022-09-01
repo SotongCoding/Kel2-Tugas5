@@ -1,0 +1,1 @@
+{"audio":"{\"soundBGM\":0.0,\"soundSFX\":1.0}","match":"[{\"winPlayer\":2,\"losePlayers\":[1]},{\"winPlayer\":1,\"losePlayers\":[2]},{\"winPlayer\":2,\"losePlayers\":[1]}]","milestone":"[{\"playerId\":2,\"milestoneReach\":0},{\"playerId\":1,\"milestoneReach\":0}]"}
