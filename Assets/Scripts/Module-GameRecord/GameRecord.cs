@@ -80,18 +80,6 @@ namespace TankU.GameRecord
         {
             return JsonConvert.DeserializeObject<Dictionary<string, float>>(savedData["audio"]);
         }
-        private AudioData GetAudioData_()
-        {
-            string JSONAUdio = savedData["audio"];
-
-            return JsonUtility.FromJson<AudioData>(JSONAUdio);
-        }
-
-        void SetAudio()
-        {
-            float volume = GetAudioData_().soundBGM;
-        }
-
         private List<MatchData> GetMatchData()
         {
             return JsonConvert.DeserializeObject<List<MatchData>>(savedData["match"]);

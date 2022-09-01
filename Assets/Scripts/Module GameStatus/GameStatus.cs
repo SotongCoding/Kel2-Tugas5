@@ -16,8 +16,6 @@ namespace TankU.GameStatus
 
         [SerializeField]
         private GameObject gameOverPanel;
-        [SerializeField]
-        private TextMeshProUGUI PlayerWinner;
         List<Unit.Unit> unitOnCombat = new List<Unit.Unit>();
         List<int> loseUnits = new List<int>();
 
@@ -103,7 +101,6 @@ namespace TankU.GameStatus
                 EndGameplay();
                 gameOverPanel.SetActive(true);
                 PublishSubscribe.Instance.Publish<MessageSoundfx>(new MessageSoundfx("gameover"));
-                PlayerWinner.text = playerWon;
             }
         }
         private void CalculateMilestone(PlayerMatchRecord matchRecord)
