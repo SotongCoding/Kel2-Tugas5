@@ -109,24 +109,24 @@ namespace TankU.GameStatus
         private void CalculateMilestone(PlayerMatchRecord matchRecord)
         {  //New Version Calculate
 
-            // try
-            // {
-            //     int level = 0;
-            //     int exp = 0;
-            //     int milestoneGet = 0;
+            try
+            {
+                int level = 0;
+                int exp = 0;
+                int milestoneGet = 0;
 
-            //     exp += matchRecord.win * 100;
-            //     exp += matchRecord.lose * 50;
+                exp += matchRecord.win * 100;
+                exp += matchRecord.lose * 50;
 
-            //     level = Mathf.RoundToInt(exp / 500);
-            //     milestoneGet = Mathf.RoundToInt(level / 2);
+                level = Mathf.RoundToInt(exp / 500);
+                milestoneGet = Mathf.RoundToInt(level / 2);
 
-            //     GameRecord.GameRecord.Instance.ConvertMileStoneToJSON(matchRecord.playerId, Mathf.RoundToInt(milestoneGet));
-            // }
-            // catch
-            // {
+                GameRecord.GameRecord.Instance.ConvertMileStoneToJSON(matchRecord.playerId, Mathf.RoundToInt(milestoneGet));
+            }
+            catch
+            {
                 GameRecord.GameRecord.Instance.ConvertMileStoneToJSON(matchRecord.playerId, Mathf.RoundToInt(matchRecord.win / 3));
-           // }
+            }
 
         }
         #endregion
