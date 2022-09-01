@@ -1,1 +1,1 @@
-{"audio":"{\"soundBGM\":0.05449492856860161,\"soundSFX\":0.53099125623703}","match":"{\"1\":8,\"2\":2,\"3\":0,\"4\":0}"}
+{"audio":"{\"soundBGM\":1.0,\"soundSFX\":1.0}","match":"[{\"winPlayer\":1,\"losePlayers\":[2]},{\"winPlayer\":2,\"losePlayers\":[1]},{\"winPlayer\":1,\"losePlayers\":[2]}]"}

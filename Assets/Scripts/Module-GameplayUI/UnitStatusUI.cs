@@ -20,7 +20,8 @@ namespace TankU.GameplayUI
 
         private void Start()
         {
-            Selector.SetColorBtn(GameRecord.GameRecord.Instance.savedMatchData[Player.unitId]);
+            // var playerMatchData = new PlayerMatchRecord(Player.unitId);
+            Selector.SetColorBtn(GameRecord.GameRecord.Instance.playerMilestone[Player.unitId]);
         }
 
         public void UpdateHealth()

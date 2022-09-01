@@ -19,12 +19,14 @@ namespace TankU.GameStatus
         [SerializeField]
         private TextMeshProUGUI PlayerWinner;
         List<Unit.Unit> unitOnCombat = new List<Unit.Unit>();
+        List<int> loseUnits = new List<int>();
 
         public string playerWon { get; private set; }
 
         void FindUnitReference()
         {
             unitOnCombat = new List<Unit.Unit>(FindObjectsOfType<Unit.Unit>());
+            //loseUnits = new List<Unit.Unit>(unitOnCombat);
 
         }
         private void Awake()
@@ -47,9 +49,11 @@ namespace TankU.GameStatus
             //load total player dengan unitId menang
             //masukan ke variable dan tambahkan 1
             //save
-            int _playerID = unitOnCombat[0].unitId;
-            GameRecord.GameRecord.Instance.ConvertMatchHistoryToJSON(_playerID);
-        }    
+            int winPlayer = unitOnCombat[0].unitId;
+
+
+            GameRecord.GameRecord.Instance.ConvertMatchHistoryToJSON(winPlayer, loseUnits.ToArray());
+        }
 
         private void Subscriber()
         {
@@ -81,6 +85,8 @@ namespace TankU.GameStatus
         private void ReceiveMessageUnitDie(MessageUnitDie message)
         {
             unitOnCombat.Remove(message.unit);
+            loseUnits.Add(message.unit.unitId);
+
             if (unitOnCombat.Count == 1)
             {
                 DeterminePlayerWon();

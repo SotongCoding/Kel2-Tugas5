@@ -21,13 +21,13 @@ namespace TankU.GameplayUI
         private GameStatus.TimerGameplay _TimerGameplay;
         [SerializeField]
         private UnitStatusUI[] PlayerUI;
-   
+
 
         void Start()
         {
             _TimerGameplay = GameObject.Find("GameStatus").GetComponent<TimerGameplay>();
             PublishSubscribe.Instance.Publish<MessageSoundBgm>(new MessageSoundBgm("gameplay"));
-            ShowMatchData();          
+            ShowMatchData();
         }
 
         private void Awake()
@@ -39,7 +39,7 @@ namespace TankU.GameplayUI
         void Update()
         {
             TimerTxT.text = _TimerGameplay.timer.ToString();
-           
+
         }
         private void OnDestroy()
         {
@@ -63,14 +63,16 @@ namespace TankU.GameplayUI
             PlayerUI[1].UpdateHealth();
         }
 
-        public void SetPlayerColor(){
+        public void SetPlayerColor()
+        {
             foreach (var player_ui in PlayerUI)
             {
                 player_ui.SendColor();
             }
 
         }
-        public void StartGame(){
+        public void StartGame()
+        {
             PublishSubscribe.Instance.Publish<MessageStartGameplay>(new MessageStartGameplay());
         }
 
@@ -89,7 +91,8 @@ namespace TankU.GameplayUI
             Debug.Log(PlayerWinTxT.Length);
             for (int i = 0; i < PlayerWinTxT.Length; i++)
             {
-                PlayerWinTxT[i].text = "P" + (i+1) + ": " + GameRecord.GameRecord.Instance.savedMatchData[i+1];
+                var playerMatchData = new PlayerMatchRecord(i + 1);
+                PlayerWinTxT[i].text = "P" + (i + 1) + ": " + playerMatchData.win;
             }
 
         }
