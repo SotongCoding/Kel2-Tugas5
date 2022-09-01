@@ -61,7 +61,15 @@ namespace TankU.GameRecord
         public void ConvertMileStoneToJSON(int playerId, int mileStoneGet)
         {
             string keyMilestoneHistory = "milestone";
-            savedPlayerMilestone.Add(new PlayerMilestone(playerId, mileStoneGet));
+            int index = (savedPlayerMilestone.FindIndex(x => x.playerId == playerId));
+            if (index < 0)
+                savedPlayerMilestone.Add(new PlayerMilestone(playerId, mileStoneGet));
+            else
+            {
+                if (savedPlayerMilestone[index].milestoneReach < mileStoneGet)
+                    savedPlayerMilestone[index] = new PlayerMilestone(playerId, mileStoneGet);
+            }
+
 
             string playersMilestone = JsonConvert.SerializeObject(savedPlayerMilestone);
             savedData[keyMilestoneHistory] = playersMilestone;

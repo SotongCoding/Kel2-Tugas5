@@ -5952,7 +5952,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00065533223, y: 0}
+  m_AnchoredPosition: {x: 0.00037537146, y: 0}
   m_SizeDelta: {x: -45.950012, y: 230}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &545924108
@@ -13055,7 +13055,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1740200333}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.99999726
+  m_Size: 0.999998
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -15060,7 +15060,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 551663521}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.99999726
+  m_Size: 0.99999803
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -16792,7 +16792,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0006704532, y: 0}
+  m_AnchoredPosition: {x: 0.00039190068, y: 0}
   m_SizeDelta: {x: -45.950012, y: 230}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1503880047
@@ -24504,7 +24504,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bounce-Crate
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 609747177601148666, guid: 5480d04b0b6f1fb438b53cf485d7a443, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5480d04b0b6f1fb438b53cf485d7a443, type: 3}
 --- !u!1001 &6812514446221089404
 PrefabInstance:
@@ -24561,5 +24562,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Health-Crate
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6812514445432881043, guid: 7ca5c0d77524b5042bb8a01d71682fc4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7ca5c0d77524b5042bb8a01d71682fc4, type: 3}
