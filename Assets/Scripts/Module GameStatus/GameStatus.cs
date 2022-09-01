@@ -49,10 +49,19 @@ namespace TankU.GameStatus
             //load total player dengan unitId menang
             //masukan ke variable dan tambahkan 1
             //save
-            int winPlayer = unitOnCombat[0].unitId;
+            int winPlayerId = unitOnCombat[0].unitId;
 
+            GameRecord.GameRecord.Instance.ConvertMatchHistoryToJSON(winPlayerId, loseUnits.ToArray());
+            //Milestone Win
+            var matchData = new GameRecord.PlayerMatchRecord(winPlayerId);
+            CalculateMilestone(matchData);
+            //MileStoneLose
+            for (int i = 0; i < loseUnits.Count; i++)
+            {
+                var loseMatchData = new GameRecord.PlayerMatchRecord(loseUnits[i]);
+                CalculateMilestone(loseMatchData);
+            }
 
-            GameRecord.GameRecord.Instance.ConvertMatchHistoryToJSON(winPlayer, loseUnits.ToArray());
         }
 
         private void Subscriber()
@@ -96,6 +105,28 @@ namespace TankU.GameStatus
                 PublishSubscribe.Instance.Publish<MessageSoundfx>(new MessageSoundfx("gameover"));
                 PlayerWinner.text = playerWon;
             }
+        }
+        private void CalculateMilestone(PlayerMatchRecord matchRecord)
+        {
+            try
+            {
+                int level = 0;
+                int exp = 0;
+                int milestoneGet = 0;
+
+                exp += matchRecord.win * 100;
+                exp += matchRecord.lose * 50;
+
+                level = Mathf.RoundToInt(exp / 500);
+                milestoneGet = Mathf.RoundToInt(level / 2);
+
+                GameRecord.GameRecord.Instance.ConvertMileStoneToJSON(matchRecord.playerId, Mathf.RoundToInt(milestoneGet));
+            }
+            catch
+            {
+                GameRecord.GameRecord.Instance.ConvertMileStoneToJSON(matchRecord.playerId, Mathf.RoundToInt(matchRecord.win / 3));
+            }
+
         }
         #endregion
     }

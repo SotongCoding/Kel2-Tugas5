@@ -30,7 +30,7 @@ namespace TankU.GameRecord
 
         public Dictionary<string, float> savedAudioData { private set; get; } = new Dictionary<string, float>();
         public List<MatchData> savedMatchData { private set; get; } = new List<MatchData>();
-        public List<int> playerMilestone { private set; get; } = new List<int>();
+        public List<PlayerMilestone> savedPlayerMilestone { private set; get; } = new List<PlayerMilestone>();
 
         public void ConvertAudioToJSON(AudioData save)
         {
@@ -58,6 +58,16 @@ namespace TankU.GameRecord
             //savedMatchData = GetMatchData();
         }
 
+        public void ConvertMileStoneToJSON(int playerId, int mileStoneGet)
+        {
+            string keyMilestoneHistory = "milestone";
+            savedPlayerMilestone.Add(new PlayerMilestone(playerId, mileStoneGet));
+
+            string playersMilestone = JsonConvert.SerializeObject(savedPlayerMilestone);
+            savedData[keyMilestoneHistory] = playersMilestone;
+            SaveRecord();
+        }
+
         private Dictionary<string, float> GetAudioData()
         {
             return JsonConvert.DeserializeObject<Dictionary<string, float>>(savedData["audio"]);
@@ -78,6 +88,10 @@ namespace TankU.GameRecord
         {
             return JsonConvert.DeserializeObject<List<MatchData>>(savedData["match"]);
         }
+        private List<PlayerMilestone> GetMilestoneData()
+        {
+            return JsonConvert.DeserializeObject<List<PlayerMilestone>>(savedData["milestone"]);
+        }
 
         public void LoadRecord()
         {
@@ -86,6 +100,7 @@ namespace TankU.GameRecord
 
             savedAudioData = GetAudioData();
             savedMatchData = GetMatchData();
+            savedPlayerMilestone = GetMilestoneData();
 
             //string gameSetting = File.ReadAllText(Application.dataPath + "/GameSetting.json");
             //savedData = JsonConvert.DeserializeObject<Dictionary<string, float>>(gameSetting);
@@ -94,7 +109,7 @@ namespace TankU.GameRecord
             //foreach (KeyValuePair<string, float> pair in savedAudioData) { Debug.Log(pair); }
         }
 
-        public void CreateRecord()
+        private void CreateRecord()
         {
             AudioData _save = new();
             _save.soundBGM = 1f;
@@ -119,7 +134,7 @@ namespace TankU.GameRecord
             savedMatchData = GetMatchData();
         }
 
-        public void SaveRecord()
+        private void SaveRecord()
         {
             string gameRecordData = JsonConvert.SerializeObject(savedData);
             File.WriteAllText(Application.dataPath + "/GameRecord.json", gameRecordData);
@@ -143,6 +158,17 @@ namespace TankU.GameRecord
         {
             this.winPlayer = winPlayer;
             this.losePlayers = losePlayers;
+        }
+    }
+    public struct PlayerMilestone
+    {
+        public int playerId;
+        public int milestoneReach;
+
+        public PlayerMilestone(int playerId, int milestoneReach)
+        {
+            this.playerId = playerId;
+            this.milestoneReach = milestoneReach;
         }
     }
 }

@@ -56,11 +56,9 @@ namespace TankU.GameplayUI
             _GameplayReady.PlayerReady++;
         }
 
-        public void SetColorBtn(int playerWinAmount)
+        public void SetColorBtn(int milestoneGet)
         {
-            int unlockAmount = Mathf.RoundToInt(playerWinAmount / 3);
-            int maxIndex = Mathf.Clamp(unlockAmount, 1, mainColorBtn.Count);
-            for (int i = 1; i <= maxIndex; i++)
+            for (int i = 1; i <= milestoneGet; i++)
             {
                 mainColorBtn[i].interactable = true;
                 subColorBtn[i].interactable = true;
