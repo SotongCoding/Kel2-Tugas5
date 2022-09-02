@@ -17,14 +17,17 @@ namespace TankU.MainMenu
 
         public void GameplayScene()
         {
+            PublishSubscribe.Instance.Publish<MessageSoundfx>(new MessageSoundfx("button_click"));
             SceneLoader.Instance.LoadScene("Gameplay");
             MainMenuCanvas.gameObject.SetActive(false);
         }
         public void OptionScene()
         {
+            PublishSubscribe.Instance.Publish<MessageSoundfx>(new MessageSoundfx("button_click"));
             OptionUI.OptionUI.Instance.SetUIOption(true);
         }
         public void Exit(){
+            PublishSubscribe.Instance.Publish<MessageSoundfx>(new MessageSoundfx("button_click"));
             Application.Quit();
         }
     }
