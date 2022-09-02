@@ -86,10 +86,10 @@ namespace TankU.PubSub
     }
     public struct MessageGameoverUI
     {
-        public string message;
-        public MessageGameoverUI(string message)
+        public string playerWonText;
+        public MessageGameoverUI(string playerWonText)
         {
-            this.message = message;
+            this.playerWonText = playerWonText;
         }
     }
     public struct MessageSpawnBullet

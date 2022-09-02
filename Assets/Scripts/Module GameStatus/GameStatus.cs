@@ -11,20 +11,15 @@ namespace TankU.GameStatus
 {
     public class GameStatus : MonoBehaviour
     {
-        private GameRecord.GameRecord _gameRecord;
-        AudioData _save = new();
-
-        [SerializeField]
-        private GameObject gameOverPanel;
-        [SerializeField]
-        private TextMeshProUGUI PlayerWinner;
         List<Unit.Unit> unitOnCombat = new List<Unit.Unit>();
+        List<int> loseUnits = new List<int>();
 
         public string playerWon { get; private set; }
 
         void FindUnitReference()
         {
             unitOnCombat = new List<Unit.Unit>(FindObjectsOfType<Unit.Unit>());
+            //loseUnits = new List<Unit.Unit>(unitOnCombat);
 
         }
         private void Awake()
@@ -47,9 +42,20 @@ namespace TankU.GameStatus
             //load total player dengan unitId menang
             //masukan ke variable dan tambahkan 1
             //save
-            int _playerID = unitOnCombat[0].unitId;
-            GameRecord.GameRecord.Instance.ConvertMatchHistoryToJSON(_playerID);
-        }    
+            int winPlayerId = unitOnCombat[0].unitId;
+
+            GameRecord.GameRecord.Instance.ConvertMatchHistoryToJSON(winPlayerId, loseUnits.ToArray());
+            //Milestone Win
+            var matchData = new GameRecord.PlayerMatchRecord(winPlayerId);
+            GameRecord.GameRecord.Instance.CalculateMilestone(matchData);
+            //MileStoneLose
+            for (int i = 0; i < loseUnits.Count; i++)
+            {
+                var loseMatchData = new GameRecord.PlayerMatchRecord(loseUnits[i]);
+                GameRecord.GameRecord.Instance.CalculateMilestone(loseMatchData);
+            }
+
+        }
 
         private void Subscriber()
         {
@@ -81,16 +87,17 @@ namespace TankU.GameStatus
         private void ReceiveMessageUnitDie(MessageUnitDie message)
         {
             unitOnCombat.Remove(message.unit);
+            loseUnits.Add(message.unit.unitId);
+
             if (unitOnCombat.Count == 1)
             {
                 DeterminePlayerWon();
                 GameoverUI(playerWon);
                 EndGameplay();
-                gameOverPanel.SetActive(true);
                 PublishSubscribe.Instance.Publish<MessageSoundfx>(new MessageSoundfx("gameover"));
-                PlayerWinner.text = playerWon;
             }
         }
+       
         #endregion
     }
 }

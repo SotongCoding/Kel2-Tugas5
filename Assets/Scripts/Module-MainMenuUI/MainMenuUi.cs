@@ -24,6 +24,9 @@ namespace TankU.MainMenu
         {
             OptionUI.OptionUI.Instance.SetUIOption(true);
         }
+        public void Exit(){
+            Application.Quit();
+        }
     }
 }
 

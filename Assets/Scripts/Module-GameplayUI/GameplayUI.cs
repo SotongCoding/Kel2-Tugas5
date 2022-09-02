@@ -15,36 +15,38 @@ namespace TankU.GameplayUI
     {
         public int PlayerReady;
         [SerializeField]
-        private TextMeshProUGUI TimerTxT, TieBreakTxT;
+        private TextMeshProUGUI TimerTxT, TieBreakTxT, playerWinText;
         [SerializeField]
         private TextMeshProUGUI[] PlayerWinTxT;
         private GameStatus.TimerGameplay _TimerGameplay;
         [SerializeField]
         private UnitStatusUI[] PlayerUI;
-   
+        [SerializeField] private GameObject gameOverPanel;
 
         void Start()
         {
             _TimerGameplay = GameObject.Find("GameStatus").GetComponent<TimerGameplay>();
             PublishSubscribe.Instance.Publish<MessageSoundBgm>(new MessageSoundBgm("gameplay"));
-            ShowMatchData();          
+            ShowMatchData();
         }
 
         private void Awake()
         {
             PublishSubscribe.Instance.Subscribe<MessageSpawnBomb>(ReduceBomb);
             PublishSubscribe.Instance.Subscribe<MessageTieBreaker>(Tiebreaker);
+            PublishSubscribe.Instance.Subscribe<MessageGameoverUI>(ShowGameOver);
         }
         // Update is called once per frame
         void Update()
         {
             TimerTxT.text = _TimerGameplay.timer.ToString();
-           
+
         }
         private void OnDestroy()
         {
             PublishSubscribe.Instance.Unsubscribe<MessageSpawnBomb>(ReduceBomb);
             PublishSubscribe.Instance.Unsubscribe<MessageTieBreaker>(Tiebreaker);
+            PublishSubscribe.Instance.Unsubscribe<MessageGameoverUI>(ShowGameOver);
         }
         void ReduceBomb(MessageSpawnBomb message)
         {
@@ -63,14 +65,22 @@ namespace TankU.GameplayUI
             PlayerUI[1].UpdateHealth();
         }
 
-        public void SetPlayerColor(){
+        void ShowGameOver(MessageGameoverUI message)
+        {
+            playerWinText.text = message.playerWonText;
+            gameOverPanel.SetActive(true);
+        }
+
+        public void SetPlayerColor()
+        {
             foreach (var player_ui in PlayerUI)
             {
                 player_ui.SendColor();
             }
 
         }
-        public void StartGame(){
+        public void StartGame()
+        {
             PublishSubscribe.Instance.Publish<MessageStartGameplay>(new MessageStartGameplay());
         }
 
@@ -89,7 +99,8 @@ namespace TankU.GameplayUI
             Debug.Log(PlayerWinTxT.Length);
             for (int i = 0; i < PlayerWinTxT.Length; i++)
             {
-                PlayerWinTxT[i].text = "P" + (i+1) + ": " + GameRecord.GameRecord.Instance.savedMatchData[i+1];
+                var playerMatchData = new PlayerMatchRecord(i + 1);
+                PlayerWinTxT[i].text = "P" + (i + 1) + ": " + playerMatchData.win;
             }
 
         }
